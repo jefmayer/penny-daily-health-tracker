@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<% include ../partials/header.ejs %>
+		<title>Penny Daily Tracker</title>
+		<link rel="stylesheet" href="/styles/global.css">
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	
 	<body>
-		<main>
-			<h1>App</h1>
+		<main id="app">
+			<div class="o-wrapper">
+				<h1>Penny Daily Tracker</h1>
+				<form>
+					<label for="date" class="clearfix">
+						<span>Date</span>
+						<input name="date" id="date" type="date" min="2018-10-10" v-model="daily.date" />
+					</label>
+					<label for="mobility" class="clearfix">
+						<span>Mobility <em>{{ daily.mobility }}</em></span>
+						<input name="mobility" id="mobility" type="range" min="0" max="10" v-model="daily.mobility" />
+					</label>
+					<label for="activity" class="clearfix">
+						<span>Activity <em>{{ daily.activity }}</em></span>
+						<input name="activity" id="activity" type="range" min="0" max="10" v-model="daily.activity" />
+					</label>
+					<label for="appetite" class="clearfix">
+						<span>Appetite <em>{{ daily.appetite }}</em></span>
+						<input name="appetite" id="appetite" type="range" min="0" max="10" v-model="daily.appetite" />
+					</label>
+					<label for="pain" class="clearfix">
+						<span>Pain <em>{{ daily.pain }}</em></span>
+						<input name="pain" id="pain" type="range" min="0" max="10" v-model="daily.pain" />
+					</label>
+					<label for="stress" class="clearfix">
+						<span>Stress <em>{{ daily.stress }}</em></span>
+						<input name="stress" id="stress" type="range" min="0" max="10" v-model="daily.stress" />
+					</label>
+					<label for="notes" class="clearfix">
+						<span>Notes</span>
+						<textarea name="notes" id="notes" v-model="daily.notes"></textarea>
+					</label>
+					<label for="notes" class="clearfix">
+						<input name="submit" id="submit" type="submit" value="Add Record" v-on:click="addRecord" />
+					</label>
+				</form>
+			</div>
 		</main>
+		
+		<script type="text/javascript" src="scripts/index.js"></script>
+		
 	</body>
 </html>
