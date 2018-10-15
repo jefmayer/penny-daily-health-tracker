@@ -63,3 +63,29 @@ textarea {
 .clearfix:after {
 	clear: both;
 }
+
+/* D3 */
+.axis path {
+	fill: none;
+	stroke: #777;
+	shape-rendering: crispEdges;
+}
+
+.axis text {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.overlay {
+	fill: none;
+	pointer-events: all;
+}
+
+.focus circle {
+	fill: none;
+	stroke: steelblue;
+}

@@ -56,9 +56,23 @@ var app = new Vue({
 				stress: this.daily.stress,
 				notes: this.daily.notes
 			}));
+		},
+		getTodaysFormattedDate: function() {
+			var d = new Date(),
+					s = '';
+			
+			s = d.getUTCFullYear() + '-' + this.addLeadingZero(d.getMonth() + 1) + '-' + this.addLeadingZero(d.getDate())
+			return s;
+		},
+		addLeadingZero: function(n) {
+			if (n.toString().length === 1) {
+				return '0' + n.toString();
+			}
+			return n;
 		}
 	},
 	mounted: function() {
+		this.daily.date = this.getTodaysFormattedDate();
 		this.getData();
 	}
 
