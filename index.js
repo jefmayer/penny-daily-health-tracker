@@ -53,6 +53,7 @@ express()
 				{ $set: doc },
 				{ upsert: true }
 			))
+			res.end(JSON.stringify({success: "success"}))
 			db.close();
 		}).catch(err => console.log(err))
 	})

@@ -40,10 +40,26 @@
 						<span>Notes</span>
 						<textarea name="notes" id="notes" v-model="daily.notes"></textarea>
 					</label>
-					<label for="notes" class="clearfix">
+					<label for="submit" class="clearfix">
 						<input name="submit" id="submit" type="submit" value="Add Record" v-on:click="addRecord" />
 					</label>
 				</form>
+			</div>
+			
+			<div class="o-wrapper">
+				<ul>
+					<li v-for="item in datapoints">
+						<p>
+						<span>Date: </span>{{ item.date }}<br />
+						<span>Mobility: </span>{{ item.mobility }}<br />
+						<span>Activity: </span>{{ item.activity }}<br />
+						<span>Appetite: </span>{{ item.appetite }}<br />
+						<span>Pain: </span>{{ item.pain }}<br />
+						<span>Stress: </span>{{ item.stress }}<br />
+						<span>Notes: </span>{{ item.notes }}<br />
+						</p>
+					</li>
+				</ul>
 			</div>
 		</main>
 		
