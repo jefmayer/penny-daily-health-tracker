@@ -5,7 +5,8 @@ body {
 }
 
 .o-wrapper {
-	width: 240px;
+	width: 80%;
+	max-width: 320px;
 	display: block;
 	margin: 20px auto 0px auto;
 	background: white;
