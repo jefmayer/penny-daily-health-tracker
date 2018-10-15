@@ -57,6 +57,7 @@
 						<span>Pain: </span>{{ item.pain }}<br />
 						<span>Stress: </span>{{ item.stress }}<br />
 						<span>Notes: </span>{{ item.notes }}<br />
+						<button v-on:click="edit(item.date)">Edit</button>
 						</p>
 					</li>
 				</ul>
