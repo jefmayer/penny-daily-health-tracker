@@ -1,71 +1,96 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Penny Daily Tracker</title>
+		<title>Penny&rsquo;s Daily Health Tracker</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="stylesheet" href="/styles/global.css">
+		<link href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700,900" rel="stylesheet">
+		<link rel="stylesheet" href="/styles/app.min.css">
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	
 	<body>
 		<main id="app">
-			<div class="o-wrapper">
-				<h1>Penny Daily Tracker</h1>
-				<form>
-					<label for="date" class="clearfix">
-						<span>Date</span>
-						<input name="date" id="date" type="date" min="2018-10-10" v-model="daily.date" />
-					</label>
-					<label for="mobility" class="clearfix">
-						<span>Mobility <em>{{ daily.mobility }}</em></span>
-						<input name="mobility" id="mobility" type="range" min="0" max="10" v-model="daily.mobility" />
-					</label>
-					<label for="activity" class="clearfix">
-						<span>Activity <em>{{ daily.activity }}</em></span>
-						<input name="activity" id="activity" type="range" min="0" max="10" v-model="daily.activity" />
-					</label>
-					<label for="appetite" class="clearfix">
-						<span>Appetite <em>{{ daily.appetite }}</em></span>
-						<input name="appetite" id="appetite" type="range" min="0" max="10" v-model="daily.appetite" />
-					</label>
-					<label for="pain" class="clearfix">
-						<span>Pain <em>{{ daily.pain }}</em></span>
-						<input name="pain" id="pain" type="range" min="0" max="10" v-model="daily.pain" />
-					</label>
-					<label for="stress" class="clearfix">
-						<span>Stress <em>{{ daily.stress }}</em></span>
-						<input name="stress" id="stress" type="range" min="0" max="10" v-model="daily.stress" />
-					</label>
-					<label for="notes" class="clearfix">
-						<span>Notes</span>
-						<textarea name="notes" id="notes" v-model="daily.notes"></textarea>
-					</label>
-					<label for="submit" class="clearfix">
-						<input name="submit" id="submit" type="submit" value="Add Record" v-on:click="addRecord" />
-					</label>
-				</form>
-			</div>
+			<div class="o-progressChart"></div>
 			
-			<div class="o-wrapper">
-				<ul>
-					<li v-for="item in datapoints">
-						<p>
-						<span>Date: </span>{{ item.date }}<br />
-						<span>Mobility: </span>{{ item.mobility }}<br />
-						<span>Activity: </span>{{ item.activity }}<br />
-						<span>Appetite: </span>{{ item.appetite }}<br />
-						<span>Pain: </span>{{ item.pain }}<br />
-						<span>Stress: </span>{{ item.stress }}<br />
-						<span>Notes: </span>{{ item.notes }}<br />
-						<button v-on:click="edit(item.date)">Edit</button>
-						</p>
-					</li>
-				</ul>
+			<div class="o-titleBar">
+				<h1 class="o-titleBar__heading heading--md">Penny&rsquo;s Daily Health Tracker</h1>
+			</div>
+				
+			<div class="o-progressCalendar">
+				<carousel :scroll-per-page="true" :per-page="5">
+					<slide class="o-progressCalendar__card">
+						<form>
+							<label for="date" class="clearfix">
+								<span>Date</span>
+								<input name="date" id="date" type="date" min="2018-10-10" v-model="daily.date" />
+							</label>
+							<label for="mobility" class="clearfix">
+								<span>Mobility <em>{{ daily.mobility }}</em></span>
+								<input name="mobility" id="mobility" type="range" min="0" max="10" v-model="daily.mobility" />
+							</label>
+							<label for="activity" class="clearfix">
+								<span>Activity <em>{{ daily.activity }}</em></span>
+								<input name="activity" id="activity" type="range" min="0" max="10" v-model="daily.activity" />
+							</label>
+							<label for="appetite" class="clearfix">
+								<span>Appetite <em>{{ daily.appetite }}</em></span>
+								<input name="appetite" id="appetite" type="range" min="0" max="10" v-model="daily.appetite" />
+							</label>
+							<label for="pain" class="clearfix">
+								<span>Pain <em>{{ daily.pain }}</em></span>
+								<input name="pain" id="pain" type="range" min="0" max="10" v-model="daily.pain" />
+							</label>
+							<label for="stress" class="clearfix">
+								<span>Stress <em>{{ daily.stress }}</em></span>
+								<input name="stress" id="stress" type="range" min="0" max="10" v-model="daily.stress" />
+							</label>
+							<label for="notes" class="clearfix">
+								<span>Notes</span>
+								<textarea name="notes" id="notes" v-model="daily.notes"></textarea>
+							</label>
+							<button v-on:click="addRecord">
+								<span>Add Record</span>
+							</button>								
+						</form>
+					</slide>
+					<slide v-for="item in datapoints" class="o-progressCalendar__card">
+						<div>{{ item.date }}</div>
+						<div class="o-attributes m-t-xxs m-b-xs">
+							<div class="o-attributes__item">
+								<span class="heading--xs">Mobility</span>
+								<span class="o-attributeGraph mobility" :style="{width: (parseInt(item.mobility) / 10 * 100) + '%'}"></span>
+							</div>
+							<div class="o-attributeGraph o-attributes__item">
+								<span class="heading--xs">Activity</span>
+								<span class="o-attributeGraph activity" :style="{width: (parseInt(item.activity) / 10 * 100) + '%'}"></span>
+							</div>
+							<div class="o-attributeGraph o-attributes__item">
+								<span class="heading--xs">Appetite</span>
+								<span class="o-attributeGraph appetite" :style="{width: (parseInt(item.appetite) / 10 * 100) + '%'}"></span>
+							</div>
+							<div class="o-attributeGraph o-attributes__item">
+								<span class="heading--xs">Pain</span>
+								<span class="o-attributeGraph pain" :style="{width: (parseInt(item.pain) / 10 * 100) + '%'}"></span>
+							</div>
+							<div class="o-attributeGraph o-attributes__item">
+								<span class="heading--xs">Stress</span>
+								<span class="o-attributeGraph stress" :style="{width: (parseInt(item.stress) / 10 * 100) + '%'}"></span>
+							</div>
+						</div>
+						<div>
+							<div class="heading--xs">Notes</div>
+							{{ item.notes }}
+						</div>
+						<button v-on:click="edit(item.date)" class="m-t-xs">
+							<span>Edit</span>
+						</button>
+					</slide>
+				</carousel>
 			</div>
 		</main>
-		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-		<script type="text/javascript" src="scripts/index.js"></script>
-		
+		<!-- https://ssense.github.io/vue-carousel/examples/ -->
+		<!-- https://ssense.github.io/vue-carousel/guide/ -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+		<script type="text/javascript" src="scripts/app.min.js"></script>
 	</body>
 </html>

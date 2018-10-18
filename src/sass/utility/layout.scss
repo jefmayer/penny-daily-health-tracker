@@ -1,0 +1,29 @@
+.u-inline-block {
+  display: inline-block;
+}
+
+.u-inline {
+	display: inline;
+}
+
+.u-clear {
+	clear: both;
+}
+
+.u-pad--none {
+	padding: 0;
+}
+
+.clearfix:after {
+    content:" ";
+    display:table;
+    clear:both;
+}
+
+.hidden {
+	display: none;
+}
+
+.u-overflow-x--hidden {
+	overflow-x: hidden;
+}

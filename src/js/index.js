@@ -1,5 +1,12 @@
+// Template
+// https://codesandbox.io/embed/4l3w20zomw
+
 var app = new Vue({
 	el: '#app',
+	components: {
+  	'carousel': VueCarousel.Carousel,
+    'slide': VueCarousel.Slide
+  },
 	data: {
 		requesting: false,
 		datapoints: [],
@@ -113,3 +120,4 @@ var app = new Vue({
 	}
 
 });
+;

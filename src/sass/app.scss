@@ -1,0 +1,43 @@
+/*
+
+Sass guidelines for this project
+
+- Avoid nesting rulesets more than one level deep.
+- Use BEM naming for components and objects.
+- Use @include for media queries directly in the ruleset.
+- Avoid touching type styles directly.
+- Avoid including margin or padding on type styles. Use spacing utility classes or manipulate the block's spacing instead.
+- Avoid directly styling HTML elements (except for base or reset). Add a class instead.
+- Add #todo comments as searchable reminders to come back to something later.
+
+*/
+
+/*
+
+Mixins
+
+*/
+
+@import 'mixins/breakpoints.scss';
+
+/*
+
+Base
+
+*/
+
+@import 'base/variables.scss';
+@import 'base/reset.scss';
+@import 'base/spacing.scss';
+@import 'base/typography.scss';
+
+/*
+
+Utility
+
+*/
+
+@import 'utility/layout.scss';
+@import 'utility/text.scss';
+
+@import 'page/ui.scss';
