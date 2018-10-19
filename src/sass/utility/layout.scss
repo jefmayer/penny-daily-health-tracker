@@ -10,6 +10,10 @@
 	clear: both;
 }
 
+.u-hidden {
+	display: none;
+}
+
 .u-pad--none {
 	padding: 0;
 }
@@ -26,4 +30,17 @@
 
 .u-overflow-x--hidden {
 	overflow-x: hidden;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
 }

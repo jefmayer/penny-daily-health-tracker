@@ -5,6 +5,7 @@
 }
 
 .o-titleBar {
+	margin-top: 30px;
 	padding: 10px 0 10px 20px;
 	background: white;
 }
@@ -14,11 +15,50 @@
 }
 
 .o-progressCalendar__card {
-	padding: 15px;
+	position: relative;
 	border-right: 1px solid $dark-50;
+	overflow: hidden;
+	
+	.o-progressCalendar__card--inner {
+		height: 100%;
+		padding: 15px;
+		transition: all 0.25s ease-in;
+		transform: translateX(0);
+		
+		&.shift {	
+			transform: translateX(-100%);
+		}	
+	}
+	
+	.o-date {
+		margin-left: 15px;
+	}
+	
+	.o-date__month {
+		font-weight: 500;
+		font-size: 85%;
+		letter-spacing: 0.3px;
+		text-transform: uppercase;
+	}
+	
+	.o-date__date {
+		margin-bottom: -3px;
+		font-weight: 300;
+		font-size: 28px;
+		line-height: 1em;
+	}
+	
+	.o-date__year {
+		font-weight: 500;
+		font-size: 85%;
+		letter-spacing: 0.3px;
+		text-transform: uppercase;
+	}
 	
 	.o-attributes__item {
 		position: relative;
+		padding-left: 0;
+		cursor: default;
 		@include m-b-($spacer-xxs);
 		
 		.o-attributeGraph {
@@ -27,6 +67,7 @@
 			left: 0;
 			border-bottom-width: 2px;
 			border-bottom-style: solid;
+			transition: all 0.25s ease-in-out;
 		
 			&.mobility {
 				border-bottom-color: $violet;
@@ -50,68 +91,34 @@
 		}
 		
 		&:before {
-				content: "";
-				position: absolute;
-				top: 17px;
-				left: 0;
-				width: 100%;
-				border-bottom: 2px solid $sand-35;
+			content: "";
+			position: absolute;
+			top: 17px;
+			left: 0;
+			width: 100%;
+			border-bottom: 2px solid $sand-35;
+		}
+		
+		&:hover {
+			&:before {
+				left: 10px;
+			}
+			
+			.o-attributeGraph {
+				left: 10px;
+			}
 		}
 	}
-}
-
-button {
-	position:relative;
-	width: 100%;
-	max-width: 150px;
-	padding: 5px 0;
-	overflow: hidden;
-	border: 2px $dark solid;
-	background: white;
-	color: $dark;
-	font-size: 80%;
-	font-weight: 700;
-	text-transform: uppercase;
-	text-align: center;
-	transform: scale(1,1);
-	transform-origin: center;
-	transition: all 0.25s ease-in-out;
-	cursor: pointer;
 	
-	span {
-		position: relative;
-		z-index: 2;
-	}
-	
-	&:before {
-		content: "";
+	.o-dataEntries--edit {
 		position: absolute;
-		top: 50%;
-		left: -50%;
-		margin-top: -150px;
-		z-index: 1;
-		width: 300px;
-		height: 300px;
-		border-radius: 300px;
-		background: white;
+		top: 0; // offset
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 15px;
 		transition: all 0.25s ease-in-out;
-		transform: scale(0,0);
-		transform-origin: center;
-	}
-	
-	&:hover {
-		color: white;
-		border-color: $green;
-		transform: scale(1.05,1.05);
-	}
-	
-	&:active {
-		transform: scale(1,1);
-	}
-	
-	&:hover:before {
-		transform: scale(1,1);
-		background: $green;
+		transform: translateX(100%);
 	}
 }
 
@@ -119,14 +126,11 @@ label {
 	display: block;
 	width: 100%;
 	margin-bottom: 10px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #ccc;
 }
 
 label span {
 	width: 100%;
 	float: left;
-	margin-bottom: 5px;
 }
 
 input {
@@ -135,58 +139,64 @@ input {
 	clear: both;
 	margin: 0;
 	padding: 0;
-	font-family: Helvetica, Arial, sans-serif !important;
+	font-family: $mon !important;
+	font-size: 12px;
 }
 
 textarea {
 	width: 100%;
 	height: 15em;
 	padding: 5px;
-}
-
-#submit {
-	padding: 10px 0;
-	background: #333;
-	color: white;
-	border-radius: 2px;
-	text-transform: uppercase;
-}
-
-.clearfix {
-	zoom: 1;
-}
-
-.clearfix:before, .clearfix:after {
-	content: "";
-	display: table;
-}
-
-.clearfix:after {
-	clear: both;
+	border: 1px solid $sand;
+	font-family: $mon !important;
+	font-size: 12px;
 }
 
 /* D3 */
-.axis path {
-	fill: none;
-	stroke: #777;
-	shape-rendering: crispEdges;
+
+.o-line--mobility {
+  fill: none;
+  stroke: $violet;
+  stroke-width: 2px;
 }
 
-.axis text {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 10px;
+.o-line--activity {
+  fill: none;
+  stroke: $plum;
+  stroke-width: 2px;
 }
 
-.x.axis path {
-	display: none;
+.o-line--appetite {
+  fill: none;
+  stroke: $fuscia;
+  stroke-width: 2px;
 }
 
-.overlay {
-	fill: none;
-	pointer-events: all;
+.o-line--pain {
+  fill: none;
+  stroke: $vermilion;
+  stroke-width: 2px;
 }
 
-.focus circle {
-	fill: none;
-	stroke: steelblue;
+.o-line--stress {
+  fill: none;
+  stroke: $orange;
+  stroke-width: 2px;
+}
+
+.o-axis--y {
+	text {
+		font-family: $mon;
+		font-weight: 500;
+		font-size: 85%;
+		fill: white;
+	}
+	
+	path {
+		stroke: none;
+	}
+	
+	line {
+		stroke: none;
+	}
 }
