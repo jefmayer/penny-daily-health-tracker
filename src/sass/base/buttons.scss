@@ -18,6 +18,10 @@ button.o-btn--simple {
 	&:hover {
 		color: $green;
 	}
+	
+	&:active {
+		transform: scale(0.95,0.95);
+	}
 }
 
 button.o-btn--primary {
