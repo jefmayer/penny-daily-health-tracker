@@ -1,7 +1,12 @@
 .o-progressChart {
 	background: $dark;
 	width: 100%;
-	height: 300px;
+	height: 328px;
+}
+
+#progressChart {
+	width: 100%;
+	height: 350px;
 }
 
 .o-titleBar {
@@ -135,7 +140,7 @@
 	}
 	
 	.o-dataEntries--display {
-		padding-bottom: 55px;
+		padding-bottom: 45px;
 	}
 	
 	.o-dataEntries--edit {
@@ -182,6 +187,12 @@ textarea {
 
 /* D3 */
 
+.o-line {
+  fill: none;
+  stroke: $violet;
+  stroke-width: 2px;
+}
+
 .o-line--mobility {
   fill: none;
   stroke: $violet;
@@ -210,6 +221,16 @@ textarea {
   fill: none;
   stroke: $orange;
   stroke-width: 2px;
+}
+
+.o-axis--x {
+	path {
+		stroke: none;
+	}
+	
+	line {
+		stroke: none;
+	}
 }
 
 .o-axis--y {

@@ -40,7 +40,7 @@ var app = new Vue({
 					that.requesting = false;
 					that.datapoints = JSON.parse(request.responseText).reverse();
 					// init chart...
-					app.$refs.progressChart.init(that.datapoints);
+					app.$refs.progressChart.init(JSON.parse(request.responseText).reverse());
         } else {
         	console.log(request.responseText);
         	console.warn('index.js, getRecords : error');

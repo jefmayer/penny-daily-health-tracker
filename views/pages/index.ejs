@@ -10,8 +10,10 @@
 	
 	<body>
 		<main id="app">
-			<chart class="o-progressChart" id="progressChart" ref="progressChart" inline-template>
-				<div></div>
+			<chart ref="progressChart" inline-template>
+				<div class="o-progressChart">
+					<svg id="progressChart"></svg>
+				</div>
 			</chart>
 			
 			<div class="o-titleBar">
@@ -19,7 +21,7 @@
 			</div>
 				
 			<div class="o-progressCalendar">
-				<carousel :scroll-per-page="true" :per-page="5" :per-page-custom=[[320,2],[960,3],[1150,4],[1400,5]]>
+				<carousel :scroll-per-page="true" :per-page="1" :per-page-custom=[[320,2],[960,3],[1150,4],[1400,5]]>
 					<slide class="o-progressCalendar__card">
 						<record :item="defaults" inline-template>
 							<div class="o-progressCalendar__card--inner" :class="{ 'shift': canEdit }">
@@ -160,7 +162,7 @@
 		<!-- https://ssense.github.io/vue-carousel/examples/ -->
 		<!-- https://ssense.github.io/vue-carousel/guide/ -->
 		<!-- https://github.com/SSENSE/vue-carousel -->
-		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"> </script>
 		<script type="text/javascript" src="scripts/app.min.js"></script>
 	</body>
 </html>
