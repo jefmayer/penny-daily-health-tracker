@@ -23,7 +23,7 @@
 			<div class="o-progressCalendar">
 				<carousel :scroll-per-page="true" :per-page="1" :per-page-custom=[[320,2],[960,3],[1150,4],[1400,5]]>
 					<slide class="o-progressCalendar__card">
-						<record :item="defaults" inline-template>
+						<record :item="defaults" :update="update" inline-template>
 							<div class="o-progressCalendar__card--inner" :class="{ 'shift': canEdit }">
 								<div class="o-dataEntries--display">
 									<button class="o-btn--primary o-btn--addNew" v-on:click="editHandler">

@@ -1,5 +1,5 @@
 var Record = Vue.component('record', {
-	props: ['item'],
+	props: ['item', 'update'],
 	data: function() {
 		return {
 			canEdit: false,
@@ -9,7 +9,7 @@ var Record = Vue.component('record', {
 	methods: {
     editHandler: function(event) {
 	    event.preventDefault();
-	    this.canEdit = !this.canEdit; 
+	    this.canEdit = !this.canEdit;
     },
     updateHandler: function(event) {
 			event.preventDefault();
@@ -23,7 +23,7 @@ var Record = Vue.component('record', {
 				if (request.status >= 200 && request.status < 400) {
 					that.requesting = false;
 					console.log(JSON.parse(request.responseText));
-					that.canEdit = !that.canEdit; 
+					that.canEdit = !that.canEdit;
         } else {
         	console.log(request.responseText);
         	console.warn('index.js, addRecord : error');

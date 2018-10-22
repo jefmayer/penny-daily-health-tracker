@@ -1,3 +1,5 @@
+// http://bl.ocks.org/hunzy/11110940
+// https://bl.ocks.org/josiahdavis/7a02e811360ff00c4eef
 var Chart = Vue.component('test', {
 	data: function() {
 		return {
@@ -28,7 +30,7 @@ var Chart = Vue.component('test', {
 				.range(['rgb(179,38,229)', 'rgb(35,232,216)', 'rgb(126,90,251)', 'rgb(252,21,123)', 'rgb(253,139,38)']);
 			
 			// Define axes
-			var xAxis = d3.svg.axis().scale(xScale).orient('bottom');
+			var xAxis = d3.svg.axis().scale(xScale).orient('bottom').innerTickSize(-height - margin.top).outerTickSize(0).tickPadding(10);;
 			var yAxis = d3.svg.axis().scale(yScale).orient('left');
 			
 			// Define lines
@@ -80,6 +82,14 @@ var Chart = Vue.component('test', {
           .attr("class", "o-axis--y")
           .call(yAxis);
 			
+			// Remove first tick from y-axis
+			svg.selectAll('.tick')
+				.each(function(d) {
+					if ( d === 0 ) {
+						this.remove();
+					}
+				});
+			
 			var products = svg.selectAll(".category")
 				.data(this.chartData)
 				.enter().append("g")
@@ -99,12 +109,12 @@ var Chart = Vue.component('test', {
 				yScale.range([height, 0]);
 								
 				// Update the axis and text with the new scale
-				svg.select('.x.axis')
+				svg.select('.o-axis--x')
 					.attr("transform", "translate(0," + height + ")")
 					.call(xAxis);
 				
-				svg.select('.y.axis')
-					.call(yAxis);
+				/*svg.select('.o-axis--y')
+					.call(yAxis);*/
 				
 				// Force D3 to recalculate and update the line
 				svg.selectAll('.o-line')

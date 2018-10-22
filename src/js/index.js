@@ -38,9 +38,9 @@ var app = new Vue({
 			request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
 					that.requesting = false;
-					that.datapoints = JSON.parse(request.responseText).reverse();
+					that.datapoints = JSON.parse(request.responseText).sort(that.sortByDate).reverse();
 					// init chart...
-					app.$refs.progressChart.init(JSON.parse(request.responseText).reverse());
+					app.$refs.progressChart.init(JSON.parse(request.responseText).sort(that.sortByDate).reverse());
         } else {
         	console.log(request.responseText);
         	console.warn('index.js, getRecords : error');
@@ -68,21 +68,16 @@ var app = new Vue({
 			}
 			return this.defaults;
 		},
-		resetFields: function() {
-			this.daily.date = this.getTodaysFormattedDate();
-			this.populateFields(this.defaults);
-		},
-		populateFields: function(values) {
-			for (var e in this.daily) {
-				this.daily[e] = values[e];
-			}
-		},
-		refresh: function() {
-			this.resetFields();
+		update: function() {
+			console.log('index.js, update');
 			this.getData();
 		},
-		edit: function(date) {
-			this.populateFields(this.getDataByDate(date));			
+		sortByDate: function(a, b) {
+			if (a.date < b.date)
+				return -1;
+			if (a.date > b.date)
+				return 1;
+			return 0;
 		}
 	},
 	mounted: function() {
