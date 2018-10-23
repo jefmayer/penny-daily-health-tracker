@@ -1,3 +1,4 @@
+// https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 var app = new Vue({
 	el: '#app',
 	components: {
@@ -9,24 +10,15 @@ var app = new Vue({
 	data: {
 		requesting: false,
 		datapoints: [],
-		daily: {
-			date: '',
-			mobility: '5',
-			activity: '5',
-			appetite: '5',
-			pain: '5',
-			stress: '5',
-			notes: ''
-		},
 		defaults: {
-			date: '',
+			date: Date,
 			mobility: '5',
 			activity: '5',
 			appetite: '5',
 			pain: '5',
 			stress: '5',
 			notes: ''
-		},
+		}
 	},	
 	methods: {
 		getData: function() {
@@ -39,7 +31,7 @@ var app = new Vue({
         if (request.status >= 200 && request.status < 400) {
 					that.requesting = false;
 					that.datapoints = JSON.parse(request.responseText).sort(that.sortByDate).reverse();
-					// init chart...
+					// init chart
 					app.$refs.progressChart.init(JSON.parse(request.responseText).sort(that.sortByDate).reverse());
         } else {
         	console.log(request.responseText);
@@ -69,8 +61,10 @@ var app = new Vue({
 			return this.defaults;
 		},
 		update: function() {
-			console.log('index.js, update');
 			this.getData();
+		},
+		pause: function() {
+			console.log('index.js, pause');
 		},
 		sortByDate: function(a, b) {
 			if (a.date < b.date)
@@ -81,7 +75,7 @@ var app = new Vue({
 		}
 	},
 	mounted: function() {
-		this.daily.date = this.getTodaysFormattedDate();
+		this.defaults.date = this.getTodaysFormattedDate();
 		this.getData();
 	}
 });

@@ -11,8 +11,13 @@
 
 .o-titleBar {
 	margin-top: 30px;
-	padding: 10px 0 10px 20px;
 	background: white;
+	text-align: center;
+	
+	@include breakpoint(sm) {
+		padding: 10px 0 10px 20px;
+		text-align: left;
+	}
 }
 
 .o-progressCalendar {
@@ -65,13 +70,13 @@
 	
 	.o-date__month {
 		font-weight: 500;
-		font-size: 85%;
+		font-size: 10px;
 		letter-spacing: 0.3px;
 		text-transform: uppercase;
 	}
 	
 	.o-date__date {
-		margin-bottom: -3px;
+		margin-bottom: -2px;
 		font-weight: 300;
 		font-size: 28px;
 		line-height: 1em;
@@ -79,8 +84,8 @@
 	
 	.o-date__year {
 		font-weight: 500;
-		font-size: 85%;
-		letter-spacing: 0.3px;
+		font-size: 10px;
+		letter-spacing: 0.2px;
 		text-transform: uppercase;
 	}
 	
@@ -152,24 +157,117 @@
 		padding: 15px;
 		transition: all 0.25s ease-in-out;
 		transform: translateX(100%);
+		
+		form {
+			width: 100%;
+			max-width: 300px;
+			margin: 0 auto;
+		}
+	}
+}
+
+.o-progressCalendar__card--newEntry {
+	.o-progressCalendar__card--actions {
+		.o-actions--edit {
+			div {
+				width: 100%;
+				max-width: 300px;
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+.o-progressCalendar__card--newEntry {
+	.o-dataEntries--display {
+		height: 360px;
+		
+		@include breakpoint(md) {
+			height: 360px;
+		}
+		
+		@include breakpoint(lg) {
+			height: 345px;
+		}
+	}
+}
+
+.o-field {
+	padding: 4px 8px;
+	position: relative;
+	
+	&:after {
+		content: "";
+		position: absolute;
+		top: -10px;
+		left: 0;
+		height: 100%;
+		border-left-width: 2px;
+		border-left-style: solid;
+		cursor: default;
+		transform: scale(1, 0.2);
+		transform-origin: center;
+		transition: all 0.25s ease-in-out;
+	}
+	
+	&:hover:after {
+		top: 0;
+		transform: scale(1, 1);
+	}
+	
+	&:nth-child(even) {
+		background: $sand-35;
+	}
+	
+	&.o-field--mobility:after {
+		border-left-color: $violet;
+	}
+	
+	&.o-field--activity:after {
+		border-left-color: $plum;
+	}
+	
+	&.o-field--appetite:after {
+		border-left-color: $cyan;
+	}
+	
+	&.o-field--pain:after {
+		border-left-color: $fuscia;
+	}
+	
+	&.o-field--stress:after {
+		border-left-color: $orange;
+	}
+}
+
+.o-field--date {
+	margin-top: 7px;
+	margin-bottom: 6px;
+	
+	input {
+		border: none;
+		border-bottom: 1px solid $sand;
+		font-size: 16px;
+		letter-spacing: -0.03em;
 	}
 }
 
 label {
 	display: block;
 	width: 100%;
-	margin-bottom: 10px;
-}
-
-label span {
-	width: 100%;
-	float: left;
+	
+	span {
+		width: 100%;
+		
+		em {
+			font-style: normal;
+			float: right;
+		}
+	}
 }
 
 input {
 	width: 100%;
-	float: left;
-	clear: both;
 	margin: 0;
 	padding: 0;
 	font-family: $mon !important;
@@ -178,115 +276,9 @@ input {
 
 textarea {
 	width: 100%;
-	height: 12em;
+	height: 9em;
 	padding: 5px;
 	border: 1px solid $sand;
 	font-family: $mon !important;
 	font-size: 12px;
-}
-
-/* D3 */
-
-.o-line {
-  fill: none;
-  stroke: $violet;
-  stroke-width: 2px;
-}
-
-.o-line--mobility {
-  fill: none;
-  stroke: $violet;
-  stroke-width: 2px;
-}
-
-.o-line--activity {
-  fill: none;
-  stroke: $plum;
-  stroke-width: 2px;
-}
-
-.o-line--appetite {
-  fill: none;
-  stroke: $cyan;
-  stroke-width: 2px;
-}
-
-.o-line--pain {
-  fill: none;
-  stroke: $fuscia;
-  stroke-width: 2px;
-}
-
-.o-line--stress {
-  fill: none;
-  stroke: $orange;
-  stroke-width: 2px;
-}
-
-.o-axis--x {
-	path {
-		stroke: $sand;
-		shape-rendering: crispEdges;
-	}
-	
-	line {
-		stroke: $sand;
-		shape-rendering: crispEdges;
-	}
-	
-	.domain {
-		stroke: none;
-		fill: none;
-	}
-	
-	.tick {
-		stroke: $sand;
-		stroke-opacity: 0.15;
-		opacity: 0.15;
-	}
-}
-
-.o-axis--y {
-	text {
-		font-family: $mon;
-		font-weight: 500;
-		font-size: 85%;
-		fill: white;
-	}
-	
-	path {
-		stroke: none;
-	}
-	
-	line {
-		stroke: none;
-	}
-	
-	.domain {
-		stroke: none;
-		fill: none;
-	}
-}
-
-.o-grid {
-	
-	.tick {
-		stroke: $sand;
-		stroke-opacity: 0.15;
-		opacity: 0.15;
-	}
-	
-	.grid path {
-		stroke-width: 0;
-	}
-	
-	line {
-	  stroke: $sand;
-	  stroke-opacity: 0.15;
-	  shape-rendering: crispEdges;
-	}
-
-	path {
-	  stroke-width: 0;
-	}
 }

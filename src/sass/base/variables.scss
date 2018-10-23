@@ -4,6 +4,9 @@ $dark: rgb(35,39,54);
 $dark-75: rgba(35,39,54,0.75);
 $dark-50: rgba(35,39,54,0.5);
 
+$black: rgb(42,42,39);
+$black-75: rgba(42,42,39,0.75);
+
 $cyan: rgb(35,232,216);
 $violet: rgb(126,90,251);
 $plum: rgb(179,38,229);
@@ -34,5 +37,3 @@ $mon: 'Heebo', 'Helvetica', 'Arial', sans-serif;
 // Stuff
 $bezier: cubic-bezier(.42,0,.33,1.52);
 $btn--bezier: cubic-bezier(0.75, -0.03, 0.35, 1.25);
-
-$imgdir: "../../../siteassets/assets/images/ui/";

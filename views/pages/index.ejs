@@ -21,52 +21,61 @@
 			</div>
 				
 			<div class="o-progressCalendar">
-				<carousel :scroll-per-page="true" :per-page="1" :per-page-custom=[[600,2],[960,3],[1150,4],[1400,5]]>
-					<slide class="o-progressCalendar__card">
-						<record :item="defaults" :update="update" inline-template>
-							<div class="o-progressCalendar__card--inner" :class="{ 'shift': canEdit }">
-								<div class="o-dataEntries--display">
-									<button class="o-btn--primary o-btn--addNew" v-on:click="editHandler">
-										<span>New Record</span>
-									</button>
-								</div>
-								<div class="o-dataEntries--edit">
-									<form>
-										<label for="date" class="clearfix">
-											<span class="heading--xs">Date</span>
-											<input name="date" id="date" type="date" min="2018-10-10" v-model="item.date" />
-										</label>
-										<label for="activity" class="clearfix">
-											<span class="heading--xs">Activity <em>{{ item.activity }}</em></span>
-											<input name="activity" id="activity" type="range" min="0" max="10" v-model="item.activity" />
-										</label>
-										<label for="mobility" class="clearfix">
-											<span class="heading--xs">Mobility <em>{{ item.mobility }}</em></span>
-											<input name="mobility" id="mobility" type="range" min="0" max="10" v-model="item.mobility" />
-										</label>
-										<label for="appetite" class="clearfix">
-											<span class="heading--xs">Appetite <em>{{ item.appetite }}</em></span>
-											<input name="appetite" id="appetite" type="range" min="0" max="10" v-model="item.appetite" />
-										</label>
-										<label for="stress" class="clearfix">
-											<span class="heading--xs">Stress <em>{{ item.stress }}</em></span>
-											<input name="stress" id="stress" type="range" min="0" max="10" v-model="item.stress" />
-										</label>
-										<label for="pain" class="clearfix">
-											<span class="heading--xs">Pain <em>{{ item.pain }}</em></span>
-											<input name="pain" id="pain" type="range" min="0" max="10" v-model="item.pain" />
-										</label>
-										<label for="notes" class="clearfix">
-											<span class="heading--xs">Notes</span>
-											<textarea name="notes" id="notes" v-model="item.notes"></textarea>
-										</label>
-										<button class="o-btn--primary" v-on:click="updateHandler">
-											<span>Update Record</span>
+				<carousel :scroll-per-page="true" :per-page="1" :per-page-custom=[[640,2],[960,3],[1150,4],[1400,5]]>
+					<slide class="o-progressCalendar__card o-progressCalendar__card--newEntry">
+						<record :item="defaults" :update="update" :pause="pause" inline-template>
+							<div>
+								<div class="o-progressCalendar__card--inner" :class="{ 'shift': canEdit }">
+									<div class="o-dataEntries--display">
+										<button class="o-btn--primary o-btn--addNew" v-on:click="editHandler">
+											<span>New Record</span>
 										</button>
-										<button class="o-btn--simple m-l-xs" v-on:click="editHandler">
-											<span>&times; Cancel</span>
-										</button>	
-									</form>
+									</div>
+									<div class="o-dataEntries--edit">
+										<form>
+											<label for="date" class="o-field--date">
+												<span class="heading--xs">Date</span>
+												<input name="date" id="date" type="date" min="2018-10-10" v-model="item.date" />
+											</label>
+											<label for="activity" class="o-field o-field--activity">
+												<span class="heading--xs">Activity <em>{{ item.activity }}</em></span>
+												<input name="activity" id="activity" type="range" min="0" max="10" v-model="item.activity" />
+											</label>
+											<label for="mobility" class="o-field o-field--mobility">
+												<span class="heading--xs">Mobility <em>{{ item.mobility }}</em></span>
+												<input name="mobility" id="mobility" type="range" min="0" max="10" v-model="item.mobility" />
+											</label>
+											<label for="appetite" class="o-field o-field--appetite">
+												<span class="heading--xs">Appetite <em>{{ item.appetite }}</em></span>
+												<input name="appetite" id="appetite" type="range" min="0" max="10" v-model="item.appetite" />
+											</label>
+											<label for="stress" class="o-field o-field--stress">
+												<span class="heading--xs">Stress <em>{{ item.stress }}</em></span>
+												<input name="stress" id="stress" type="range" min="0" max="10" v-model="item.stress" />
+											</label>
+											<label for="pain" class="o-field o-field--pain">
+												<span class="heading--xs">Pain <em>{{ item.pain }}</em></span>
+												<input name="pain" id="pain" type="range" min="0" max="10" v-model="item.pain" />
+											</label>
+											<label for="notes">
+												<span class="heading--xs">Notes</span>
+												<textarea name="notes" id="notes" v-model="item.notes"></textarea>
+											</label>
+										</form>
+									</div>
+								</div>
+								<div class="o-progressCalendar__card--actions" :class="{ 'shift': canEdit }">
+									<div class="o-actions--display" style="height: 25px;"></div>
+									<div class="o-actions--edit">
+										<div>
+											<button class="o-btn--primary" v-on:click="updateHandler">
+												<span>Update Record</span>
+											</button>
+											<button class="o-btn--simple m-l-xs" v-on:click="editHandler">
+												<span>&times; Cancel</span>
+											</button>	
+										</div>
+									</div>
 								</div>
 							</div>
 						</record>
@@ -111,27 +120,27 @@
 									<div class="o-dataEntries--edit">
 										<form>
 											<input name="date" id="date" type="hidden" v-model="item.date" />
-											<label for="activity" class="clearfix">
+											<label for="activity" class="o-field o-field--activity">
 												<span class="heading--xs">Activity <em>{{ item.activity }}</em></span>
 												<input name="activity" id="activity" type="range" min="0" max="10" v-model="item.activity" />
 											</label>
-											<label for="mobility" class="clearfix">
+											<label for="mobility" class="o-field o-field--mobility">
 												<span class="heading--xs">Mobility <em>{{ item.mobility }}</em></span>
 												<input name="mobility" id="mobility" type="range" min="0" max="10" v-model="item.mobility" />
 											</label>
-											<label for="appetite" class="clearfix">
+											<label for="appetite" class="o-field o-field--appetite">
 												<span class="heading--xs">Appetite <em>{{ item.appetite }}</em></span>
 												<input name="appetite" id="appetite" type="range" min="0" max="10" v-model="item.appetite" />
 											</label>
-											<label for="stress" class="clearfix">
+											<label for="stress" class="o-field o-field--stress">
 												<span class="heading--xs">Stress <em>{{ item.stress }}</em></span>
 												<input name="stress" id="stress" type="range" min="0" max="10" v-model="item.stress" />
 											</label>
-											<label for="pain" class="clearfix">
+											<label for="pain" class="o-field o-field--pain">
 												<span class="heading--xs">Pain <em>{{ item.pain }}</em></span>
 												<input name="pain" id="pain" type="range" min="0" max="10" v-model="item.pain" />
 											</label>
-											<label for="notes" class="clearfix">
+											<label for="notes">
 												<span class="heading--xs">Notes</span>
 												<textarea name="notes" id="notes" v-model="item.notes"></textarea>
 											</label>

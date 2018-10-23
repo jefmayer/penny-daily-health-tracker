@@ -2,10 +2,9 @@
 
 $screen-xs-min: 400px;
 $screen-sm-min: 640px;
-$screen-md-min: 768px;
-$screen-lg-min: 892px;
-$screen-lgr-min: 980px;
-$screen-xl-min: 1280px;
+$screen-md-min: 960px;
+$screen-lg-min: 1150px;
+$screen-xl-min: 1400px;
 
 @mixin breakpoint($class) {
   @if $class == mobile-only {
@@ -26,10 +25,6 @@ $screen-xl-min: 1280px;
 
   @else if $class == lg {
     @media (min-width: #{$screen-lg-min}) { @content; }
-  }
-
-  @else if $class == lgr {
-    @media (min-width: #{$screen-lgr-min}) { @content; }
   }
 
   @else if $class == xl {

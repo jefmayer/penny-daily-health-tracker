@@ -153,7 +153,7 @@ var Chart = Vue.component('test', {
 		//
 	}
 });;var Record = Vue.component('record', {
-	props: ['item', 'update'],
+	props: ['item', 'update', 'pause'],
 	data: function() {
 		return {
 			canEdit: false,
@@ -164,6 +164,7 @@ var Chart = Vue.component('test', {
     editHandler: function(event) {
 	    event.preventDefault();
 	    this.canEdit = !this.canEdit;
+	    this.pause();
     },
     updateHandler: function(event) {
 			event.preventDefault();
@@ -204,7 +205,8 @@ var Chart = Vue.component('test', {
 			return date.split('-')[0];
 		}
 	}
-});;var app = new Vue({
+});;// https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
+var app = new Vue({
 	el: '#app',
 	components: {
   	'carousel': VueCarousel.Carousel,
@@ -215,24 +217,15 @@ var Chart = Vue.component('test', {
 	data: {
 		requesting: false,
 		datapoints: [],
-		daily: {
-			date: '',
-			mobility: '5',
-			activity: '5',
-			appetite: '5',
-			pain: '5',
-			stress: '5',
-			notes: ''
-		},
 		defaults: {
-			date: '',
+			date: Date,
 			mobility: '5',
 			activity: '5',
 			appetite: '5',
 			pain: '5',
 			stress: '5',
 			notes: ''
-		},
+		}
 	},	
 	methods: {
 		getData: function() {
@@ -245,7 +238,7 @@ var Chart = Vue.component('test', {
         if (request.status >= 200 && request.status < 400) {
 					that.requesting = false;
 					that.datapoints = JSON.parse(request.responseText).sort(that.sortByDate).reverse();
-					// init chart...
+					// init chart
 					app.$refs.progressChart.init(JSON.parse(request.responseText).sort(that.sortByDate).reverse());
         } else {
         	console.log(request.responseText);
@@ -275,8 +268,10 @@ var Chart = Vue.component('test', {
 			return this.defaults;
 		},
 		update: function() {
-			console.log('index.js, update');
 			this.getData();
+		},
+		pause: function() {
+			console.log('index.js, pause');
 		},
 		sortByDate: function(a, b) {
 			if (a.date < b.date)
@@ -287,7 +282,7 @@ var Chart = Vue.component('test', {
 		}
 	},
 	mounted: function() {
-		this.daily.date = this.getTodaysFormattedDate();
+		this.defaults.date = this.getTodaysFormattedDate();
 		this.getData();
 	}
 });

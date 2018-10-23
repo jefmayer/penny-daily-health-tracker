@@ -1,0 +1,87 @@
+.o-line {
+  fill: none;
+  stroke: $violet;
+  stroke-width: 2px;
+}
+
+.o-line--mobility {
+  fill: none;
+  stroke: $violet;
+  stroke-width: 2px;
+}
+
+.o-line--activity {
+  fill: none;
+  stroke: $plum;
+  stroke-width: 2px;
+}
+
+.o-line--appetite {
+  fill: none;
+  stroke: $cyan;
+  stroke-width: 2px;
+}
+
+.o-line--pain {
+  fill: none;
+  stroke: $fuscia;
+  stroke-width: 2px;
+}
+
+.o-line--stress {
+  fill: none;
+  stroke: $orange;
+  stroke-width: 2px;
+}
+
+.o-axis--x {
+	text {
+		font-family: $mon;
+		font-weight: 500;
+		font-size: 10px;
+		fill: $black-75;
+	}
+	
+	path {
+		stroke: $sand;
+		shape-rendering: crispEdges;
+	}
+	
+	line {
+		stroke: $sand;
+		shape-rendering: crispEdges;
+	}
+	
+	.domain {
+		stroke: none;
+		fill: none;
+	}
+	
+	.tick {
+		stroke: $sand;
+		stroke-opacity: 0.15;
+		opacity: 0.15;
+	}
+}
+
+.o-axis--y {
+	text {
+		font-family: $mon;
+		font-weight: 500;
+		font-size: 10px;
+		fill: white;
+	}
+	
+	path {
+		stroke: none;
+	}
+	
+	line {
+		stroke: none;
+	}
+	
+	.domain {
+		stroke: none;
+		fill: none;
+	}
+}
