@@ -77,5 +77,7 @@ var app = new Vue({
 	mounted: function() {
 		this.defaults.date = this.getTodaysFormattedDate();
 		this.getData();
+		VueCarousel.Carousel.mouseDrag = false;
+		console.log(VueCarousel.Carousel);
 	}
 });
