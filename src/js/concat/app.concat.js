@@ -286,7 +286,8 @@ var app = new Vue({
 			carousel.$refs["VueCarousel-inner"].classList.add('u-disableAllTransforms');
 			// Need to swap translateX to left
 			// Lazy regex, shouldn't eval to null
-			carousel.$refs["VueCarousel-inner"].style.left = this.carouselTransform.match(/(?<=\()(.*?)(?=\,)/g)[0]
+			console.log(/\((.*?)\,/.exec(this.carouselTransform)[1]);
+			carousel.$refs["VueCarousel-inner"].style.left = /\((.*?)\,/.exec(this.carouselTransform)[1];
 		},
 		restart: function() {
 			var carousel = app.$refs.carousel;
