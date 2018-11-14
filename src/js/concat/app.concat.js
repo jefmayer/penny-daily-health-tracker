@@ -153,7 +153,7 @@ var Chart = Vue.component('test', {
 		//
 	}
 });;var Record = Vue.component('record', {
-	props: ['item', 'update', 'pause'],
+	props: ['item', 'update', 'pause', 'restart'],
 	data: function() {
 		return {
 			canEdit: false,
@@ -161,10 +161,15 @@ var Chart = Vue.component('test', {
 		}
 	},
 	methods: {
+		onInputInteractStart: function() {
+			this.pause();
+		},
+		onInputInteractEnd: function() {
+			this.restart();
+		},
     editHandler: function(event) {
 	    event.preventDefault();
 	    this.canEdit = !this.canEdit;
-	    this.pause();
     },
     updateHandler: function(event) {
 			event.preventDefault();
@@ -216,6 +221,7 @@ var app = new Vue({
   },
 	data: {
 		requesting: false,
+		carouselTransform: String,
 		datapoints: [],
 		defaults: {
 			date: Date,
@@ -267,11 +273,29 @@ var app = new Vue({
 			}
 			return this.defaults;
 		},
+		loginHandler: function() {
+			console.log('index.js, loginHandler');
+		},
 		update: function() {
 			this.getData();
 		},
 		pause: function() {
-			console.log('index.js, pause');
+			var carousel = app.$refs.carousel;
+			// Set temp transform
+			this.carouselTransform = carousel.$refs["VueCarousel-inner"].style.transform;
+			carousel.$refs["VueCarousel-inner"].classList.add('u-disableAllTransforms');
+			// Need to swap translateX to left
+			// Lazy regex, shouldn't eval to null
+			carousel.$refs["VueCarousel-inner"].style.left = this.carouselTransform.match(/(?<=\()(.*?)(?=\,)/g)[0]
+		},
+		restart: function() {
+			var carousel = app.$refs.carousel;
+			carousel.$refs["VueCarousel-inner"].classList.remove('u-disableAllTransforms');
+			// Reset to correct transform translation, and then kill transistion until next renders
+			carousel.$refs["VueCarousel-inner"].style.transition = 'transform 0s ease 0s'
+			carousel.$refs["VueCarousel-inner"].style.transform = this.carouselTransform;
+			// Reset left
+			carousel.$refs["VueCarousel-inner"].style.left = 'auto';
 		},
 		sortByDate: function(a, b) {
 			if (a.date < b.date)
@@ -284,7 +308,6 @@ var app = new Vue({
 	mounted: function() {
 		this.defaults.date = this.getTodaysFormattedDate();
 		this.getData();
-		VueCarousel.Carousel.mouseDrag = false;
 		console.log(VueCarousel.Carousel);
 	}
 });

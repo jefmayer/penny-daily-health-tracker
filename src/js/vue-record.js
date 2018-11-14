@@ -1,5 +1,5 @@
 var Record = Vue.component('record', {
-	props: ['item', 'update', 'pause'],
+	props: ['item', 'update', 'pause', 'restart'],
 	data: function() {
 		return {
 			canEdit: false,
@@ -7,10 +7,15 @@ var Record = Vue.component('record', {
 		}
 	},
 	methods: {
+		onInputInteractStart: function() {
+			this.pause();
+		},
+		onInputInteractEnd: function() {
+			this.restart();
+		},
     editHandler: function(event) {
 	    event.preventDefault();
 	    this.canEdit = !this.canEdit;
-	    this.pause();
     },
     updateHandler: function(event) {
 			event.preventDefault();

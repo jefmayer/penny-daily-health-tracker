@@ -14,14 +14,25 @@
 	background: white;
 	text-align: center;
 	
+	@extend .clearfix;
+	
 	@include breakpoint(sm) {
-		padding: 10px 0 10px 20px;
+		padding: 10px 20px 10px;
 		text-align: left;
+	}
+	
+	.o-titleBar__heading {
+		float: left;
+	}
+	
+	.o-titleBar__acctOptions {
+		float: right;
 	}
 }
 
 .o-progressCalendar {
 	background: white;
+	position: relative;
 }
 
 .o-progressCalendar__card {
@@ -300,4 +311,8 @@ textarea {
 	border: 1px solid $sand;
 	font-family: $mon !important;
 	font-size: 12px;
+}
+
+.VueCarousel-inner {
+	position: relative;
 }
