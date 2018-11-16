@@ -1,3 +1,6 @@
+// TODO: Display new entry in Progress Calendar after adding
+// TODO: Create loader
+
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 var app = new Vue({
 	el: '#app',
@@ -11,6 +14,7 @@ var app = new Vue({
 		requesting: false,
 		carouselTransform: String,
 		datapoints: [],
+		showLogin: false,
 		defaults: {
 			date: Date,
 			mobility: '5',
@@ -33,7 +37,7 @@ var app = new Vue({
 					that.requesting = false;
 					that.datapoints = JSON.parse(request.responseText).sort(that.sortByDate).reverse();
 					// init chart
-					app.$refs.progressChart.init(JSON.parse(request.responseText).sort(that.sortByDate).reverse());
+					app.$refs.progressChart.update(JSON.parse(request.responseText).sort(that.sortByDate).reverse());
         } else {
         	console.log(request.responseText);
         	console.warn('index.js, getRecords : error');
@@ -62,7 +66,7 @@ var app = new Vue({
 			return this.defaults;
 		},
 		loginHandler: function() {
-			console.log('index.js, loginHandler');
+			this.showLogin = true;
 		},
 		update: function() {
 			this.getData();
@@ -74,7 +78,6 @@ var app = new Vue({
 			carousel.$refs["VueCarousel-inner"].classList.add('u-disableAllTransforms');
 			// Need to swap translateX to left
 			// Lazy regex, shouldn't eval to null
-			console.log(/\((.*?)\,/.exec(this.carouselTransform)[1]);
 			carousel.$refs["VueCarousel-inner"].style.left = /\((.*?)\,/.exec(this.carouselTransform)[1];
 		},
 		restart: function() {
@@ -97,6 +100,5 @@ var app = new Vue({
 	mounted: function() {
 		this.defaults.date = this.getTodaysFormattedDate();
 		this.getData();
-		console.log(VueCarousel.Carousel);
 	}
 });

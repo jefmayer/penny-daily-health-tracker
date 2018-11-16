@@ -1,13 +1,17 @@
 // http://bl.ocks.org/hunzy/11110940
 // https://bl.ocks.org/josiahdavis/7a02e811360ff00c4eef
+
+// TODO: Add hover to lines
+
 var Chart = Vue.component('test', {
 	data: function() {
 		return {
-			chartData: []
+			chartData: [],
+			chartAdded: false
 		}
 	},
 	methods: {
-		init: function(data) {	
+		update: function(data) {
 			var margin = {
 				top: 20,
 				right: 0,
@@ -38,14 +42,89 @@ var Chart = Vue.component('test', {
 				.x(function(d) { return xScale(d['date']); })
 				.y(function(d) { return yScale(d['attribute']); });
 			
-			// Define svg canvas
-			var svg = d3.select('#progressChart')
-				.attr('width', width + margin.left + margin.right)
-				.attr('height', height)
-				.append('g')
-				.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-			
 			// Format data for chart
+			this.chartData = [];
+			this.formatChartData(data);
+									
+			var values = this.getAttributeData('mobility', data);
+			xScale.domain(d3.extent(values, function(d) { return d.date; }));
+			yScale.domain([0, 10]);
+						
+			var svg = d3.select('#progressChart');			
+						
+			// If chart elements haven't been added to DOM
+			if (this.chartAdded) {
+				// Update x-axis
+				svg.select('.o-axis--x') // change the x axis
+					.call(xAxis);
+				// Update lines
+				svg.selectAll('.o-line')
+					.data(this.chartData)
+					.attr("d", function(d) {return line(d.datapoints); })
+					.style("stroke", function(d) {return color(d.attribute); });
+			} else {
+				// Define svg canvas
+				svg = d3.select('#progressChart')
+					.attr('width', width + margin.left + margin.right)
+					.attr('height', height)
+					.append('g')
+					.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+				// Add x-axis
+				svg.append('g')
+					.attr('class', 'o-axis--x')
+					.attr('transform', 'translate(0,' + height  + ')')
+					.call(xAxis);
+				// Add y-axis
+				svg.append('g')
+          .attr('class', 'o-axis--y')
+          .call(yAxis);
+				// Remove first tick from y-axis
+				svg.selectAll('.tick')
+					.each(function(d) {
+						if ( d === 0 ) {
+							this.remove();
+						}
+					});
+				// Add attribute lines
+				var attributes = svg.selectAll('.attribute')
+					.data(this.chartData)
+					.enter().append('g')
+					.attr('class', 'attribute');
+				
+				attributes.append('path')
+					.attr('class', 'o-line')
+					.attr("d", function(d) {return line(d.datapoints); })
+					.style("stroke", function(d) {return color(d.attribute); });
+					
+				var resize = function() {
+					var width = parseInt(d3.select("#progressChart").style("width")) - margin.left - margin.right;
+					var height = parseInt(d3.select("#progressChart").style("height")) - 50;
+									
+					// Update the range of the scale with new width/height
+					xScale.range([0, width]);
+					yScale.range([height, 0]);
+									
+					// Update the axis and text with the new scale
+					svg.select('.o-axis--x')
+						.attr("transform", "translate(0," + height + ")")
+						.call(xAxis);
+					
+					// Force D3 to recalculate and update the line
+					svg.selectAll('.o-line')
+						.attr("d", function(d) { return line(d.datapoints); });
+					
+					// Update the tick marks
+					xAxis.ticks(Math.max(width/75, 2));
+					yAxis.ticks(Math.max(height/50, 2));
+				};
+				
+				d3.select(window).on('resize', resize);
+				resize();
+				// Set chart added flag
+				this.chartAdded = true;
+			}
+		},
+		formatChartData: function(data) {
 			var i, e;
 			for (i = 0; i < data.length; i++) {
 				// Set up object
@@ -53,7 +132,7 @@ var Chart = Vue.component('test', {
 					for (e in data[i]) {
 						if (e !== 'date' && e !== 'notes' && e !== '_id') {
 							this.chartData.push({
-								category: e,
+								attribute: e,
 								datapoints: []
 							});	
 						}	
@@ -65,68 +144,6 @@ var Chart = Vue.component('test', {
 					}
 				}
 			}
-			
-			console.log(this.chartData);
-						
-			var values = this.getAttributeData('mobility', data);
-			xScale.domain(d3.extent(values, function(d) { return d.date; }));
-			yScale.domain([0, 10]);
-			
-			// Place the axes on the chart
-			svg.append("g")
-				.attr("class", "o-axis--x")
-				.attr("transform", "translate(0," + height  + ")")
-				.call(xAxis);
-			
-			svg.append("g")
-          .attr("class", "o-axis--y")
-          .call(yAxis);
-			
-			// Remove first tick from y-axis
-			svg.selectAll('.tick')
-				.each(function(d) {
-					if ( d === 0 ) {
-						this.remove();
-					}
-				});
-			
-			var products = svg.selectAll(".category")
-				.data(this.chartData)
-				.enter().append("g")
-				.attr("class", "category");
-			
-			products.append("path")
-				.attr("class", "o-line")
-				.attr("d", function(d) {return line(d.datapoints); })
-				.style("stroke", function(d) {return color(d.category); });
-			
-			var resize = function() {
-				var width = parseInt(d3.select("#progressChart").style("width")) - margin.left - margin.right;
-				var height = parseInt(d3.select("#progressChart").style("height")) - 50;
-								
-				// Update the range of the scale with new width/height
-				xScale.range([0, width]);
-				yScale.range([height, 0]);
-								
-				// Update the axis and text with the new scale
-				svg.select('.o-axis--x')
-					.attr("transform", "translate(0," + height + ")")
-					.call(xAxis);
-				
-				/*svg.select('.o-axis--y')
-					.call(yAxis);*/
-				
-				// Force D3 to recalculate and update the line
-				svg.selectAll('.o-line')
-					.attr("d", function(d) { return line(d.datapoints); });
-				
-				// Update the tick marks
-				xAxis.ticks(Math.max(width/75, 2));
-				yAxis.ticks(Math.max(height/50, 2));
-			};
-			
-			d3.select(window).on('resize', resize);
-			resize();
 		},
 		getAttributeData: function(attribute, data) {
 			var arr = [];
@@ -137,7 +154,7 @@ var Chart = Vue.component('test', {
 		},
 		getAttributeArrByName: function(name) {
 			for (var i = 0; i < this.chartData.length; i++) {
-				if (this.chartData[i].category === name) {
+				if (this.chartData[i].attribute === name) {
 					return this.chartData[i].datapoints;
 				}
 			}

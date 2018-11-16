@@ -25,7 +25,23 @@
 					</button>	
 				</div>
 			</div>
-				
+			
+			<div class="o-loginOverlay" v-if="showLogin">
+				<form>
+					<label for="username" class="o-field">
+						<span class="heading--xs">Name</span>
+						<input name="username" id="username" type="input" />
+					</label>
+					<label for="password" class="o-field">
+						<span class="heading--xs">Password</span>
+						<input name="password" id="password" type="password" />
+					</label>
+					<button class="o-btn--primary" v-on:click="updateHandler">
+						<span>Login</span>
+					</button>
+				</form>
+			</div>
+			
 			<div class="o-progressCalendar">
 				<carousel ref="carousel" :navigation-enabled="true" :pagination-enabled="false" :scroll-per-page="true" :per-page=1 :per-page-custom=[[640,2],[960,3],[1150,4],[1400,5]]>
 					<slide class="o-progressCalendar__card o-progressCalendar__card--newEntry">
@@ -75,7 +91,7 @@
 									<div class="o-actions--edit">
 										<div>
 											<button class="o-btn--primary" v-on:click="updateHandler">
-												<span>Update Record</span>
+												<span>Add Record</span>
 											</button>
 											<button class="o-btn--simple m-l-xs" v-on:click="editHandler">
 												<span>&times; Cancel</span>
@@ -160,12 +176,14 @@
 										</button>
 									</div>
 									<div class="o-actions--edit">
-										<button class="o-btn--primary" v-on:click="updateHandler">
-											<span>Update Record</span>
-										</button>
-										<button class="o-btn--simple m-l-xs" v-on:click="editHandler">
-											<span>&times; Cancel</span>
-										</button>	
+										<div>
+											<button class="o-btn--primary" v-on:click="updateHandler">
+												<span>Update Record</span>
+											</button>
+											<button class="o-btn--simple m-l-xs" v-on:click="editHandler">
+												<span>&times; Cancel</span>
+											</button>	
+										</div>
 									</div>
 								</div>
 							</div>

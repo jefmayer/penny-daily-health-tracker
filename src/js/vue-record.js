@@ -28,8 +28,9 @@ var Record = Vue.component('record', {
 			request.onload = function() {
 				if (request.status >= 200 && request.status < 400) {
 					that.requesting = false;
-					console.log(JSON.parse(request.responseText));
+					// console.log(JSON.parse(request.responseText));
 					that.canEdit = !that.canEdit;
+					that.update();
         } else {
         	console.log(request.responseText);
         	console.warn('index.js, addRecord : error');
