@@ -2,6 +2,7 @@
 // https://bl.ocks.org/josiahdavis/7a02e811360ff00c4eef
 
 // TODO: Add hover to lines
+// TODO: Move chart arrows
 
 var Chart = Vue.component('test', {
 	data: function() {
@@ -55,8 +56,7 @@ var Chart = Vue.component('test', {
 			// If chart elements haven't been added to DOM
 			if (this.chartAdded) {
 				// Update x-axis
-				svg.select('.o-axis--x') // change the x axis
-					.call(xAxis);
+				svg.select('.o-axis--x').call(xAxis);
 				// Update lines
 				svg.selectAll('.o-line')
 					.data(this.chartData)
@@ -120,6 +120,9 @@ var Chart = Vue.component('test', {
 				
 				d3.select(window).on('resize', resize);
 				resize();
+				setTimeout(function() {
+					resize();
+				}, 100);
 				// Set chart added flag
 				this.chartAdded = true;
 			}
@@ -161,7 +164,5 @@ var Chart = Vue.component('test', {
 			return null;
 		}
 	},
-	mounted: function() {
-		//
-	}
+	mounted: function() {}
 });

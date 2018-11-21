@@ -7,6 +7,7 @@
 // https://bl.ocks.org/josiahdavis/7a02e811360ff00c4eef
 
 // TODO: Add hover to lines
+// TODO: Move chart arrows
 
 var Chart = Vue.component('test', {
 	data: function() {
@@ -60,8 +61,7 @@ var Chart = Vue.component('test', {
 			// If chart elements haven't been added to DOM
 			if (this.chartAdded) {
 				// Update x-axis
-				svg.select('.o-axis--x') // change the x axis
-					.call(xAxis);
+				svg.select('.o-axis--x').call(xAxis);
 				// Update lines
 				svg.selectAll('.o-line')
 					.data(this.chartData)
@@ -125,6 +125,9 @@ var Chart = Vue.component('test', {
 				
 				d3.select(window).on('resize', resize);
 				resize();
+				setTimeout(function() {
+					resize();
+				}, 100);
 				// Set chart added flag
 				this.chartAdded = true;
 			}
@@ -166,15 +169,22 @@ var Chart = Vue.component('test', {
 			return null;
 		}
 	},
-	mounted: function() {
-		//
-	}
+	mounted: function() {}
 });;var Record = Vue.component('record', {
-	props: ['item', 'update', 'pause', 'restart'],
+	props: ['item', 'update', 'pause', 'restart', 'addNew'],
 	data: function() {
 		return {
 			canEdit: false,
-			requesting: false
+			requesting: false,
+			defaults: {
+				date: Date,
+				mobility: '5',
+				activity: '5',
+				appetite: '5',
+				pain: '5',
+				stress: '5',
+				notes: ''
+			}
 		}
 	},
 	methods: {
@@ -187,6 +197,9 @@ var Chart = Vue.component('test', {
     editHandler: function(event) {
 	    event.preventDefault();
 	    this.canEdit = !this.canEdit;
+	    if (this.canEdit && this.addNew) {
+		    this.reset();
+	    }
     },
     updateHandler: function(event) {
 			event.preventDefault();
@@ -202,9 +215,12 @@ var Chart = Vue.component('test', {
 					// console.log(JSON.parse(request.responseText));
 					that.canEdit = !that.canEdit;
 					that.update();
+					if (that.addNew) {
+						that.reset();
+					}
         } else {
         	console.log(request.responseText);
-        	console.warn('index.js, addRecord : error');
+        	console.warn('vue-record.js, addRecord : error');
         }
 			}
 			request.send(JSON.stringify({
@@ -226,10 +242,35 @@ var Chart = Vue.component('test', {
 		},
 		getDisplayYear: function(date) {
 			return date.split('-')[0];
+		},
+		reset: function() {
+			this.item.date = this.defaults.date;
+			this.item.mobility = this.defaults.mobility;
+			this.item.activity = this.defaults.activity;
+			this.item.appetite = this.defaults.appetite;
+			this.item.pain = this.defaults.pain;
+			this.item.stress = this.defaults.stress;
+			this.item.notes = this.defaults.notes;
+		},
+		addLeadingZero: function(n) {
+			if (n.toString().length === 1) {
+				return '0' + n.toString();
+			}
+			return n;
+		},
+		getTodaysFormattedDate: function() {
+			var d = new Date();
+			return d.getUTCFullYear() + '-' +
+			this.addLeadingZero(d.getMonth() + 1) + '-' +
+			this.addLeadingZero(d.getDate())
 		}
+	},
+	mounted: function() {
+		this.defaults.date = this.getTodaysFormattedDate();
 	}
-});;// TODO: Display new entry in Progress Calendar after adding
-// TODO: Create loader
+});;// TODO: Create loader
+// TODO: Remove sass cache from git repo
+// BUG: Login click handler errors
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 var app = new Vue({
@@ -275,26 +316,6 @@ var app = new Vue({
 			}
 			request.send();
 		},
-		getTodaysFormattedDate: function() {
-			var d = new Date();
-			return d.getUTCFullYear() + '-' +
-			this.addLeadingZero(d.getMonth() + 1) + '-' +
-			this.addLeadingZero(d.getDate())
-		},
-		addLeadingZero: function(n) {
-			if (n.toString().length === 1) {
-				return '0' + n.toString();
-			}
-			return n;
-		},
-		getDataByDate: function(date) {
-			for (var i = 0; i < this.datapoints.length; i++) {
-				if (this.datapoints[i].date === date) {
-					return this.datapoints[i];
-				}
-			}
-			return this.defaults;
-		},
 		loginHandler: function() {
 			this.showLogin = true;
 		},
@@ -328,7 +349,6 @@ var app = new Vue({
 		}
 	},
 	mounted: function() {
-		this.defaults.date = this.getTodaysFormattedDate();
 		this.getData();
 	}
 });

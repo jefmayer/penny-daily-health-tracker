@@ -1,9 +1,18 @@
 var Record = Vue.component('record', {
-	props: ['item', 'update', 'pause', 'restart'],
+	props: ['item', 'update', 'pause', 'restart', 'addNew'],
 	data: function() {
 		return {
 			canEdit: false,
-			requesting: false
+			requesting: false,
+			defaults: {
+				date: Date,
+				mobility: '5',
+				activity: '5',
+				appetite: '5',
+				pain: '5',
+				stress: '5',
+				notes: ''
+			}
 		}
 	},
 	methods: {
@@ -16,6 +25,9 @@ var Record = Vue.component('record', {
     editHandler: function(event) {
 	    event.preventDefault();
 	    this.canEdit = !this.canEdit;
+	    if (this.canEdit && this.addNew) {
+		    this.reset();
+	    }
     },
     updateHandler: function(event) {
 			event.preventDefault();
@@ -31,9 +43,12 @@ var Record = Vue.component('record', {
 					// console.log(JSON.parse(request.responseText));
 					that.canEdit = !that.canEdit;
 					that.update();
+					if (that.addNew) {
+						that.reset();
+					}
         } else {
         	console.log(request.responseText);
-        	console.warn('index.js, addRecord : error');
+        	console.warn('vue-record.js, addRecord : error');
         }
 			}
 			request.send(JSON.stringify({
@@ -55,6 +70,30 @@ var Record = Vue.component('record', {
 		},
 		getDisplayYear: function(date) {
 			return date.split('-')[0];
+		},
+		reset: function() {
+			this.item.date = this.defaults.date;
+			this.item.mobility = this.defaults.mobility;
+			this.item.activity = this.defaults.activity;
+			this.item.appetite = this.defaults.appetite;
+			this.item.pain = this.defaults.pain;
+			this.item.stress = this.defaults.stress;
+			this.item.notes = this.defaults.notes;
+		},
+		addLeadingZero: function(n) {
+			if (n.toString().length === 1) {
+				return '0' + n.toString();
+			}
+			return n;
+		},
+		getTodaysFormattedDate: function() {
+			var d = new Date();
+			return d.getUTCFullYear() + '-' +
+			this.addLeadingZero(d.getMonth() + 1) + '-' +
+			this.addLeadingZero(d.getDate())
 		}
+	},
+	mounted: function() {
+		this.defaults.date = this.getTodaysFormattedDate();
 	}
 });
