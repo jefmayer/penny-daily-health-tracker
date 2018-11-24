@@ -286,7 +286,7 @@ var app = new Vue({
 		carouselTransform: String,
 		datapoints: [],
 		showLogin: false,
-		defaults: {
+		newRecord: {
 			date: Date,
 			mobility: '5',
 			activity: '5',
@@ -346,9 +346,22 @@ var app = new Vue({
 			if (a.date > b.date)
 				return 1;
 			return 0;
+		},
+		addLeadingZero: function(n) {
+			if (n.toString().length === 1) {
+				return '0' + n.toString();
+			}
+			return n;
+		},
+		getTodaysFormattedDate: function() {
+			var d = new Date();
+			return d.getUTCFullYear() + '-' +
+			this.addLeadingZero(d.getMonth() + 1) + '-' +
+			this.addLeadingZero(d.getDate())
 		}
 	},
 	mounted: function() {
+		this.newRecord.date = this.getTodaysFormattedDate();
 		this.getData();
 	}
 });

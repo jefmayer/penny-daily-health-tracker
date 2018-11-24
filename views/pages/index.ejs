@@ -43,9 +43,9 @@
 			</div>
 			
 			<div class="o-progressCalendar">
-				<carousel ref="carousel" :navigation-enabled="true" :pagination-enabled="false" :scroll-per-page="true" :per-page=1 :per-page-custom=[[640,2],[960,3],[1150,4],[1400,5]]>
+				<carousel ref="carousel" :navigation-enabled="true"  :pagination-enabled="false" :scroll-per-page="true" :per-page=1 :per-page-custom=[[640,2],[960,3],[1150,4],[1400,5]]>
 					<slide class="o-progressCalendar__card o-progressCalendar__card--newEntry">
-						<record :item="defaults" :update="update" :pause="pause" :restart="restart" :add-new="true" inline-template>
+						<record :item="newRecord" :update="update" :pause="pause" :restart="restart" :add-new="true" inline-template>
 							<div class="o-progressCalendar__card--wrapper">
 								<div class="o-progressCalendar__card--inner" :class="{ 'shift': canEdit }">
 									<div class="o-dataEntries--display">
