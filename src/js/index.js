@@ -1,6 +1,10 @@
 // TODO: Create loader
-// TODO: Remove sass cache from git repo
 // BUG: Login click handler errors
+// TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
+// TODO: Add transition: all to new item
+// TODO: Move login to modal
+// TODO: Deal with slider arrows... move to hover
+// TODO: Create Express DB calls for login
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 var app = new Vue({
@@ -9,12 +13,14 @@ var app = new Vue({
   	'carousel': VueCarousel.Carousel,
     'slide': VueCarousel.Slide,
     'record': Record,
-    'chart': Chart
+    'chart': Chart,
+    'login': Login
   },
 	data: {
 		requesting: false,
 		carouselTransform: String,
 		datapoints: [],
+		dataLoaded: false,
 		showLogin: false,
 		newRecord: {
 			date: Date,
@@ -39,6 +45,8 @@ var app = new Vue({
 					that.datapoints = JSON.parse(request.responseText).sort(that.sortByDate).reverse();
 					// init chart
 					app.$refs.progressChart.update(JSON.parse(request.responseText).sort(that.sortByDate).reverse());
+					// Animate in content
+					that.dataLoaded = true;
         } else {
         	console.log(request.responseText);
         	console.warn('index.js, getRecords : error');
@@ -46,7 +54,8 @@ var app = new Vue({
 			}
 			request.send();
 		},
-		loginHandler: function() {
+		displayLogin: function() {
+			console.log('index.js, getRecords');
 			this.showLogin = true;
 		},
 		update: function() {

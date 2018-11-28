@@ -1,5 +1,5 @@
 var Record = Vue.component('record', {
-	props: ['item', 'update', 'pause', 'restart', 'addNew'],
+	props: ['item', 'update', 'pause', 'restart', 'addNew', 'index'],
 	data: function() {
 		return {
 			canEdit: false,
@@ -42,10 +42,12 @@ var Record = Vue.component('record', {
 					that.requesting = false;
 					// console.log(JSON.parse(request.responseText));
 					that.canEdit = !that.canEdit;
-					that.update();
 					if (that.addNew) {
 						that.reset();
 					}
+					setInterval(function() {
+						that.update();
+					}, 250);
         } else {
         	console.log(request.responseText);
         	console.warn('vue-record.js, addRecord : error');

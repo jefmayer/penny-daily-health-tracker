@@ -4,15 +4,15 @@
 		<title>Penny&rsquo;s Daily Health Tracker</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700,900" rel="stylesheet">
-		<link rel="stylesheet" href="/styles/app.min.css">
+		<link href="/styles/app.min.css" rel="stylesheet">
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	
 	<body>
 		<main id="app">
-			<chart ref="progressChart" inline-template>
+			<chart ref="progressChart" :data-loaded="dataLoaded" inline-template>
 				<div class="o-progressChart">
-					<svg id="progressChart"></svg>
+					<svg id="progressChart" :class="{ 'animateIn': dataLoaded }"></svg>
 				</div>
 			</chart>
 			
@@ -20,29 +20,13 @@
 				<h1 class="o-titleBar__heading heading--md">Penny&rsquo;s Daily Health Tracker</h1>
 				<div class="o-titleBar__acctOptions">
 					<div class="o-titleBar__editorName"></div>
-					<button class="o-btn--simple m-l-xs" v-on:click="loginHandler">
+					<button class="o-btn--simple m-l-xs" v-on:click="displayLogin">
 						<span>Log In</span>
 					</button>	
 				</div>
 			</div>
 			
-			<div class="o-loginOverlay" v-if="showLogin">
-				<form>
-					<label for="username" class="o-field">
-						<span class="heading--xs">Name</span>
-						<input name="username" id="username" type="input" />
-					</label>
-					<label for="password" class="o-field">
-						<span class="heading--xs">Password</span>
-						<input name="password" id="password" type="password" />
-					</label>
-					<button class="o-btn--primary" v-on:click="updateHandler">
-						<span>Login</span>
-					</button>
-				</form>
-			</div>
-			
-			<div class="o-progressCalendar">
+			<div class="o-progressCalendar" :class="{ 'animateIn': dataLoaded }">
 				<carousel ref="carousel" :navigation-enabled="true"  :pagination-enabled="false" :scroll-per-page="true" :per-page=1 :per-page-custom=[[640,2],[960,3],[1150,4],[1400,5]]>
 					<slide class="o-progressCalendar__card o-progressCalendar__card--newEntry">
 						<record :item="newRecord" :update="update" :pause="pause" :restart="restart" :add-new="true" inline-template>
@@ -55,33 +39,33 @@
 									</div>
 									<div class="o-dataEntries--edit">
 										<form>
-											<label for="date" class="o-field--date">
+											<label for="newEntryDate" class="o-field--date">
 												<span class="heading--xs">Date</span>
-												<input name="date" id="date" type="date" min="2018-10-10" v-model="item.date" />
+												<input name="date" id="newEntryDate" type="date" min="2018-10-10" v-model="item.date" />
 											</label>
-											<label for="activity" class="o-field o-field--activity">
+											<label for="newEntryActivity" class="o-field o-field--activity">
 												<span class="heading--xs">Activity <em>{{ item.activity }}</em></span>
-												<input name="activity" id="activity" type="range" min="0" max="10" v-model="item.activity" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="activity" id="newEntryActivity" type="range" min="0" max="10" v-model="item.activity" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="mobility" class="o-field o-field--mobility">
+											<label for="newEntryMobility" class="o-field o-field--mobility">
 												<span class="heading--xs">Mobility <em>{{ item.mobility }}</em></span>
-												<input name="mobility" id="mobility" type="range" min="0" max="10" v-model="item.mobility" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="mobility" id="newEntryMobility" type="range" min="0" max="10" v-model="item.mobility" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="appetite" class="o-field o-field--appetite">
+											<label for="newEntryAppetite" class="o-field o-field--appetite">
 												<span class="heading--xs">Appetite <em>{{ item.appetite }}</em></span>
-												<input name="appetite" id="appetite" type="range" min="0" max="10" v-model="item.appetite" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="appetite" id="newEntryAppetite" type="range" min="0" max="10" v-model="item.appetite" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="stress" class="o-field o-field--stress">
+											<label for="newEntryStress" class="o-field o-field--stress">
 												<span class="heading--xs">Stress <em>{{ item.stress }}</em></span>
-												<input name="stress" id="stress" type="range" min="0" max="10" v-model="item.stress" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="stress" id="newEntryStress" type="range" min="0" max="10" v-model="item.stress" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="pain" class="o-field o-field--pain">
+											<label for="newEntryPain" class="o-field o-field--pain">
 												<span class="heading--xs">Pain <em>{{ item.pain }}</em></span>
-												<input name="pain" id="pain" type="range" min="0" max="10" v-model="item.pain" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="pain" id="newEntryPain" type="range" min="0" max="10" v-model="item.pain" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="notes">
+											<label for="newEntryNotes">
 												<span class="heading--xs">Notes</span>
-												<textarea name="notes" id="notes" v-model="item.notes"></textarea>
+												<textarea name="notes" id="newEntryNotes" v-model="item.notes" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd"></textarea>
 											</label>
 										</form>
 									</div>
@@ -102,8 +86,8 @@
 							</div>
 						</record>
 					</slide>
-					<slide v-for="(item, index) in datapoints" :key="index" class="o-progressCalendar__card">
-						<record :item="item" :update="update" :pause="pause" :restart="restart" :add-new="false" inline-template>
+					<slide v-for="(item, index) in datapoints" :key="index" class="o-progressCalendar__card":data-date="item.date">
+						<record :item="item" :update="update" :pause="pause" :restart="restart" :add-new="false" :index="index" inline-template>
 							<div>
 								<div class="o-date">
 									<div class="o-date__month">{{ getDisplayMonth(item.date) }}</div>
@@ -141,30 +125,30 @@
 									</div>
 									<div class="o-dataEntries--edit">
 										<form>
-											<input name="date" id="date" type="hidden" v-model="item.date" />
-											<label for="activity" class="o-field o-field--activity">
+											<input name="date" :id="'date' + index" type="hidden" v-model="item.date" />
+											<label :for="'activity' + index" class="o-field o-field--activity">
 												<span class="heading--xs">Activity <em>{{ item.activity }}</em></span>
-												<input name="activity" id="activity" type="range" min="0" max="10" v-model="item.activity" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="activity" :id="'activity' + index" type="range" min="0" max="10" v-model="item.activity" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="mobility" class="o-field o-field--mobility">
+											<label :for="'mobility' + index" class="o-field o-field--mobility">
 												<span class="heading--xs">Mobility <em>{{ item.mobility }}</em></span>
-												<input name="mobility" id="mobility" type="range" min="0" max="10" v-model="item.mobility" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="mobility" :id="'mobility' + index" type="range" min="0" max="10" v-model="item.mobility" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="appetite" class="o-field o-field--appetite">
+											<label :for="'appetite' + index" class="o-field o-field--appetite">
 												<span class="heading--xs">Appetite <em>{{ item.appetite }}</em></span>
-												<input name="appetite" id="appetite" type="range" min="0" max="10" v-model="item.appetite" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="appetite" :id="'appetite' + index" type="range" min="0" max="10" v-model="item.appetite" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="stress" class="o-field o-field--stress">
+											<label :for="'stress' + index" class="o-field o-field--stress">
 												<span class="heading--xs">Stress <em>{{ item.stress }}</em></span>
-												<input name="stress" id="stress" type="range" min="0" max="10" v-model="item.stress" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="stress" :id="'stress' + index" type="range" min="0" max="10" v-model="item.stress" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="pain" class="o-field o-field--pain">
+											<label :for="'pain' + index" class="o-field o-field--pain">
 												<span class="heading--xs">Pain <em>{{ item.pain }}</em></span>
-												<input name="pain" id="pain" type="range" min="0" max="10" v-model="item.pain" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
+												<input name="pain" :id="'pain' + index" type="range" min="0" max="10" v-model="item.pain" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd" />
 											</label>
-											<label for="notes">
+											<label :for="'notes' + index">
 												<span class="heading--xs">Notes</span>
-												<textarea name="notes" id="notes" v-model="item.notes"></textarea>
+												<textarea name="notes" :id="'notes' + index" v-model="item.notes" v-on:mousedown="onInputInteractStart" v-on:mouseup="onInputInteractEnd"></textarea>
 											</label>
 										</form>
 									</div>
@@ -191,6 +175,26 @@
 					</slide>
 				</carousel>
 			</div>
+			
+			<login ref="login" v-if="showLogin" inline-template>
+				<div class="o-loginOverlay">
+					<div class="o-loginOverlay__formWrapper">
+						<form>
+							<label for="username" class="o-field">
+								<span class="heading--xs">Name</span>
+								<input name="username" id="username" type="input" />
+							</label>
+							<label for="password" class="o-field">
+								<span class="heading--xs">Password</span>
+								<input name="password" id="password" type="password" />
+							</label>
+							<button class="o-btn--primary" v-on:click="loginHandler">
+								<span>Login</span>
+							</button>
+						</form>
+					</div>
+				</div>
+			</login>
 		</main>
 		<!-- https://ssense.github.io/vue-carousel/examples/ -->
 		<!-- https://ssense.github.io/vue-carousel/guide/ -->

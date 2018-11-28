@@ -7,6 +7,12 @@
 #progressChart {
 	width: 100%;
 	height: 350px;
+	opacity: 0;
+	transition: all 0.35s ease-in;
+	
+	&.animateIn {
+		opacity: 1;
+	}
 }
 
 .o-titleBar {
@@ -16,10 +22,10 @@
 	
 	@extend .clearfix;
 	
-	@include breakpoint(sm) {
+	// @include breakpoint(sm) {
 		padding: 10px 20px 10px;
 		text-align: left;
-	}
+	// }
 	
 	.o-titleBar__heading {
 		float: left;
@@ -33,13 +39,21 @@
 .o-progressCalendar {
 	background: white;
 	position: relative;
+	opacity: 0;
+	transform: translateY(10px);
+	transition: all 0.35s ease-in-out;
+	
+	&.animateIn {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .o-progressCalendar__card {
 	position: relative;
 	border-right: 1px solid $dark-50;
 	overflow: hidden;
-	position: relative;
+	// transition: all 0.25s ease-in;	
 	
 	.o-progressCalendar__card--inner {
 		height: 100%;
@@ -189,11 +203,16 @@
 	}
 }
 
+.o-progressCalendar__card.addNew {
+	flex-shrink: 1;
+}
+
 .o-progressCalendar__card--newEntry {
 	background-image: url("../images/penny-bg.jpg");
 	background-position: center center;
 	background-size: cover;
 	position: relative;
+	border-right: none;
 	
 	.o-progressCalendar__card--wrapper {
 		position: absolute;
@@ -308,13 +327,34 @@ textarea {
 
 .VueCarousel-inner {
 	position: relative;
-	min-height: 480px;
+	min-height: 483px;
 		
 	/*@include breakpoint(md) {
 		min-height: 380px;
 	}*/
 	
-	@include breakpoint(lg) {
+	/*@include breakpoint(lg) {
 		min-height: 345px;
+	}*/
+}
+
+.o-loginOverlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: $dark-90;
+	
+	.o-loginOverlay__formWrapper {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 80%;
+		max-width: 320px;
+		padding: 20px;
+		background: $white;
+		transform: translateX(-50%);
+		transition: all 0.35s ease-in-out;
 	}
 }
