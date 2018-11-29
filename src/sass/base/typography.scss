@@ -144,7 +144,7 @@
     letter-spacing: 0.65px;
   }
   
-  @include breakpoint(lgr) {
+  @include breakpoint(lg) {
     font-size: 14px;
   }
 }

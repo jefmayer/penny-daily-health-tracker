@@ -289,21 +289,24 @@ var Chart = Vue.component('test', {
 		this.defaults.date = this.getTodaysFormattedDate();
 	}
 });;var Login = Vue.component('login', {
+	props: ['setShowLogin'],
 	data: function() {
 		return {}
 	},
 	methods: {
 		loginHandler: function() {
 			console.log('vue-login.js, loginHandler');
+		},
+		closeHandler: function() {
+			console.log('vue-login.js, closeHandler');
+			this.setShowLogin(false);
 		}
 	},
 	mounted: function() {}
 });;// TODO: Create loader
-// BUG: Login click handler errors
 // TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
 // TODO: Add transition: all to new item
-// TODO: Move login to modal
-// TODO: Deal with slider arrows... move to hover
+// TODO: Format slider arrows
 // TODO: Create Express DB calls for login
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
@@ -356,7 +359,7 @@ var app = new Vue({
 		},
 		displayLogin: function() {
 			console.log('index.js, getRecords');
-			this.showLogin = true;
+			this.setShowLogin(true);
 		},
 		update: function() {
 			this.getData();
@@ -397,6 +400,9 @@ var app = new Vue({
 			return d.getUTCFullYear() + '-' +
 			this.addLeadingZero(d.getMonth() + 1) + '-' +
 			this.addLeadingZero(d.getDate())
+		},
+		setShowLogin: function(val) {
+			this.showLogin = val;
 		}
 	},
 	mounted: function() {

@@ -9,10 +9,10 @@
 	</head>
 	
 	<body>
-		<main id="app">
+		<main id="app" :class="{ 'animateIn': dataLoaded }">
 			<chart ref="progressChart" :data-loaded="dataLoaded" inline-template>
 				<div class="o-progressChart">
-					<svg id="progressChart" :class="{ 'animateIn': dataLoaded }"></svg>
+					<svg id="progressChart"></svg>
 				</div>
 			</chart>
 			
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 			
-			<div class="o-progressCalendar" :class="{ 'animateIn': dataLoaded }">
+			<div class="o-progressCalendar">
 				<carousel ref="carousel" :navigation-enabled="true"  :pagination-enabled="false" :scroll-per-page="true" :per-page=1 :per-page-custom=[[640,2],[960,3],[1150,4],[1400,5]]>
 					<slide class="o-progressCalendar__card o-progressCalendar__card--newEntry">
 						<record :item="newRecord" :update="update" :pause="pause" :restart="restart" :add-new="true" inline-template>
@@ -98,23 +98,23 @@
 									<div class="o-dataEntries--display">
 										<div class="o-attributes m-t-xxs m-b-xs">
 											<div class="o-attributes__item">
-												<span class="heading--xs">Activity</span>
+												<span class="heading--xs activity"><span>Activity</span></span>
 												<span class="o-attributeGraph activity" :style="{width: (parseInt(item.activity) / 10 * 100) + '%'}"></span>
 											</div>
 											<div class="o-attributes__item">
-												<span class="heading--xs">Mobility</span>
+												<span class="heading--xs mobility"><span>Mobility</span></span>
 												<span class="o-attributeGraph mobility" :style="{width: (parseInt(item.mobility) / 10 * 100) + '%'}"></span>
 											</div>
 											<div class="o-attributes__item">
-												<span class="heading--xs">Appetite</span>
+												<span class="heading--xs appetite"><span>Appetite</span></span>
 												<span class="o-attributeGraph appetite" :style="{width: (parseInt(item.appetite) / 10 * 100) + '%'}"></span>
 											</div>
 											<div class="o-attributes__item">
-												<span class="heading--xs">Stress</span>
+												<span class="heading--xs stress"><span>Stress</span></span>
 												<span class="o-attributeGraph stress" :style="{width: (parseInt(item.stress) / 10 * 100) + '%'}"></span>
 											</div>
 											<div class="o-attributes__item">
-												<span class="heading--xs">Pain</span>
+												<span class="heading--xs pain"><span>Pain</span></span>
 												<span class="o-attributeGraph pain" :style="{width: (parseInt(item.pain) / 10 * 100) + '%'}"></span>
 											</div>
 										</div>
@@ -176,9 +176,12 @@
 				</carousel>
 			</div>
 			
-			<login ref="login" v-if="showLogin" inline-template>
+			<login ref="login" v-if="showLogin" :set-show-login="setShowLogin" inline-template>
 				<div class="o-loginOverlay">
 					<div class="o-loginOverlay__formWrapper">
+						<button class="o-btn--close" v-on:click="closeHandler">
+							<span>&times;</span>
+						</button>
 						<form>
 							<label for="username" class="o-field">
 								<span class="heading--xs">Name</span>
@@ -188,13 +191,20 @@
 								<span class="heading--xs">Password</span>
 								<input name="password" id="password" type="password" />
 							</label>
-							<button class="o-btn--primary" v-on:click="loginHandler">
+							<button class="o-btn--primary m-t-xs" v-on:click="loginHandler">
 								<span>Login</span>
 							</button>
 						</form>
 					</div>
 				</div>
 			</login>
+			
+			<div class="o-appLoader">
+				<div class="o-appLoader__stage1"></div>
+				<div class="o-appLoader__stage2"></div>
+				<div class="o-appLoader__stage3"></div>
+				<div class="o-appLoader__stage4"></div>
+			</div>
 		</main>
 		<!-- https://ssense.github.io/vue-carousel/examples/ -->
 		<!-- https://ssense.github.io/vue-carousel/guide/ -->

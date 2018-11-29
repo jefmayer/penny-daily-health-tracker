@@ -1,0 +1,32 @@
+.VueCarousel-inner {
+	position: relative;
+	min-height: 483px;
+		
+	/*@include breakpoint(md) {
+		min-height: 380px;
+	}*/
+	
+	/*@include breakpoint(lg) {
+		min-height: 345px;
+	}*/
+}
+
+.VueCarousel-navigation {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	
+	button {
+		transform: none !important;
+		transition: all 0.35s ease-in;
+		opacity: 0 !important;
+		top: -241px !important;
+	}
+}
+
+.VueCarousel:hover {
+	.VueCarousel-navigation button {
+		opacity: 1 !important;
+	}	
+}

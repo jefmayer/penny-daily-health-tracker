@@ -1,0 +1,44 @@
+// Defaults
+.o-progressChart {
+	height: 0;
+	transition: all .75s cubic-bezier(.87,-.41,.19,1.44);
+}
+
+#progressChart {
+	opacity: 0;
+	transition: all 0.35s ease-in 0.5s;
+}
+
+.o-titleBar__heading,
+.o-titleBar__acctOptions {
+	opacity: 0;
+	transition: all 0.15s ease-in 0.75s;
+}
+
+.o-progressCalendar {
+	opacity: 0;
+	transform: translateY(10px);
+	transition: all 0.35s ease-in-out 0.5s;
+}
+
+// Animations
+#app.animateIn {
+	
+	.o-progressChart {
+		height: 320px;
+	}
+	
+	#progressChart {
+		opacity: 1;
+	}
+	
+	.o-titleBar__heading,
+	.o-titleBar__acctOptions {
+		opacity: 1;
+	}
+	
+	.o-progressCalendar {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
