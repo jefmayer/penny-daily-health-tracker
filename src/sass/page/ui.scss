@@ -128,8 +128,8 @@
 				left: 0;
 				bottom: -2px;
 				width: 150%;
-				height: 2px;
-				transform: scaleY(1);
+				height: 20px;
+				transform: scaleY(0);
 				transform-origin: bottom;
 				transition: all 0.25s ease-in-out;
 			}
@@ -195,13 +195,13 @@
 		
 		&:hover {
 			&:before {
-				left: 10px;
+				// left: 10px;
 			}
 			
 			.heading--xs {
 				
 				&:before {
-					transform: scaleY(10);
+					transform: scaleY(1);
 				}
 				
 				span.score {
@@ -215,7 +215,7 @@
 			}
 			
 			.o-attributeGraph {
-				left: 10px;
+				// left: 10px;
 			}
 		}
 	}
