@@ -21,7 +21,27 @@
 		transform: none !important;
 		transition: all 0.35s ease-in;
 		opacity: 0 !important;
-		top: -241px !important;
+		top: -291px !important;
+		width: 50px;
+		height: 100px;
+		
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background-color: $dark-15 !important;
+			border-radius: 50px;
+		}
+	}
+	
+	.VueCarousel-navigation-prev {
+		&:before {
+			right: 0;
+			left: auto;
+		}
 	}
 }
 

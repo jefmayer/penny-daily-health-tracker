@@ -98,23 +98,23 @@
 									<div class="o-dataEntries--display">
 										<div class="o-attributes m-t-xxs m-b-xs">
 											<div class="o-attributes__item">
-												<span class="heading--xs activity"><span>Activity</span></span>
+												<span class="heading--xs activity"><span class="score"><span>{{ item.activity }}</span>Activity</span></span>
 												<span class="o-attributeGraph activity" :style="{width: (parseInt(item.activity) / 10 * 100) + '%'}"></span>
 											</div>
 											<div class="o-attributes__item">
-												<span class="heading--xs mobility"><span>Mobility</span></span>
+												<span class="heading--xs mobility"><span class="score"><span>{{ item.mobility }}</span>Mobility</span></span>
 												<span class="o-attributeGraph mobility" :style="{width: (parseInt(item.mobility) / 10 * 100) + '%'}"></span>
 											</div>
 											<div class="o-attributes__item">
-												<span class="heading--xs appetite"><span>Appetite</span></span>
+												<span class="heading--xs appetite"><span class="score"><span>{{ item.appetite }}</span>Appetite</span></span>
 												<span class="o-attributeGraph appetite" :style="{width: (parseInt(item.appetite) / 10 * 100) + '%'}"></span>
 											</div>
 											<div class="o-attributes__item">
-												<span class="heading--xs stress"><span>Stress</span></span>
+												<span class="heading--xs stress"><span class="score"><span>{{ item.stress }}</span>Stress</span></span>
 												<span class="o-attributeGraph stress" :style="{width: (parseInt(item.stress) / 10 * 100) + '%'}"></span>
 											</div>
 											<div class="o-attributes__item">
-												<span class="heading--xs pain"><span>Pain</span></span>
+												<span class="heading--xs pain"><span class="score"><span>{{ item.pain }}</span>Pain</span></span>
 												<span class="o-attributeGraph pain" :style="{width: (parseInt(item.pain) / 10 * 100) + '%'}"></span>
 											</div>
 										</div>

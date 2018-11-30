@@ -308,6 +308,9 @@ var Chart = Vue.component('test', {
 // TODO: Add transition: all to new item
 // TODO: Format slider arrows
 // TODO: Create Express DB calls for login
+// TODO: Format login modal
+// TODO: Finish adding in line numbers on hover
+// TODO: Clicking on graph jumps you to that entry in chart...
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 var app = new Vue({
