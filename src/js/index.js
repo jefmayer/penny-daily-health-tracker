@@ -1,13 +1,15 @@
 // TODO: Create loader
 // TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
 // TODO: Add transition: all to new item
-// TODO: Format slider arrows
 // TODO: Create Express DB calls for login
 // TODO: Format login modal
-// TODO: Finish adding in line numbers on hover
 // TODO: Clicking on graph jumps you to that entry in chart...
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
+// https://ssense.github.io/vue-carousel/examples/
+// https://ssense.github.io/vue-carousel/guide/
+// https://github.com/SSENSE/vue-carousel
+
 var app = new Vue({
 	el: '#app',
 	components: {
@@ -56,7 +58,6 @@ var app = new Vue({
 			request.send();
 		},
 		displayLogin: function() {
-			console.log('index.js, getRecords');
 			this.setShowLogin(true);
 		},
 		update: function() {

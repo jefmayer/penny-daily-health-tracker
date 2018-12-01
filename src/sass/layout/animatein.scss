@@ -17,8 +17,10 @@
 
 .o-progressCalendar {
 	opacity: 0;
+	height: 0;
+	overflow: hidden;
 	transform: translateY(10px);
-	transition: all 0.35s ease-in-out 0.5s;
+	transition: opacity 0.35s ease-in-out 0.5s, transform 0.35s ease-in-out 0.5s;
 }
 
 // Animations
@@ -38,6 +40,7 @@
 	}
 	
 	.o-progressCalendar {
+		height: auto;
 		opacity: 1;
 		transform: translateY(0);
 	}

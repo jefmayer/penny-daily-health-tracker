@@ -41,7 +41,8 @@ Utility
 @import 'utility/layout.scss';
 @import 'utility/text.scss';
 
-@import 'page/ui.scss';
-@import 'page/d3.scss';
-@import 'page/animatein.scss';
-@import 'page/carousel.scss';
+@import 'layout/ui.scss';
+@import 'layout/animatein.scss';
+@import 'layout/carousel.scss';
+@import 'layout/chart.scss';
+@import 'layout/login.scss';

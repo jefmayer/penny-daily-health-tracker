@@ -177,7 +177,8 @@
 			</div>
 			
 			<login ref="login" v-if="showLogin" :set-show-login="setShowLogin" inline-template>
-				<div class="o-loginOverlay">
+				<div class="o-loginOverlay" :class="{ 'animateIn': showLogin }">
+					<div class="o-loginOverlay__bg" v-on:click="closeHandler"></div>
 					<div class="o-loginOverlay__formWrapper">
 						<button class="o-btn--close" v-on:click="closeHandler">
 							<span>&times;</span>
@@ -206,9 +207,6 @@
 				<div class="o-appLoader__stage4"></div>
 			</div>
 		</main>
-		<!-- https://ssense.github.io/vue-carousel/examples/ -->
-		<!-- https://ssense.github.io/vue-carousel/guide/ -->
-		<!-- https://github.com/SSENSE/vue-carousel -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"> </script>
 		<script type="text/javascript" src="scripts/app.min.js"></script>
 	</body>

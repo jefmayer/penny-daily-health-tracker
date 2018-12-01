@@ -1,13 +1,3 @@
-.o-progressChart {
-	background: $dark;
-	width: 100%;
-}
-
-#progressChart {
-	width: 100%;
-	height: 350px;
-}
-
 .o-titleBar {
 	margin-top: 30px;
 	background: white;
@@ -210,6 +200,7 @@
 					
 					span {
 						opacity: 1;
+						letter-spacing: -0.05em;
 					}
 				}
 			}
@@ -263,7 +254,7 @@
 	background-position: center center;
 	background-size: cover;
 	position: relative;
-	border-right: none;
+	// border-right: none;
 	
 	.o-progressCalendar__card--wrapper {
 		position: absolute;
@@ -374,25 +365,4 @@ textarea {
 	border: 1px solid $sand;
 	font-family: $mon !important;
 	font-size: 12px;
-}
-
-.o-loginOverlay {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: $dark-90;
-	
-	.o-loginOverlay__formWrapper {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		width: 80%;
-		max-width: 320px;
-		padding: 20px;
-		background: $white;
-		transform: translateX(-50%);
-		transition: all 0.35s ease-in-out;
-	}
 }

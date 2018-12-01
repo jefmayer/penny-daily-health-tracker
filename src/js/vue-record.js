@@ -45,7 +45,7 @@ var Record = Vue.component('record', {
 					if (that.addNew) {
 						that.reset();
 					}
-					setInterval(function() {
+					setTimeout(function() {
 						that.update();
 					}, 250);
         } else {
