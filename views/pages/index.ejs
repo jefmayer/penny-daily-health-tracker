@@ -10,9 +10,11 @@
 	
 	<body>
 		<main id="app" :class="{ 'animateIn': dataLoaded }">
-			<chart ref="progressChart" :data-loaded="dataLoaded" inline-template>
+			<chart ref="progressChart" :data-loaded="dataLoaded" :slide-carousel-to-date="slideCarouselToDate" inline-template>
 				<div class="o-progressChart">
-					<svg id="progressChart"></svg>
+					<div class="o-progressChart__wrapper">
+						<svg id="progressChart"></svg>
+					</div>
 				</div>
 			</chart>
 			

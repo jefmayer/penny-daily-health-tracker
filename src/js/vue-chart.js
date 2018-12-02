@@ -5,12 +5,10 @@
 // Zoom
 // - http://bl.ocks.org/oluckyman/6199145
 // - https://bl.ocks.org/mbostock/1071269
-// TODO: Add hover to lines
-// TODO: Move chart arrows
 // http://bl.ocks.org/eric-bunch/0bdef4942ac085a93fa6bd31452cd55c
 
 var Chart = Vue.component('chart', {
-	props: ['dataLoaded'],
+	props: ['dataLoaded', 'slideCarouselToDate'],
 	data: function() {
 		return {
 			chartData: [],
@@ -19,48 +17,47 @@ var Chart = Vue.component('chart', {
 	},
 	methods: {
 		update: function(data) {
-			var that = this;
-			
-			var margin = {
-				top: 20,
-				right: 0,
-				bottom: 0,
-				left: 25
-			};
-						
-			var width = parseInt(d3.select('#progressChart').style('width')) - margin.left - margin.right;
-			var height = parseInt(d3.select('#progressChart').style('height')) - 50;
-			
-			// Set date format
-			for (i = 0; i < data.length; i++) {
-				// Need to add 1 to date to get correct date from db record
-				data[i].date = new Date(data[i].date);
-				data[i].date = new Date(data[i].date.setDate(data[i].date.getDate() + 1));
-			}
-						
-			// Define scales
-			var xScale = d3.time.scale().range([0, width]);
-			var yScale = d3.scale.linear().range([height, 0]);
-
-			// Define axes
-			var xAxis = d3.svg.axis().scale(xScale).orient('bottom').innerTickSize(-height - margin.top).outerTickSize(0).tickPadding(10).tickFormat(d3.time.format('%b %d'));
-			var yAxis = d3.svg.axis().scale(yScale).orient('left');
-			
-			// Define lines
-			var line = d3.svg.line().interpolate('cardinal')
-				.x(function(d) { return xScale(d['date']); })
-				.y(function(d) { return yScale(d['attribute']); });
-			
 			// Format data for chart
 			this.chartData = [];
 			this.formatChartData(data);
-			console.log(this.chartData);
-									
-			var values = this.getAttributeData('mobility', data);
-			xScale.domain(d3.extent(values, function(d) { return d.date; }));
-			yScale.domain([0, 10]);
+			
+			var that = this,
+					svg = Object,
+					margin = {
+						top: 20,
+						right: 0,
+						bottom: 0,
+						left: 25
+					};
 						
-			var svg;			
+			var parseTime = d3.time.format('%b-%d-%Y');
+						
+			var width = Math.max(parseInt(d3.select('#progressChart').style('width')) - margin.left - margin.right, 1024 - margin.left - margin.right);
+			var height = parseInt(d3.select('#progressChart').style('height')) - 50;
+									
+			// Define scales
+			var xScale = d3.time.scale()
+				.range([0, width])
+				.domain(d3.extent(this.chartData[0].datapoints, function(d) { return d.date; }));
+			var yScale = d3.scale.linear()
+				.range([height, 0])
+				.domain([0, 10]);
+			// Define axes
+			var xAxis = d3.svg.axis()
+				.scale(xScale)
+				.orient('bottom')
+				.innerTickSize(-height - margin.top)
+				.outerTickSize(0)
+				.tickPadding(10)
+				.tickFormat(d3.time.format('%b %d'));
+			var yAxis = d3.svg.axis()
+				.scale(yScale)
+				.orient('left');
+			// Define line properties
+			var line = d3.svg.line()
+				.interpolate('cardinal')
+				.x(function(d) { return xScale(d['date']); })
+				.y(function(d) { return yScale(d['attribute']); });		
 						
 			// If chart elements have been added...
 			if (this.chartAdded) {
@@ -94,7 +91,7 @@ var Chart = Vue.component('chart', {
 							this.remove();
 						}
 					});
-				// Add attribute lines
+				// Add line attributes
 				var lines = svg.selectAll('.o-line')
 					.data(this.chartData)
 					.enter()
@@ -103,8 +100,6 @@ var Chart = Vue.component('chart', {
 					.attr('d', function(d) { return line(d.datapoints); });
 					
 				// Add events
-				var parseTime = d3.time.format('%b-%d-%Y');
-				
 				var focus = svg.append('g')
 					.attr('class', 'o-focusGroup')
 					.style('display', 'none');
@@ -120,58 +115,65 @@ var Chart = Vue.component('chart', {
 						.attr('dy', '.35em');
 				}
 				
+				var date;
 				svg.append('rect')
 					.attr('class', 'o-overlay')
-					.attr('width', width)
-					.attr('height', height)
+					.attr('width', '100%')
+					.attr('height', height + margin.top)
+					.attr('transform', 'translate(0,' + -margin.top  + ')')
 					.on('mouseover', function() { focus.style('display', 'block'); })
 					.on('mouseout', function() { focus.style('display', 'none'); })
 					.on('mousemove',  function() {
-						var date = parseTime(xScale.invert(d3.mouse(this)[0])),
-								arr = that.chartData[0].datapoints,
-								pos = 0;
+						var arr = that.chartData[0].datapoints,
+								pos = 0,
+								attributeList = [];
+						// Get date
+						date = parseTime(xScale.invert(d3.mouse(this)[0]))
 						// Match date up with position of dataset
 						for (var i = 0; i < arr.length; i++) {
 							if (parseTime(arr[i].date) === date) {
 								pos = i;
 							}
 						}
-						console.log(date + ', ' + pos);
 						// Pull dataset for each attribute out of chartData and assign to transform, focus
 						// Date might not always be in the same position for each dataset...
-						var item;
+						var item, itemX, itemY;
 						for (i = 0; i < that.chartData.length; i++) {
 							item = that.chartData[i].datapoints[pos];
+							itemX = xScale(item.date);
+							itemY = yScale(item.attribute);
 							var selectedFocus = svg.selectAll('.o-focus--' + that.chartData[i].attribute);
-									selectedFocus.attr('transform', 'translate(' + xScale(item.date) + ',' + yScale(item.attribute) + ')');
-									selectedFocus.select('text').text(item.attribute);
+							// Check to see if circle will overlap and offset if so
+							for (var j = 0; j < attributeList.length; j++) {
+								if (item.attribute === attributeList[j]) {
+									itemX = itemX + 14;
+								}
+							}
+							selectedFocus.attr('transform', 'translate(' + itemX + ',' + itemY + ')');
+							selectedFocus.select('text').text(item.attribute);
+							// Add y-position to positions array
+							attributeList.push(item.attribute);
 						}
 					})
 					.on('click', function() {
-						// Move carousel so that date is in view...
-						console.log('vue-chart.js, click');
+						that.slideCarouselToDate(date);
 					});
 									
 				var resize = function() {
-					var width = parseInt(d3.select('#progressChart').style('width')) - margin.left - margin.right;
-					var height = parseInt(d3.select('#progressChart').style('height')) - 50;
-									
+					var width = Math.max(parseInt(d3.select('#progressChart').style('width')) - margin.left - margin.right, 1024 - margin.left - margin.right);									
 					// Update the range of the scale with new width/height
 					xScale.range([0, width]);
-					yScale.range([height, 0]);
-									
 					// Update the axis and text with the new scale
 					svg.select('.o-axis--x')
 						.attr('transform', 'translate(0,' + height + ')')
 						.call(xAxis);
-					
 					// Force D3 to recalculate and update the line
 					svg.selectAll('.o-line')
 						.attr('d', function(d) { return line(d.datapoints); });
 					// Update the tick marks
 					xAxis.ticks(that.ignoreAutoGeneratedTicks);
 					// xAxis.ticks(Math.max(width/75, 2));
-					yAxis.ticks(Math.max(height/50, 2));
+					// yAxis.ticks(Math.max(height/50, 2));
 				};
 				
 				d3.select(window).on('resize', resize);
@@ -197,6 +199,9 @@ var Chart = Vue.component('chart', {
 		formatChartData: function(data) {
 			var i, e;
 			for (i = 0; i < data.length; i++) {
+				// Need to add 1 to date to get correct date from db record
+				data[i].date = new Date(data[i].date);
+				data[i].date = new Date(data[i].date.setDate(data[i].date.getDate() + 1));
 				// Set up object
 				if (i === 0) {
 					for (e in data[i]) {

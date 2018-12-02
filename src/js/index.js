@@ -81,6 +81,9 @@ var app = new Vue({
 			// Reset left
 			carousel.$refs["VueCarousel-inner"].style.left = 'auto';
 		},
+		slideCarouselToDate: function(date) {
+			console.log('index.js, slideCarouselToDate: ' + date);
+		},
 		sortByDate: function(a, b) {
 			if (a.date < b.date)
 				return -1;
