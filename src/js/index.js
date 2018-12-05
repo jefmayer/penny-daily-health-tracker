@@ -4,6 +4,10 @@
 // TODO: Create Express DB calls for login
 // TODO: Format login modal
 // TODO: Active/hover state for carousel item
+// TODO: Animate in header
+// BUG: Move hover to mouseon/off
+// BUG: Fix verical scroll on graph
+// BUG: Main nav, add about
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 // https://ssense.github.io/vue-carousel/examples/
