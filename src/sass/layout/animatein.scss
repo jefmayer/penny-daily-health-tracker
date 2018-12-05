@@ -1,4 +1,10 @@
 // Defaults
+header {
+	overflow: hidden;
+	height: 0;
+	transition: all .5s ease-out;
+}
+
 .o-progressChart {
 	height: 0;
 	transition: all .75s cubic-bezier(.87,-.41,.19,1.44);
@@ -23,8 +29,16 @@
 	transition: opacity 0.35s ease-in-out 0.5s, transform 0.35s ease-in-out 0.5s;
 }
 
+footer {
+	transition: all 0.35s ease-in 0.75s;
+}
+
 // Animations
 #app.animateIn {
+	
+	header {
+		height: 135px;
+	}
 	
 	.o-progressChart {
 		height: 320px;
@@ -43,5 +57,9 @@
 		height: auto;
 		opacity: 1;
 		transform: translateY(0);
+	}
+	
+	footer {
+		opacity: 1;
 	}
 }

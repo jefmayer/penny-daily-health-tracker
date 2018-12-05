@@ -3,7 +3,7 @@
 // TODO: Add transition: all to new item
 // TODO: Create Express DB calls for login
 // TODO: Format login modal
-// TODO: Clicking on graph jumps you to that entry in chart...
+// TODO: Active/hover state for carousel item
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 // https://ssense.github.io/vue-carousel/examples/
@@ -82,7 +82,12 @@ var app = new Vue({
 			carousel.$refs["VueCarousel-inner"].style.left = 'auto';
 		},
 		slideCarouselToDate: function(date) {
-			console.log('index.js, slideCarouselToDate: ' + date);
+			for (var i = 0; i < this.datapoints.length; i++) {
+				if (date === this.datapoints[i].date) {
+					var page =  Math.floor(i / app.$refs.carousel.currentPerPage);
+					app.$refs.carousel.goToPage(page)
+				}
+			}
 		},
 		sortByDate: function(a, b) {
 			if (a.date < b.date)

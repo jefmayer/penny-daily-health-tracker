@@ -31,8 +31,15 @@ var Chart = Vue.component('chart', {
 					};
 						
 			var parseTime = d3.time.format('%b-%d-%Y');
+			
+			var getWidth = function() {
+				var inset = margin.left + margin.right;
+				var minScrWid = 1024 - inset;
+				width = parseInt(d3.select('#progressChart').style('width'));
+				return Math.max(width - inset, minScrWid);
+			};
 						
-			var width = Math.max(parseInt(d3.select('#progressChart').style('width')) - margin.left - margin.right, 1024 - margin.left - margin.right);
+			var width = getWidth();
 			var height = parseInt(d3.select('#progressChart').style('height')) - 50;
 									
 			// Define scales
@@ -115,7 +122,6 @@ var Chart = Vue.component('chart', {
 						.attr('dy', '.35em');
 				}
 				
-				var date;
 				svg.append('rect')
 					.attr('class', 'o-overlay')
 					.attr('width', '100%')
@@ -126,9 +132,8 @@ var Chart = Vue.component('chart', {
 					.on('mousemove',  function() {
 						var arr = that.chartData[0].datapoints,
 								pos = 0,
-								attributeList = [];
-						// Get date
-						date = parseTime(xScale.invert(d3.mouse(this)[0]))
+								attributeList = [],
+								date = parseTime(xScale.invert(d3.mouse(this)[0]));
 						// Match date up with position of dataset
 						for (var i = 0; i < arr.length; i++) {
 							if (parseTime(arr[i].date) === date) {
@@ -136,7 +141,6 @@ var Chart = Vue.component('chart', {
 							}
 						}
 						// Pull dataset for each attribute out of chartData and assign to transform, focus
-						// Date might not always be in the same position for each dataset...
 						var item, itemX, itemY;
 						for (i = 0; i < that.chartData.length; i++) {
 							item = that.chartData[i].datapoints[pos];
@@ -156,11 +160,12 @@ var Chart = Vue.component('chart', {
 						}
 					})
 					.on('click', function() {
-						that.slideCarouselToDate(date);
+						var formatDate = d3.time.format('%Y-%m-%d')
+						that.slideCarouselToDate(formatDate(xScale.invert(d3.mouse(this)[0])));
 					});
 									
 				var resize = function() {
-					var width = Math.max(parseInt(d3.select('#progressChart').style('width')) - margin.left - margin.right, 1024 - margin.left - margin.right);									
+					var width = getWidth();									
 					// Update the range of the scale with new width/height
 					xScale.range([0, width]);
 					// Update the axis and text with the new scale

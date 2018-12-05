@@ -10,6 +10,18 @@
 	
 	<body>
 		<main id="app" :class="{ 'animateIn': dataLoaded }">
+			
+			<header>
+				<div class="o-logo"></div>
+				<div class="o-titleBar">
+					<div class="o-titleBar__acctOptions">
+						<div class="o-titleBar__editorName"></div>
+						<button class="o-btn--simple m-l-xs" v-on:click="displayLogin">
+							<span>Log In</span>
+						</button>	
+					</div>
+				</div>
+			</header>
 			<chart ref="progressChart" :data-loaded="dataLoaded" :slide-carousel-to-date="slideCarouselToDate" inline-template>
 				<div class="o-progressChart">
 					<div class="o-progressChart__wrapper">
@@ -18,18 +30,8 @@
 				</div>
 			</chart>
 			
-			<div class="o-titleBar">
-				<h1 class="o-titleBar__heading heading--md">Penny&rsquo;s Daily Health Tracker</h1>
-				<div class="o-titleBar__acctOptions">
-					<div class="o-titleBar__editorName"></div>
-					<button class="o-btn--simple m-l-xs" v-on:click="displayLogin">
-						<span>Log In</span>
-					</button>	
-				</div>
-			</div>
-			
 			<div class="o-progressCalendar">
-				<carousel ref="carousel" :navigation-enabled="true"  :pagination-enabled="false" :scroll-per-page="true" :per-page=1 :per-page-custom=[[640,2],[960,3],[1150,4],[1400,5]]>
+				<carousel ref="carousel" :navigation-enabled="true"  :pagination-enabled="false" :scroll-per-page="true" :per-page=1 :per-page-custom=[[550,2],[960,3],[1150,4],[1400,5]]>
 					<slide class="o-progressCalendar__card o-progressCalendar__card--newEntry">
 						<record :item="newRecord" :update="update" :pause="pause" :restart="restart" :add-new="true" inline-template>
 							<div class="o-progressCalendar__card--wrapper">
@@ -208,6 +210,10 @@
 				<div class="o-appLoader__stage3"></div>
 				<div class="o-appLoader__stage4"></div>
 			</div>
+			
+			<footer>
+					
+			</footer>
 		</main>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"> </script>
 		<script type="text/javascript" src="scripts/app.min.js"></script>
