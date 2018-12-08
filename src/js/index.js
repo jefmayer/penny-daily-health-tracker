@@ -24,6 +24,7 @@ var app = new Vue({
     'login': Login
   },
 	data: {
+		prevCalPageCt: Number,
 		requesting: false,
 		carouselTransform: String,
 		datapoints: [],
@@ -54,6 +55,8 @@ var app = new Vue({
 					app.$refs.progressChart.update(JSON.parse(request.responseText).sort(that.sortByDate).reverse());
 					// Animate in content
 					that.dataLoaded = true;
+					// Update pageCt
+					that.prevCalPageCt = app.$refs.carousel.currentPerPage;
         } else {
         	console.log(request.responseText);
         	console.warn('index.js, getRecords : error');
@@ -117,7 +120,15 @@ var app = new Vue({
 		}
 	},
 	mounted: function() {
+		var that = this;
 		this.newRecord.date = this.getTodaysFormattedDate();
 		this.getData();
+		window.addEventListener('resize', function() {
+			console.log(app.$refs.carousel.currentPerPage);
+			if (that.prevCalPageCt === 0 && app.$refs.carousel.currentPerPage > 0) {
+				app.$refs.carousel.goToPage(0)
+			}
+			that.prevCalPageCt = app.$refs.carousel.currentPerPage;
+		});
 	}
 });

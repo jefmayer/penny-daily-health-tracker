@@ -31,7 +31,7 @@
 			</chart>
 			
 			<div class="o-progressCalendar">
-				<carousel ref="carousel" :navigation-enabled="true"  :pagination-enabled="false" :scroll-per-page="true" :per-page=1 :per-page-custom=[[550,2],[960,3],[1150,4],[1400,5]]>
+				<carousel ref="carousel" :navigation-enabled="true"  :pagination-enabled="false" :scroll-per-page="true" :per-page=0 :per-page-custom=[[550,2],[960,3],[1150,4],[1400,5]]>
 					<slide class="o-progressCalendar__card o-progressCalendar__card--newEntry">
 						<record :item="newRecord" :update="update" :pause="pause" :restart="restart" :add-new="true" inline-template>
 							<div class="o-progressCalendar__card--wrapper">
