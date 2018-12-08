@@ -1,6 +1,13 @@
 header {
 	width: 100%;
 	background: $xtra-dark;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	
+	@include breakpoint(sm) {
+		position: relative;
+	}
 	
 	.o-logo {
 		width: 95px;

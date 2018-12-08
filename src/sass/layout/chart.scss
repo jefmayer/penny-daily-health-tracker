@@ -1,7 +1,13 @@
 .o-progressChart {
 	background-image: linear-gradient($xtra-dark, $dark);
 	width: 100%;
-	margin-bottom: 27px;
+	margin-bottom: 42px;
+	margin-top: 135px;
+	
+	@include breakpoint(sm) {
+			margin-bottom: 27px;
+			margin-top: 0;
+		}
 }
 
 .o-progressChart__wrapper {
