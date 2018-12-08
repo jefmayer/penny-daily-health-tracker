@@ -7,8 +7,8 @@
 .o-progressCalendar__card {
 	position: relative;
 	background: $white;
-	border-right: 1px solid $dark-50;
 	// padding-bottom: 55px;
+	border-bottom: 1px solid $dark-50;
 	overflow: hidden;
 	transition: all 0.25s ease-in;
 	transform: translateY(0);
@@ -16,6 +16,8 @@
 	
 	
 	@include breakpoint(sm) {
+		border-bottom: none;
+		border-right: 1px solid $dark-50;
 		min-height: 0;
 	}
 	
@@ -60,7 +62,11 @@
 	
 	.o-date {
 		margin-left: 15px;
-		margin-top: 15px;
+		margin-top: 30px;
+		
+		@include breakpoint(sm) {
+			margin-top: 15px;
+		}
 	}
 	
 	.o-date__month {
@@ -254,7 +260,7 @@
 	background-position: center center;
 	background-size: cover;
 	position: relative;
-	// border-right: none;
+	border-bottom: none;
 	
 	.o-progressCalendar__card--wrapper {
 		position: absolute;

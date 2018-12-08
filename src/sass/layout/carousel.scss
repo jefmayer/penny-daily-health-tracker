@@ -1,14 +1,11 @@
-.VueCarousel-inner {
+.VueCarousel-wrapper .VueCarousel-inner {
 	position: relative;
 	min-height: 483px;
+	flex-direction: column;
 		
-	/*@include breakpoint(md) {
-		min-height: 380px;
-	}*/
-	
-	/*@include breakpoint(lg) {
-		min-height: 345px;
-	}*/
+	@include breakpoint(sm) {
+		flex-direction: row;
+	}
 }
 
 .VueCarousel-navigation {
