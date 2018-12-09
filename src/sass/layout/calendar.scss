@@ -12,7 +12,7 @@
 	overflow: hidden;
 	transition: all 0.25s ease-in;
 	transform: translateY(0);
-	min-height: 536px;
+	min-height: 550px;
 	
 	
 	@include breakpoint(sm) {
@@ -342,6 +342,7 @@
 	margin-bottom: 6px;
 	
 	input {
+		background: none;
 		border: none;
 		border-bottom: 1px solid $sand;
 		font-size: 16px;
