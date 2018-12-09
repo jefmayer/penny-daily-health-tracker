@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 					"src/js/vue-carousel.min.js",
 					"src/js/vue-chart.js",
 					"src/js/vue-record.js",
-					"src/js/vue-login.js",
+					"src/js/vue-settingsmenu.js",
 					"src/js/index.js"
 				],
 				dest: "<%= dir.js.concat %>/app.concat.js"

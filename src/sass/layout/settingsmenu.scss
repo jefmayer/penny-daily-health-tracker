@@ -1,7 +1,7 @@
 .o-loginOverlay {
 	position: fixed;
 	left: 0;
-	top: 0;
+	top: 135px;
 	width: 100%;
 	height: 100%;
 	
@@ -17,18 +17,42 @@
 		transition: all 0.25s ease-in;
 	}
 	
-	.o-loginOverlay__formWrapper {
+	.o-loginOverlay__inner {
 		position: absolute;
 		left: 50%;
-		top: 50%;
+		top: 15px;
 		z-index: 2;
 		width: 80%;
-		max-width: 320px;
-		padding: 20px;
-		background: $white;
+		max-width: 440px;
 		opacity: 0;
 		transform: translateX(-50%) translateY(10px);
 		transition: all 0.25s ease-in 0.15s;
+		
+		.body--intro {
+			color: $sand;
+		}
+		
+		.o-field__settings {
+			width: 100%;
+			max-width: 250px;
+			
+			input {
+				background: none;
+				border: none;
+				border-bottom: 1px $sand-50 solid;
+				font-weight: 300;
+				font-size: 16px;
+				color: $sand;
+			}
+			
+			input::placeholder,
+			input::-webkit-input-placeholder,
+			input::-moz-placeholder,
+			input:-ms-input-placeholder,
+			input:-moz-placeholder {
+				color: $sand;
+			}
+		}
 	}
 }
 
@@ -37,7 +61,7 @@
 		opacity: 1;
 	}
 	
-	.o-loginOverlay__formWrapper {
+	.o-loginOverlay__inner {
 		opacity: 1;
 		transform: translateX(-50%) translateY(0);
 	}

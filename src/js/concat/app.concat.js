@@ -347,26 +347,26 @@ var Chart = Vue.component('chart', {
 	mounted: function() {
 		this.defaults.date = this.getTodaysFormattedDate();
 	}
-});;var Login = Vue.component('login', {
-	props: ['setShowLogin'],
+});;var SettingsMenu = Vue.component('settingsmenu', {
+	props: ['setShowSettings'],
 	data: function() {
 		return {
-			showLogin: false
+			showSettings: false
 		}
 	},
 	methods: {
 		loginHandler: function() {
-			console.log('vue-login.js, loginHandler');
+			console.log('vue-settingsmenu.js, loginHandler');
 		},
 		closeHandler: function() {
-			console.log('vue-login.js, closeHandler');
-			this.showLogin = false;
+			console.log('vue-settingsmenu.js, closeHandler');
+			this.showSettings = false;
 			// Maybe need a timer before calling method in app
-			this.setShowLogin(false);
+			this.setShowSettings(false);
 		}
 	},
 	mounted: function() {
-		this.showLogin = true;
+		this.showSettings = true;
 	}
 });;// TODO: Create loader
 // TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
@@ -377,7 +377,8 @@ var Chart = Vue.component('chart', {
 // TODO: Animate in header
 // BUG: Move hover to mouseon/off
 // BUG: Fix verical scroll on graph
-// BUG: Main nav, add about
+// TODO: Circle menu button in header
+// TODO: Remove animations from single column view
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 // https://ssense.github.io/vue-carousel/examples/
@@ -391,7 +392,7 @@ var app = new Vue({
     'slide': VueCarousel.Slide,
     'record': Record,
     'chart': Chart,
-    'login': Login
+    'settingsmenu': SettingsMenu
   },
 	data: {
 		prevCalPageCt: Number,
@@ -399,7 +400,7 @@ var app = new Vue({
 		carouselTransform: String,
 		datapoints: [],
 		dataLoaded: false,
-		showLogin: false,
+		showSettings: false,
 		newRecord: {
 			date: Date,
 			mobility: '5',
@@ -434,8 +435,12 @@ var app = new Vue({
 			}
 			request.send();
 		},
-		displayLogin: function() {
-			this.setShowLogin(true);
+		displaySettings: function() {
+			if (this.showSettings) {
+				this.setShowSettings(false);
+			} else {
+				this.setShowSettings(true);
+			}
 		},
 		update: function() {
 			this.getData();
@@ -485,8 +490,8 @@ var app = new Vue({
 			this.addLeadingZero(d.getMonth() + 1) + '-' +
 			this.addLeadingZero(d.getDate())
 		},
-		setShowLogin: function(val) {
-			this.showLogin = val;
+		setShowSettings: function(val) {
+			this.showSettings = val;
 		}
 	},
 	mounted: function() {

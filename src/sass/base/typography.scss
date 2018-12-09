@@ -34,18 +34,14 @@
 @mixin type-heading--lg {
 	font-family: $mon;
 	font-style: normal;
-	font-weight: 700;
-	font-size: 26px;
+	font-weight: 300;
+	font-size: 30px;
 	line-height: 1.15;
-	letter-spacing: 0;
-	color: $sand;
-	text-transform: uppercase;
+	letter-spacing: -0.015em;
+	color: $white;
+	// text-transform: uppercase;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-  
-	@include breakpoint(sm) {
-		font-size: 36px;
-	}
 }
 
 @mixin type-heading--md {
@@ -377,18 +373,14 @@
 @mixin type-body--intro {
 	font-family: $mon;
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 16px;
-	line-height: 1.875;
+	line-height: 1.5;
 	letter-spacing: 0;
-	color: $black;
+	color: $white;
 	text-transform: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-  
-	@include breakpoint(sm) {
-		font-size: 20px;
-	}
 }
 
 .body--tiny {

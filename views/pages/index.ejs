@@ -14,12 +14,13 @@
 			
 			<header>
 				<div class="o-logo"></div>
-				<div class="o-titleBar">
-					<div class="o-titleBar__acctOptions">
-						<div class="o-titleBar__editorName"></div>
-						<button class="o-btn--simple m-l-xs" v-on:click="displayLogin">
-							<span>Log In</span>
-						</button>	
+				<div class="o-btn--menu" :class="{ 'closeState': showSettings }" v-on:click="displaySettings">	
+					<span class="o-menuBar"></span>
+					<span class="o-menuBar"></span>
+					<span class="o-menuBar"></span>
+					<div>
+						<span class="o-closeBar"></span>
+						<span class="o-closeBar"></span>
 					</div>
 				</div>
 			</header>
@@ -181,29 +182,31 @@
 				</carousel>
 			</div>
 			
-			<login ref="login" v-if="showLogin" :set-show-login="setShowLogin" inline-template>
-				<div class="o-loginOverlay" :class="{ 'animateIn': showLogin }">
-					<div class="o-loginOverlay__bg" v-on:click="closeHandler"></div>
-					<div class="o-loginOverlay__formWrapper">
-						<button class="o-btn--close" v-on:click="closeHandler">
-							<span>&times;</span>
-						</button>
-						<form>
-							<label for="username" class="o-field">
-								<span class="heading--xs">Name</span>
-								<input name="username" id="username" type="input" />
-							</label>
-							<label for="password" class="o-field">
-								<span class="heading--xs">Password</span>
-								<input name="password" id="password" type="password" />
-							</label>
-							<button class="o-btn--primary m-t-xs" v-on:click="loginHandler">
-								<span>Login</span>
-							</button>
-						</form>
+			<settingsmenu ref="settingsmenu" v-if="showSettings" :set-show-login="setShowSettings" inline-template>
+				<div class="o-loginOverlay" :class="{ 'animateIn': showSettings }">
+					<div class="o-loginOverlay__bg"></div>
+					<div class="o-loginOverlay__inner">
+						<div class="m-b-sm">
+							<div class="heading--lg">About the Project</div>
+							<div class="body--intro">The Penny Tracker was inspired by a drive to track our Greyhound Penny&rsquo;s health and well being after her dianosis with tumors on her brain/stem and how she responded to different treatments and medication.</div>
+						</div>
+						<div>
+							<div class="heading--lg">Editor Sign-in</div>
+							<form>
+								<label for="username" class="o-field__settings m-b-xxs">
+									<input name="username" id="username" type="input" placeholder="Name" />
+								</label>
+								<label for="password" class="o-field__settings">
+									<input name="password" id="password" type="password" placeholder="Password" />
+								</label>
+								<button class="o-btn--primary m-t-xs" v-on:click="loginHandler">
+									<span>Login</span>
+								</button>
+							</form>
+						</div>
 					</div>
 				</div>
-			</login>
+			</settingsmenu>
 			
 			<div class="o-appLoader">
 				<div class="o-appLoader__stage1"></div>
@@ -212,9 +215,7 @@
 				<div class="o-appLoader__stage4"></div>
 			</div>
 			
-			<footer>
-					
-			</footer>
+			<footer></footer>
 		</main>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"> </script>
 		<script type="text/javascript" src="scripts/app.min.js"></script>
