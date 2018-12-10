@@ -12,7 +12,7 @@
 	<body>
 		<main id="app" :class="{ 'animateIn': dataLoaded }">
 			
-			<header>
+			<header :class="{ 'fixed': showSettings }">
 				<div class="o-logo"></div>
 				<div class="o-btn--menu" :class="{ 'closeState': showSettings }" v-on:click="displaySettings">	
 					<span class="o-menuBar"></span>
@@ -187,11 +187,11 @@
 					<div class="o-loginOverlay__bg"></div>
 					<div class="o-loginOverlay__inner">
 						<div class="m-b-sm">
-							<div class="heading--lg">About the Project</div>
-							<div class="body--intro">The Penny Tracker was inspired by a drive to track our Greyhound Penny&rsquo;s health and well being after her dianosis with tumors on her brain/stem and how she responded to different treatments and medication.</div>
+							<div class="heading--lg m-b-xxs">About the Project</div>
+							<div class="body--intro">The Penny Tracker was inspired by a drive to track our Greyhound Penny&rsquo;s health and well being after her diagnosis with tumors on her brain/stem and how she responded to different treatments and medication.</div>
 						</div>
 						<div>
-							<div class="heading--lg">Editor Sign-in</div>
+							<div class="heading--lg m-b-xxs">Editor Sign-in</div>
 							<form>
 								<label for="username" class="o-field__settings m-b-xxs">
 									<input name="username" id="username" type="input" placeholder="Name" />

@@ -10,6 +10,10 @@ header {
 		position: relative;
 	}
 	
+	&.fixed {
+		position: fixed;
+	}
+	
 	.o-logo {
 		width: 95px;
 		height: 94px;
@@ -20,6 +24,7 @@ header {
 	}
 	
 	.o-btn--menu {
+		position: relative;
 		width: 32px;
 		height: 32px;
 		float: right;
@@ -30,23 +35,57 @@ header {
 		transition: all 0.25s ease-in-out;
 		cursor: pointer;
 		
-		div {
-			transition: all 0.25s ease-in-out;
+		span {
+			display: block;
+			border-radius: 2px;
+			background: $white;
 			transform-origin: center;
+			transition: all 0.25s ease-in-out;
 		}
 		
 		.o-menuBar {
-			display: block;
 			width: 12px;
 			height: 1px;
-			border-radius: 2px;
-			background: $white;
 			margin: 4px auto;
-			transform-origin: center;
-			transition: all 0.25s ease-in-out;
 			
 			&:nth-child(1) {
 				margin-top: 7px;
+				transition-delay: 0.1s;
+			}
+			
+			&:nth-child(2) {
+				transition-delay: 0s;
+			}
+			
+			&:nth-child(3) {
+				transition-delay: 0.1s;
+			}
+		}
+		
+		div {
+			transition: all 0.25s ease-in-out;
+			transform-origin: center;
+			position: absolute;
+			top: 2px;
+			left: 13px;
+			transform: rotate(45deg);
+			
+			span:nth-child(1) {
+				position: absolute;
+				top: 7px;
+				left: 0;
+				width: 15px;
+				height: 1px;
+				transform: scale(0,1);
+			}
+			
+			span:nth-child(2) {
+				position: absolute;
+				top: 0;
+				left: 7px;
+				width: 1px;
+				height: 15px;
+				transform: scale(1,0);
 			}
 		}
 		
@@ -55,20 +94,31 @@ header {
 		}
 		
 		&.closeState {
-			div {
-				// transform: rotate(45deg);
-			}
-			
 			.o-menuBar:nth-child(1) {
-				transform: scale(0,0) translate(0, 5px);
+				transition-delay: 0s;
+				transform: scale(0,1) translate(0, 5px);
 			}
 			
 			.o-menuBar:nth-child(2) {
 				transform: scale(0,0);
+				transition-delay: 0.1s;
 			}
 			
 			.o-menuBar:nth-child(3) {
-				transform: scale(0,0) translate(0, -5px);
+				transition-delay: 0s;
+				transform: scale(0,1) translate(0, -5px);
+			}
+			
+			div {
+				span:nth-child(1) {
+					transform: scale(1,1);
+					transition-delay: 0.1s;
+				}
+				
+				span:nth-child(2) {
+					transform: scale(1,1);
+					transition-delay: 0.1s;
+				}
 			}
 		}
 	}
