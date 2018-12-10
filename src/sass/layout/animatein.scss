@@ -9,7 +9,7 @@
 		
 		.o-progressChart {
 			height: 0;
-			transition: all .75s cubic-bezier(.87,-.41,.19,1.44);
+			transition: height .75s cubic-bezier(.87,-.41,.19,1.44);
 		}
 		
 		#progressChart {

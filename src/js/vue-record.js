@@ -1,5 +1,5 @@
 var Record = Vue.component('record', {
-	props: ['item', 'update', 'pause', 'restart', 'addNew', 'index'],
+	props: ['item', 'update', 'pause', 'restart', 'addNew', 'index', 'isLoggedIn'],
 	data: function() {
 		return {
 			canEdit: false,

@@ -6,9 +6,9 @@
 	margin-top: 135px;
 	
 	@include breakpoint(sm) {
-			margin-bottom: 27px;
-			margin-top: 0;
-		}
+		margin-bottom: 27px;
+		margin-top: 0;
+	}
 }
 
 .o-progressChart__wrapper {

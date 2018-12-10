@@ -1,14 +1,11 @@
 // TODO: Create loader
 // TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
 // TODO: Add transition: all to new item
-// TODO: Create Express DB calls for login
-// TODO: Format login modal
 // TODO: Active/hover state for carousel item
-// TODO: Animate in header
-// BUG: Move hover to mouseon/off
-// BUG: Fix verical scroll on graph
-// TODO: Circle menu button in header
-// TODO: Remove animations from single column view
+// TODO: Fix fade-out of settings menu
+// TODO: Close settings menu after successful login
+// TODO: Store login in LS
+// TODO: Vertically anchor clicks in chart to scroll position in mobile
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 // https://ssense.github.io/vue-carousel/examples/
@@ -25,6 +22,8 @@ var app = new Vue({
     'settingsmenu': SettingsMenu
   },
 	data: {
+		isLoggedIn: false,
+		toggleMenuButton: false,
 		prevCalPageCt: Number,
 		requesting: false,
 		carouselTransform: String,
@@ -67,8 +66,13 @@ var app = new Vue({
 		},
 		displaySettings: function() {
 			if (this.showSettings) {
-				this.setShowSettings(false);
+				var that = this;
+				app.$refs.settingsmenu.hide();
+				setTimeout(function() {
+					that.setShowSettings(false);
+				}, 250);
 			} else {
+				this.setMenuToggle(true);
 				this.setShowSettings(true);
 			}
 		},
@@ -122,6 +126,12 @@ var app = new Vue({
 		},
 		setShowSettings: function(val) {
 			this.showSettings = val;
+		},
+		setLoggedInSettings: function(val) {
+			this.isLoggedIn = val;
+		},
+		setMenuToggle: function(val) {
+			this.toggleMenuButton = val;
 		}
 	},
 	mounted: function() {

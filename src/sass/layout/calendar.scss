@@ -189,10 +189,6 @@
 		}
 		
 		&:hover {
-			&:before {
-				// left: 10px;
-			}
-			
 			.heading--xs {
 				
 				&:before {
@@ -209,15 +205,7 @@
 					}
 				}
 			}
-			
-			.o-attributeGraph {
-				// left: 10px;
-			}
 		}
-	}
-	
-	.o-dataEntries--display {
-		padding-bottom: 45px;
 	}
 	
 	.o-dataEntries--edit {
@@ -378,4 +366,10 @@ textarea {
 	border: 1px solid $sand;
 	font-family: $mon !important;
 	font-size: 12px;
+}
+
+.loggedIn{
+	.o-dataEntries--display {
+		padding-bottom: 60px;
+	}
 }
