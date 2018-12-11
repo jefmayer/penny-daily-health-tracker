@@ -194,8 +194,8 @@
 							</div>
 							<div>
 								<div class="heading--lg m-b-xxs">Editor sign-in</div>
-								<div style="display:none;">
-									<p>Please enter valid username and password to sign-in.</p>
+								<div v-if="formFields.username.showError || formFields.password.showError">
+									<p class="body--intro error">Please enter valid credentials to sign-in.</p>
 								</div>
 								<form>
 									<label for="username" class="o-field__settings m-b-xxs" :class="{ 'error': formFields.username.showError }">

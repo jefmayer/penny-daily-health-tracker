@@ -2,6 +2,8 @@ var SettingsMenu = Vue.component('settingsmenu', {
 	props: ['setShowSettings', 'setLoggedInSettings', 'setMenuToggle'],
 	data: function() {
 		return {
+			isLocalStorage: false,
+			lsName: 'appLogin',
 			animateShowSettings: false,
 			showSettings: false,
 			hideSettingsTimer: null,
@@ -50,9 +52,12 @@ var SettingsMenu = Vue.component('settingsmenu', {
 					if (data[0].success === 'success') {
 						that.setLoggedInSettings(true);
 						// Persist session in local storage
-						
+						that.persistUserSession();
 						// Close settings
 						that.closeHandler();
+					} else {
+						that.formFields.username.showError = true;
+						that.formFields.password.showError = true;
 					}
         } else {
         	console.log(request.responseText);
@@ -78,11 +83,40 @@ var SettingsMenu = Vue.component('settingsmenu', {
 		hide: function() {
 			this.animateShowSettings = false;
 			this.setMenuToggle(false);
+		},
+		localStorageCheck: function() {
+			var ls = 'ls';
+			try {
+				window.localStorage.setItem(ls, ls);
+				window.localStorage.removeItem(ls);
+				return true;
+			} catch(e) {
+				return false;
+			}
+		},
+		setItemInObj: function(data) {
+			var val = JSON.stringify(data);
+			if (ls.isLocalStorage) {
+				window.localStorage.setItem(this.lsName, val);
+			}
+		},
+		getItemFromObj: function() {
+			var data;
+			if (ls.isLocalStorage) {
+				data = window.localStorage.getItem(this.lsName);
+			}
+			return JSON.parse(data);
+		},
+		deleteItem: function() {
+			if (ls.isLocalStorage) {
+				window.localStorage.removeItem(this.lsName);
+			}
 		}
 	},
 	mounted: function() {
 		clearTimeout(this.hideSettingsTimer);
 		this.showSettings = true;
 		this.animateShowSettings = true;
+		this.isLocalStorage = this.localStorageCheck();
 	}
 });

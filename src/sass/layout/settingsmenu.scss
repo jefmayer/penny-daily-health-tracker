@@ -32,6 +32,10 @@
 		
 		.body--intro {
 			color: $sand;
+			
+				&.error {
+					color: $vermilion;
+				}
 		}
 		
 		.o-btn--primary {

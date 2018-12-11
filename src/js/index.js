@@ -2,10 +2,9 @@
 // TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
 // TODO: Add transition: all to new item
 // TODO: Active/hover state for carousel item
-// TODO: Fix fade-out of settings menu
-// TODO: Close settings menu after successful login
 // TODO: Store login in LS
 // TODO: Vertically anchor clicks in chart to scroll position in mobile
+// TODO: Remove login when logged in
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 // https://ssense.github.io/vue-carousel/examples/

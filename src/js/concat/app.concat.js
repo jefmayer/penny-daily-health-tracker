@@ -351,6 +351,8 @@ var Chart = Vue.component('chart', {
 	props: ['setShowSettings', 'setLoggedInSettings', 'setMenuToggle'],
 	data: function() {
 		return {
+			isLocalStorage: false,
+			lsName: 'appLogin',
 			animateShowSettings: false,
 			showSettings: false,
 			hideSettingsTimer: null,
@@ -399,9 +401,12 @@ var Chart = Vue.component('chart', {
 					if (data[0].success === 'success') {
 						that.setLoggedInSettings(true);
 						// Persist session in local storage
-						
+						that.persistUserSession();
 						// Close settings
 						that.closeHandler();
+					} else {
+						that.formFields.username.showError = true;
+						that.formFields.password.showError = true;
 					}
         } else {
         	console.log(request.responseText);
@@ -427,21 +432,49 @@ var Chart = Vue.component('chart', {
 		hide: function() {
 			this.animateShowSettings = false;
 			this.setMenuToggle(false);
+		},
+		localStorageCheck: function() {
+			var ls = 'ls';
+			try {
+				window.localStorage.setItem(ls, ls);
+				window.localStorage.removeItem(ls);
+				return true;
+			} catch(e) {
+				return false;
+			}
+		},
+		setItemInObj: function(data) {
+			var val = JSON.stringify(data);
+			if (ls.isLocalStorage) {
+				window.localStorage.setItem(this.lsName, val);
+			}
+		},
+		getItemFromObj: function() {
+			var data;
+			if (ls.isLocalStorage) {
+				data = window.localStorage.getItem(this.lsName);
+			}
+			return JSON.parse(data);
+		},
+		deleteItem: function() {
+			if (ls.isLocalStorage) {
+				window.localStorage.removeItem(this.lsName);
+			}
 		}
 	},
 	mounted: function() {
 		clearTimeout(this.hideSettingsTimer);
 		this.showSettings = true;
 		this.animateShowSettings = true;
+		this.isLocalStorage = this.localStorageCheck();
 	}
 });;// TODO: Create loader
 // TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
 // TODO: Add transition: all to new item
 // TODO: Active/hover state for carousel item
-// TODO: Fix fade-out of settings menu
-// TODO: Close settings menu after successful login
 // TODO: Store login in LS
 // TODO: Vertically anchor clicks in chart to scroll position in mobile
+// TODO: Remove login when logged in
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 // https://ssense.github.io/vue-carousel/examples/
