@@ -471,7 +471,6 @@ var Chart = Vue.component('chart', {
 });;// TODO: Create loader
 // TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
 // TODO: Add transition: all to new item
-// TODO: Active/hover state for carousel item
 // TODO: Store login in LS
 // TODO: Vertically anchor clicks in chart to scroll position in mobile
 // TODO: Remove login when logged in
@@ -499,6 +498,8 @@ var app = new Vue({
 		datapoints: [],
 		dataLoaded: false,
 		showSettings: false,
+		focusDate: String,
+		currentPage: 0,
 		newRecord: {
 			date: Date,
 			mobility: '5',
@@ -570,9 +571,28 @@ var app = new Vue({
 			for (var i = 0; i < this.datapoints.length; i++) {
 				if (date === this.datapoints[i].date) {
 					var page =  Math.floor(i / app.$refs.carousel.currentPerPage);
-					app.$refs.carousel.goToPage(page)
+					app.$refs.carousel.goToPage(page);
 				}
 			}
+			var delay = 0;
+			if (this.currentPage !== page) {
+				delay = 600;
+			}
+			// Set focus to calendar card
+			this.setCarouselFocusDate(date, delay);
+			// Update currentPage
+			this.currentPage = page;
+		},
+		setCarouselFocusDate: function(date, delay) {
+			var that = this;
+			// Delay fallback
+			if (!delay) {
+				delay = 0;
+			}
+			// Set focus
+			setTimeout(function() {
+				that.focusDate = date;
+			}, delay);
 		},
 		sortByDate: function(a, b) {
 			if (a.date < b.date)
