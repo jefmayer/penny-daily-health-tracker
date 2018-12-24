@@ -1,5 +1,5 @@
 var SettingsMenu = Vue.component('settingsmenu', {
-	props: ['setShowSettings', 'setLoggedInSettings', 'setMenuToggle'],
+	props: ['setShowSettings', 'setLoggedInSettings', 'setMenuToggle', 'isLoggedIn'],
 	data: function() {
 		return {
 			isLocalStorage: false,
@@ -35,6 +35,9 @@ var SettingsMenu = Vue.component('settingsmenu', {
 			if (isValid) {
 				this.loginRequest();
 			}
+		},
+		logoutHandler: function(event) {
+			event.preventDefault();
 		},
 		loginRequest: function() {
 			var that = this;

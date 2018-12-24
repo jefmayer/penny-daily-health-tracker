@@ -184,7 +184,7 @@
 					</carousel>
 				</div>
 				
-				<settingsmenu ref="settingsmenu" v-if="showSettings" :set-show-settings="setShowSettings" :set-logged-in-settings="setLoggedInSettings" :set-menu-toggle="setMenuToggle" inline-template>
+				<settingsmenu ref="settingsmenu" v-if="showSettings" :set-show-settings="setShowSettings" :set-logged-in-settings="setLoggedInSettings" :set-menu-toggle="setMenuToggle" :is-logged-in="isLoggedIn" inline-template>
 					<div class="o-loginOverlay" :class="{ 'animateIn': animateShowSettings }">
 						<div class="o-loginOverlay__bg"></div>
 						<div class="o-loginOverlay__inner">
@@ -195,22 +195,27 @@
 									<p>So far, this effort has far exceeded our failed attempts to track her diet and exercise post-adoption, but more importantly, it&rsquo;s helped us to see trends that can back up something up we&rsquo;ve observed or help us calmn down because it&rsquo;s just where she&rsquo;s at and we&rsquo;re just over-reacting.</p>
 								</div>
 							</div>
-							<div>
+							<div v-if="!isLoggedIn">
 								<div class="heading--lg m-b-xxs">Editor sign-in</div>
 								<form>
 									<label for="username" class="o-field__settings m-b-xxs" :class="{ 'error': formFields.username.showError }">
-										<input name="username" id="username" type="input" placeholder="Name" v-model="formFields.username.value" />
+										<input name="username" id="username" type="input" placeholder="Name" v-model="formFields.username.value" style="background: transparent !important;" />
 									</label>
 									<label for="password" class="o-field__settings" :class="{ 'error': formFields.password.showError }">
-										<input name="password" id="password" type="password" placeholder="Password" v-model="formFields.password.value" />
+										<input name="password" id="password" type="password" placeholder="Password" v-model="formFields.password.value" style="background: transparent !important;" />
 									</label>
 									<button class="o-btn--primary m-t-xs" v-on:click="loginHandler">
 										<span>Login</span>
 									</button>
 								</form>
-								<div v-if="formFields.username.showError || formFields.password.showError" class="m-t-xxs">
+								<div :class="{'display': formFields.username.showError || formFields.password.showError}" class="o-loginErrorMsg m-t-xxs">
 									<p class="body--intro error">Please enter valid credentials to sign-in.</p>
 								</div>
+							</div>
+							<div v-if="isLoggedIn">
+								<button class="o-btn--primary m-t-xs" v-on:click="logoutHandler">
+									<span>Logout</span>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -224,7 +229,6 @@
 				</div>
 				
 				<footer>
-					<p class="body--tiny">Key: </p>
 					<p class="body--tiny">&copy; 2018, modeseventyeight / <a href="http://jefmayer.com">jefmayer.com</a> / <a href="https://github.com/jefmayer/penny-daily-health-tracker">Github</a></p>
 				</footer>
 			</div>

@@ -141,6 +141,19 @@ footer {
 	padding: 30px 15px;
 }
 
+.o-attributesKey {
+	width: 100%;
+	
+	.o-attributesKey__item {
+		width: 20%;
+		float: left;
+		
+		.o-attributesKey__item--inner {
+			padding: 0 15px;
+		}
+	}
+}
+
 a,
 a:visited,
 a:hover,

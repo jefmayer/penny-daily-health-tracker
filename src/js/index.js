@@ -1,9 +1,13 @@
 // TODO: Create loader
 // TODO: What is the new item. Add flex-shrink: 1 and then immediately flip back to 0
 // TODO: Add transition: all to new item
-// TODO: Store login in LS
+// TODO: Store login, name in LS
 // TODO: Vertically anchor clicks in chart to scroll position in mobile
 // TODO: Remove login when logged in
+// TODO: Really should add-in custom date-picker
+// TODO: Key for explaining the attributes that are being tracked
+// TODO: Add name to users collection
+// BUG: Chart hovers not updating when new record is added
 
 // https://github.com/charliekassel/vuejs-datepicker?ref=madewithvuejs.com#demo
 // https://ssense.github.io/vue-carousel/examples/

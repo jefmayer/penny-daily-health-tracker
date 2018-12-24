@@ -39,10 +39,8 @@
 			
 				&.error {
 					color: $vermilion;
-					font-size: 0.875em;
-					opacity: 0;
-					transform: translateY(10px);
-					transition: all 0.25s ease-in;
+					font-size: 1em;
+					font-weight: 400;
 				}
 		}
 		
@@ -50,6 +48,17 @@
 			border-color: $green;
 			background: transparent;
 			color: $white;
+		}
+		
+		.o-loginErrorMsg {
+			transform: translateY(10px);
+			opacity: 0;
+			transition: all 0.25s ease-in;
+			
+			&.display {
+				opacity: 1;
+				transform: translateY(0);
+			}
 		}
 		
 		.o-field__settings {
@@ -64,10 +73,6 @@
 				font-size: 16px;
 				color: $sand;
 				transition: all 0.25s ease-in;
-			}
-			
-			input:-webkit-autofill {
-				background-color: transparent !important;
 			}
 			
 			input:placeholder,
