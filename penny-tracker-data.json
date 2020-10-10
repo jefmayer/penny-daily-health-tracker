@@ -1,0 +1,762 @@
+[
+   {
+      "_id":"5bbf6f81df1774cced3ed5f9",
+      "date":"2018-10-10",
+      "mobility":7,
+      "activity":10,
+      "appetite":4,
+      "pain":4,
+      "stress":9,
+      "notes":"She threw up at 8am, but possibly this was because of the salmon skin she'd had the night before. She ran down the front stairs to pee, galloped around the yard, and was eager to go for a walk. She peed inside before her afternoon walk, seemed to have a panic attack while going to poop, and was very anxious, taking the better part of an hour to calm down. She ate breakfast later (12pm) and dinner later (8:30pm)"
+   },
+   {
+      "_id":"5bc3c2f7d8d1d9a4f2cb10b7",
+      "date":"2018-10-13",
+      "activity":"9",
+      "appetite":"1",
+      "mobility":"7",
+      "notes":"Penny had diarrhea, in large part because of the large amount of ground beef and rice she had the evening before. Went out to the bathroom several times during the day, including getting up around 4am in the morning to go out. We left her alone for the first time on an evening â€“ she did throw up a bit on the couch and went for a very long walk with Annicka after we got back from Eris.",
+      "pain":"3",
+      "stress":"6"
+   },
+   {
+      "_id":"5bc4018fd8d1d9a4f2cc1d10",
+      "date":"2018-10-14",
+      "activity":"10",
+      "appetite":"7",
+      "mobility":"8",
+      "notes":"Penny ran today! Ate four bricks three separate times today, along with two small plates of food in the morning. We left her alone to go to Wyler for brunch and then the store right after.",
+      "pain":"2",
+      "stress":"1"
+   },
+   {
+      "_id":"5bc491d5d8d1d9a4f2cf2a03",
+      "date":"2018-10-15",
+      "activity":"4",
+      "appetite":"2",
+      "mobility":"7",
+      "notes":"Penny went in for her CT scan today â€“Â so no breakfast. Doctors mentioned that she was a little unstable after coming out of anesthesia, and peed inside the waiting room, although we should have let her outside sooner. Stool was pretty soft, and Annicka had a breakthrough of mixing a little PB with her food to get her to eat about 4 bricks later in the evening. Up through the night with needs for peeing/pooping.",
+      "pain":"2",
+      "stress":"6"
+   },
+   {
+      "_id":"5bc6ad95d8d1d9a4f2dcb152",
+      "date":"2018-10-16",
+      "activity":"9",
+      "appetite":"7",
+      "mobility":"7",
+      "notes":"Anni noted that Penny seemed very keyed up when she is awake. When she's up she's up. Great eating day. PB and frozen in the am, Anni got her to eat bricks and dinner without mixing PB. Good walks 3 times today. Stool is still pretty mushy, but not as liquidy as has been.",
+      "pain":"3",
+      "stress":"5"
+   },
+   {
+      "_id":"5bc802d4d8d1d9a4f2e4d7fb",
+      "date":"2018-10-17",
+      "activity":"4",
+      "appetite":"8",
+      "mobility":"6",
+      "notes":"Ate really well today, minimal breakfast (normal for Jef) a couple bricks for Kelsey and a good dinner. Kelsey stayed with Penny today and reported that Penny did a lot of cozing out on the couch. Seemed to have issues going poop this evening and seemed really resistant to going for a walk late in the evening. Annicka noticed some stability issues and Jef had to carry her up/down the stairs outside, although her last time out in the yard, she came back up on her own.",
+      "pain":"4",
+      "stress":"6"
+   },
+   {
+      "_id":"5bc95052e7179a4377fee797",
+      "date":"2018-10-18",
+      "activity":"8",
+      "appetite":"9",
+      "mobility":"7",
+      "notes":"Penny ate SO many bricks today. Between Annicka and Kelsey, somewhere upwards of 13â€”15, plus a decent effort of canned/chopped (normal) dinner. Two almost-solid poops today, and interest in walking seemed to get better as the day went on. Very short walk in am, but maybe because it was cold. In between when Jef left and Kelsey came over this am, Penny walked upstairs! to her bed. Definitely needed Kelsey's assistance to get beck down, but impressive. She only had one Gabba this afternoon, as we had to run out and refill the prescription.",
+      "pain":"3",
+      "stress":"4"
+   },
+   {
+      "_id":"5bcaaa9ae7179a4377ff9f81",
+      "date":"2018-10-19",
+      "activity":"8",
+      "appetite":"8",
+      "mobility":"7",
+      "notes":"Again, Penny seemed to be less stable and interested in walking in the am. She didn't want to go for a morning walk. Stool looked more solid in the am. Good appetite at all meals, and really seemed engaged in wanting to be around us in the evening.",
+      "pain":"2",
+      "stress":"3"
+   },
+   {
+      "_id":"5bcd325ce7179a43770041a6",
+      "date":"2018-10-21",
+      "activity":"8",
+      "appetite":"10",
+      "mobility":"6",
+      "notes":"Couple times she was panting, shaking but seemed less than previous times. She wanted to run around the park today, and was dreaming of running which all seems like good signs. Great eating. Continues to want to go outside to pee a lot during the day, which is what it is at this point. Still seems a little uncertain with the rear right leg.",
+      "pain":"2",
+      "stress":"4"
+   },
+   {
+      "_id":"5be0f70ed8d1d9a4f2a10ad5",
+      "date":"2018-11-03",
+      "activity":"3",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Getting around ok â€“Â we made it out to IKEA for a pretty long evening get-away and she did just fine.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5be8ab1fd8d1d9a4f2e9be4b",
+      "date":"2018-11-09",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Went to MedVet to discuss chemo options. Did well traveling, met some cool brave buddies in the waiting room.",
+      "pain":"2",
+      "stress":"4"
+   },
+   {
+      "_id":"5bcbf136d8d1d9a4f2f98394",
+      "date":"2018-10-20",
+      "activity":"7",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Penny continued to have a great appetite today â€“Â she are 1.5 patties today for dinner, and then a few additional bricks in the evening. She had an accident again by the door while we were out at the store, and continues to need to go out a lot during the day. She's very alert, can't tell if that's because of needing something? or just keyed up. Her right rear leg is also being a little funky. Notice it especially when going down outside steps. It appears like she's almost walking bow-legged with it.",
+      "pain":"3",
+      "stress":"4"
+   },
+   {
+      "_id":"5bce833cd8d1d9a4f206ff7a",
+      "date":"2018-10-22",
+      "activity":"3",
+      "appetite":"5",
+      "mobility":"2",
+      "notes":"First day of radiation! No food in the am in preparation for treatment. A little wobbly and unsettled after coming out of anesthesia. She eventually settled down after getting home. She ate her food after that Anni had left for after treatment, but wasn't as eager as days past for dinner. The catheter that's attached to her front left leg seems to be causing her some pain in getting around. ",
+      "pain":"7",
+      "stress":"5"
+   },
+   {
+      "_id":"5bd0af4dd8d1d9a4f2161ccc",
+      "date":"2018-10-23",
+      "activity":"4",
+      "appetite":"8",
+      "mobility":"3",
+      "notes":"Penny recovered a lot better back from her second day of radiation treatment. She lied down straight-away in the car, and had a return to normal appetite. She was still not loving the catheter taped to her front leg, but mobility seemed a little better than the previous day.",
+      "pain":"3",
+      "stress":"3"
+   },
+   {
+      "_id":"5bd13c69d8d1d9a4f219fcf9",
+      "date":"2018-10-24",
+      "activity":"6",
+      "appetite":"9",
+      "mobility":"5",
+      "notes":"Way better after radiation again today, although doctors think she might have a UTI :( Great appetite, stairs no problem, and showed great excitement about eating.",
+      "pain":"3",
+      "stress":"3"
+   },
+   {
+      "_id":"5bd351d4d8d1d9a4f229f895",
+      "date":"2018-10-25",
+      "activity":"7",
+      "appetite":"9",
+      "mobility":"7",
+      "notes":"Day 4 of treatment went well â€“Â Penny seemed to get around better than I've seen her of late. She even got up in her new bed! She seems to be making it through the night a bit longer each day this week â€“Â almost making it all the way to normal wake-up to go outside.",
+      "pain":"3",
+      "stress":"3"
+   },
+   {
+      "_id":"5bd67c6ed8d1d9a4f24012cb",
+      "date":"2018-10-28",
+      "activity":"8",
+      "appetite":"10",
+      "mobility":"7",
+      "notes":"Annicka's note is \"she's mobile, but it's not necessarily without some pain?\" She did run around the yard a bit and went up the stairs twice! Once in the morning when neither of us were around and then again this evening. Her appetite seems insatiable, which isn't a bad thing. She got to hang out with some greyhound buddies at PAWS and we refilled her Gabba today at MedVet",
+      "pain":"6",
+      "stress":"2"
+   },
+   {
+      "_id":"5bd67ce4d8d1d9a4f24015de",
+      "date":"2018-10-27",
+      "activity":"7",
+      "appetite":"9",
+      "mobility":"6",
+      "notes":"Has been having trouble walking, a lot of foot dragging. We did notice a scrape on her rear right leg. Very healthy appetite â€“Â and a lot of stirring, which seemed stressful? but also could have been her just wanting to be in the action, or potentially just wanting water",
+      "pain":"6",
+      "stress":"7"
+   },
+   {
+      "_id":"5bd67d4fd8d1d9a4f24017dd",
+      "date":"2018-10-26",
+      "activity":"4",
+      "appetite":"7",
+      "mobility":"4",
+      "notes":"Last day of radiation! Very low energy â€“Â wasn't super eager to go on walks... think it's just been a long week. She was hungry though, and has been hanging out on her new (downstairs) bed quite a bit, which is amazing to see.",
+      "pain":"6",
+      "stress":"4"
+   },
+   {
+      "_id":"5bdafe5cd8d1d9a4f26a0bd2",
+      "date":"2018-10-31",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"6",
+      "notes":"Was able to get her out on a little longer of a walk this afternoon â€“Â it might be that the cold is getting to her. Also got a crazy refill of her gabba today (168 pills). Left her in the afternoon again for errands and she was fine. This time though, took her upstairs and she stayed up there even after I got back.",
+      "pain":"1",
+      "stress":"2"
+   },
+   {
+      "_id":"5bdafd48d8d1d9a4f26a0094",
+      "date":"2018-10-29",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Her appetite is back to levels we haven't seen in years. She still continues to have some instability in her rear right leg, but makes it up/down the steps outside and up the staircase indoors. UTI update: She had an accident inside when I went downstairs to switch out the laundry. Need to make sure she gets a bathroom break mid-way through the day. She was very animated on her walk when she knew I had treats in my pocket.",
+      "pain":"2",
+      "stress":"2"
+   },
+   {
+      "_id":"5bdafd7fd8d1d9a4f26a02b6",
+      "date":"2018-10-30",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Stole away up the stairs while I ran out for errands. No issues w/ inside peeing today, which is great! We were also able to get out in the evening for a few hours and she was fine, so that was reassuring. Went to Liz's â€“ she was out of the Primal beef, and wasn't sure when she'd get some back in, so we switched to Raw Bistro. Also picked up some larger CBD treats for her.",
+      "pain":"2",
+      "stress":"2"
+   },
+   {
+      "_id":"5bdc6e80d8d1d9a4f278f1f9",
+      "date":"2018-11-01",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"8",
+      "notes":"There was some scampering around the yard, but still limited walking. Wondering now if the issues getting around with her hind legs has to do with some muscle loss. She still has an insane appetite.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5bdd21cdd8d1d9a4f27f516f",
+      "date":"2018-11-02",
+      "activity":"3",
+      "appetite":"10",
+      "mobility":"6",
+      "notes":"Picked up ammox refill. Concerned that Penny is become weaker, or more hesitant to move around. She's not as confident getting up the stairs as she was the other week, and sometimes needs to be encouraged to jump up on the couch. She does have moments where she seems to be more mobile in the yard which is good.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5be0f76ad8d1d9a4f2a10cf9",
+      "date":"2018-11-05",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"A lot of stirring in the evening, around human dinner time. Finally got her to get on the couch and chill out. Takes a little bit of coaching, but she's figuring it out.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5be3a5d0d8d1d9a4f2c083ee",
+      "date":"2018-11-07",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Tripped up the outside steps and slipped up the main stairs this evening. She seemed to have a good bit of pep on her walks, but mobility continues to be iffy with that rear-right leg. A lot of stirring, but seems to be food-related.",
+      "pain":"1",
+      "stress":"2"
+   },
+   {
+      "_id":"5be3a617d8d1d9a4f2c0864a",
+      "date":"2018-11-06",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"A lot of stirring, although we figured out at night, if she's standing by the stairs, it's best to just let her go up. Still keeping a way on mobility issues with her rear right leg",
+      "pain":"1",
+      "stress":"3"
+   },
+   {
+      "_id":"5be4ed81d8d1d9a4f2cb983a",
+      "date":"2018-11-08",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"7",
+      "notes":"Noticed for the second day running that Penny's poops are dark and shiny... assume that's the food. She didn't poop on either walk, but on secondary walks in morning and after RUNNING around the yard when we got back from Handlebar. She also ripped up a bill and envelope while we were gone, no doubt to register her dissatisfaction with us not being here to beg from while we were eating. Still some issues with her rear right leg, but she can run, so it's weird.",
+      "pain":"1",
+      "stress":"2"
+   },
+   {
+      "_id":"5be8aa34d8d1d9a4f2e9b6f6",
+      "date":"2018-11-11",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"7",
+      "notes":"Little bit longer walks today â€“Â plus some running across the park with a little bit of a hop. It looked like she enjoyed it, and seemed to be pain-free, although still walking with a hink in her rear-right going down steps.",
+      "pain":"2",
+      "stress":"1"
+   },
+   {
+      "_id":"5be8aa85d8d1d9a4f2e9ba12",
+      "date":"2018-11-10",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"6",
+      "notes":"Left Penny alone in the evening to go out with Skyler and Kelsey, and looked like she did fine. No shredding this time. ",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5bea33bbd8d1d9a4f2f6b73a",
+      "date":"2018-11-12",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Penny's been licking her butt a lot today... started this afternoon, intermittently throughout the rest of the day/evening. Otherwise, pretty restful most of the day â€” didn't seem eager on walks, but did have some pep in her step, so didn't seem uncomfortable. Tough to know if weather is playing a role",
+      "pain":"2",
+      "stress":"6"
+   },
+   {
+      "_id":"5bec1ebbd8d1d9a4f2079469",
+      "date":"2018-11-13",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Few good walks today. Annicka heard back from Dr. Arkans and we'll be taking Penny to see the neurologist about the rear leg mobility issues. It did seem a little more hinky than usual today, but she seemed to get along just fine.",
+      "pain":"2",
+      "stress":"2"
+   },
+   {
+      "_id":"5beddfddd8d1d9a4f2189956",
+      "date":"2018-11-14",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Heard a yip from her today when  i tried to carry her closer to where she pooped rather than tug on her leash after she wouldn't move. Might have just been the way/where I'd picked her up, but that was a different. Sounded like she had a good walk with Annicka in the evening and all was normal otherwise",
+      "pain":"3",
+      "stress":"2"
+   },
+   {
+      "_id":"5bee038cd8d1d9a4f219d23c",
+      "date":"2018-11-15",
+      "activity":"3",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Penny's still nipping at her but a bit while standing up... not licking like the other day. Anni also noticed some instability on her night walk and she stumbled up the steps. I didn't notice anything super unusual during the day, although she really didn't seem to want to walk today. She did well at home tho, alone from 9 till 2",
+      "pain":"2",
+      "stress":"1"
+   },
+   {
+      "_id":"5bf17291d8d1d9a4f238df05",
+      "date":"2018-11-17",
+      "activity":"3",
+      "appetite":"10",
+      "mobility":"2",
+      "notes":"Her rear right leg is really noticeably affecting her ability to walk, pivot and she's slipping out more on the hardwood then I'd seen in some time. We upped her dose of gabapentin in afternoon, think about giving more tomorrow to see if that helps some. She also finished her amoxicillin this afternoon, so one less drug she needs to be on!",
+      "pain":"6",
+      "stress":"1"
+   },
+   {
+      "_id":"5bf17310d8d1d9a4f238e38c",
+      "date":"2018-11-16",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Sporadic schedule today, Penny held it together mostly well, although tore through Annicka's box when we went to Wyler in the evening. She was prob mad that she hadn't seen Annicka or that I ditched her right after her dinner... off-schedule. Continued issues w/ rear right leg, not really pooping on schedule.",
+      "pain":"2",
+      "stress":"1"
+   },
+   {
+      "_id":"5bf481b7d8d1d9a4f256d5cc",
+      "date":"2018-11-20",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Annicka identified that when Penny stands up on the rug by the door and tries to bite her right hip/leg (the leg that's bothering her) that that's an indication of pain, or that there's a sensation that's messing with her. On the bright side, we were able to get her to run around the front yard when Annicka got home. Also took her a second walk to go poop this am. She wasn't into taking the first walk at all, but had a good second walk nonetheless",
+      "pain":"5",
+      "stress":"1"
+   },
+   {
+      "_id":"5bf584a9d8d1d9a4f2605105",
+      "date":"2018-11-19",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Penny's mobility is continuing to be problematic, so she's thinking she not make the trip to Cleveland. Still not taking the steps much better, some awkward turning of her rear right leg. Annicka also got an appt with Dr. Peterson on Wednesday.",
+      "pain":"3",
+      "stress":"1"
+   },
+   {
+      "_id":"5bf58754d8d1d9a4f2606b7f",
+      "date":"2018-11-18",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Moved Penny up to 3 Gabapentin in the afternoon to try and help with what seems like pain/discomfort in rear right leg",
+      "pain":"5",
+      "stress":"1"
+   },
+   {
+      "_id":"5bf8d1bbd8d1d9a4f27ad9c8",
+      "date":"2018-11-21",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Took Penny to see Dr. Peterson today. Good spirits considering having to be at MedVet and getting tested, waiting. Good report, good traveling in the car and will be starting chemo tomorrow.",
+      "pain":"3",
+      "stress":"2"
+   },
+   {
+      "_id":"5bf8d263d8d1d9a4f27addd8",
+      "date":"2018-11-22",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"First day of chemo, eating/pooping seemed normal. Annicka noticed a little more slipping out on walks and in general, but mentioned she was in good spirits and attitude was overall positive.",
+      "pain":"4",
+      "stress":"1"
+   },
+   {
+      "_id":"5bfc4a00d8d1d9a4f29342eb",
+      "date":"2018-11-23",
+      "activity":"9",
+      "appetite":"10",
+      "mobility":"7",
+      "notes":"Continued to slip out more than is typical. Didn't want to go for a long morning walk, but in the evening, she wanted to walk really far - almost down to our old house and then up to Palmer - possibly because the weather was so much warmer than it has been. Poop was normal, but she is peeing more, and she's licking her butt a LOT, likely thanks to the chemo.",
+      "pain":"6",
+      "stress":"4"
+   },
+   {
+      "_id":"5bfc4b23d8d1d9a4f2934b3f",
+      "date":"2018-11-24",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Seemed a little more stable than she has over the last few days - less slipping out and wobbling. Appetite was good. Didn't want to walk as much as she had the day before. ",
+      "pain":"5",
+      "stress":"3"
+   },
+   {
+      "_id":"5bfc4b98d8d1d9a4f2934f07",
+      "date":"2018-11-25",
+      "activity":"3",
+      "appetite":"9",
+      "mobility":"4",
+      "notes":"Didn't want to walk much, but seemed consistent from the day before in terms of stability. Peeing more than she typically does. Pooped quite a bit in the evening. Not as unsettled in the evening as she has been recently - slept quite a bit. ",
+      "pain":"5",
+      "stress":"4"
+   },
+   {
+      "_id":"5bfd776bd8d1d9a4f29be96a",
+      "date":"2018-11-26",
+      "activity":"4",
+      "appetite":"9",
+      "mobility":"3",
+      "notes":"Penny ate a little less for breakfast than usual, but seemed to be back at it for dinner. She had an accident on her bed downstairs, but was partially my fault for not realizing she hadn't gone back out to pee after breakfast. Otherwise, a little less outdoor time with all the snow and just kicked it in the yard instead of doing her evening walk with Annicka, since Jef prematurely let her out in the evening.",
+      "pain":"2",
+      "stress":"3"
+   },
+   {
+      "_id":"5bfeba2bd8d1d9a4f2a4981b",
+      "date":"2018-11-27",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Annicka mentioned Penny took a big butt-first spill on the ice this am. Seemed fine on subsequent walks throughout the rest of the day, but was definitely not loving the ice and crunchy snow â€“Â limited options for finding a good poop spot. Was able to leave her alone for a couple hours mid-afternoon and she did great on the couch â€“Â the only mischief she got up to was maybe unwinding Annicka's yarn a touch.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5c0069a6d8d1d9a4f2b07406",
+      "date":"2018-11-28",
+      "activity":"3",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Little better on the ice today, no wipeouts at least. Still limited walks â€“Â didn't like it on the ice or the cement really, although seemed easier to find spots to do her business. Was also able to leave for a good chunk in the morning to run errands, and no issue. Started moving the bed upstairs during the day to encourage couch lying. For the most part, seemed to work during the day. Also today is momentous, as we found out that Liz is moving away from the card catalog!",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5c017eb0d8d1d9a4f2b81d93",
+      "date":"2018-11-29",
+      "activity":"3",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Did ok outside today, little bit of a thaw. Not too much remarkable to report. Have started decreasing the amount of food, since she's gained a good bit of weight back and we're back on the Primal",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5c02b937d8d1d9a4f2c14eda",
+      "date":"2018-10-11",
+      "activity":"10",
+      "appetite":"4",
+      "mobility":"7",
+      "notes":"",
+      "pain":"4",
+      "stress":"9"
+   },
+   {
+      "_id":"5c02b94dd8d1d9a4f2c15186",
+      "date":"2018-10-12",
+      "activity":"10",
+      "appetite":"4",
+      "mobility":"7",
+      "notes":"",
+      "pain":"4",
+      "stress":"9"
+   },
+   {
+      "_id":"5c03f8eed8d1d9a4f2ca6c6e",
+      "date":"2018-12-01",
+      "activity":"3",
+      "appetite":"10",
+      "mobility":"7",
+      "notes":"Penny walked up the stairs before bed last night! Something we haven't seen for several weeks now. Not a lot of time outside with all the rain and hail. Also a few claps of thunder that got her pretty scared in the evening.",
+      "pain":"1",
+      "stress":"3"
+   },
+   {
+      "_id":"5c03f97ad8d1d9a4f2ca716a",
+      "date":"2018-11-30",
+      "activity":"7",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Got Penny out for her blood test at Family Pet this morning, and took her out to pick out a tree in the afternoon. A good bit of traveling and activity that left her good and tired in the evening. Annicka mentioned her walking was a little off in the am, but seemed to get around to whatever extent is good for her, on all her excursions.",
+      "pain":"2",
+      "stress":"1"
+   },
+   {
+      "_id":"5c03f9f6d8d1d9a4f2ca7e24",
+      "date":"2018-12-02",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Annicka took her for a long walk this am, but mentioned she had an awkward time with both her rear legs. We also kicked the chemo down to one pill in the am, after the 10 days at 2. Lot of butt licking this morning... Unfortunately looks like she's peed on the couch in several spots. We're thinking it's less that she needed to go to the bathroom and more that she can't control it/incontinence. The thought at the moment is to stop the chemo. A few encouraging walks today tho",
+      "pain":"2",
+      "stress":"4"
+   },
+   {
+      "_id":"5c05bcf8d8d1d9a4f2d8dc34",
+      "date":"2018-12-03",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Didn't give Penny her chemo in the am, but after Annicka talked to Dr. Lew, it was advised we just not stop chemo, so gave her her pill around 3pm. Otherwise, pretty good walk this evening with a little jogging up until the pooping. Even made it past the trash cans. Was also able to leave her alone a little bit in the am, and she was fine. Started restricting her water a bit and let her out about 4 times in between am/pm walks. Little bit of scampering around the yard after dinner. Walked up the stairs to bed on her own. She did wake up in the middle of the night, seemingly needing water â€“Â let her out to pee as well.",
+      "pain":"2",
+      "stress":"1"
+   },
+   {
+      "_id":"5c074f48d8d1d9a4f2e55cba",
+      "date":"2018-12-04",
+      "activity":"4",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Had another accident later this evening after dinner. She might have had too much water after dinner and probably happened while she was resting. She had a couple good walks. Tried to limit her water throughout the day, but neurologist mentioned with the pred, she would need a bit more water. Will start to look into reducing pred dose in days to come.",
+      "pain":"1",
+      "stress":"2"
+   },
+   {
+      "_id":"5c0892ebd8d1d9a4f2f26ac1",
+      "date":"2018-12-05",
+      "activity":"5",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"Got a shower in today, which she seemed to tolerate as well as ever. Noticed a bit more instability in the evening especially. A little more foot dragging then usual and a little stumbling down the stairs. Decent walks in the morning and evening. Anni also emailed with Dr. Peterson who thought there might be the possibility of a UTI, but also agreed that we could start to think about a plan to back off the pred. Again, more good playing with the old brain toys. No accidents as far as we could tell.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5c09eeecd8d1d9a4f2024791",
+      "date":"2018-12-06",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"5",
+      "notes":"Penny seemed to be getting around a bit better today â€“Â way less foot dragging. She had a bit of a squishy poo this evening and Annicka mentioned she had a massive, normal-consistency one this am. She took a mega walk before bedÂ â€“Â all around the park and down the block. Looked like maybe she needed to poop, but no go.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5c0c08ffd8d1d9a4f219eb6d",
+      "date":"2018-12-07",
+      "activity":"6",
+      "appetite":"9",
+      "mobility":"5",
+      "notes":"Some longer walks, but poop is getting soupier and soupier.. Was up on the couch and no leaks. There was a moment at dinner where she turned away her last bit of patty, for the first time in a while (that I'd seen). She did finish after Annicka mixed with her turmeric topper.",
+      "pain":"1",
+      "stress":"2"
+   },
+   {
+      "_id":"5c0d52fed8d1d9a4f22667f8",
+      "date":"2018-12-08",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Penny had a pretty rough day â€“Â more diarrhea and a bed wetting incident later in the day. She also fell when I tried to move her off her bed while trying to adjust her blanket. Her appetite was still healthy and will look at maybe getting her a bit more water throughout the day. ",
+      "pain":"3",
+      "stress":"1"
+   },
+   {
+      "_id":"5c0de422d8d1d9a4f22b75df",
+      "date":"2018-12-09",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"3",
+      "notes":"I think we're going to start interpreting Penny's shaking as pain. Another day of not great stability. Also noticed some stumbling in the front legs as well, once in the park, once in here. Also was another accident on the couch, but training pad caught it. Also only one poo in the am, although at least it's been more solid then the past couple days. No pooping in the afternoon/evening, but she has been putting out some tremendous farts.",
+      "pain":"4",
+      "stress":"2"
+   },
+   {
+      "_id":"5c11d558d8d1d9a4f2581bbc",
+      "date":"2018-12-12",
+      "activity":"3",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Poop seemed a little softer this am, but got a lot soupier later in the morning when Penny went out. Walks were a little shorter this am/pm and no further pooping. Day 2 of half-pred and she seemed to still be doing as she was stability-wise. Made a call to Family Pet today to get Penny's blood tested on Friday.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5c0eff4bd8d1d9a4f236f3f4",
+      "date":"2018-12-10",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"Back to solid poops. Also, through the day at least, no incidents inside â€“Â even while leaving her alone for an hour or so in the afternoon. Called MedVet today and left a message for Dr. Lew about concerns over hydroxyurea. Noticed one moment of Penny really hesitate to come up the front steps, and then labored up. But every other time before and after she seemed to be fine. ",
+      "pain":"3",
+      "stress":"2"
+   },
+   {
+      "_id":"5c1185f8d8d1d9a4f2556df7",
+      "date":"2018-12-11",
+      "activity":"6",
+      "appetite":"10",
+      "mobility":"4",
+      "notes":"First day of dropping down to just a half-pred in the morning. Another day of solid poops and a little more encouraging mobility. We were able to take a completely new route for the evening walk that went down to Hamlin and all the way back up Palmer. Annicka mentioned that she had done a similar walk on Thanksgiving, but it's been mostly park since. Saw a little scampering in the yard in the evening before a poop too. Annicka mentioned that MedVet got back to her and said that it typically takes a couple months for the chemo to really start to make a noticeable difference, so we're going to see this through for a bit longer.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5c130a7ed8d1d9a4f263fa74",
+      "date":"2018-12-13",
+      "activity":"4",
+      "appetite":"9",
+      "mobility":"2",
+      "notes":"Thinking the adventures of Penny and the half-pred prince may be over. Her hobble and rear-leg stability have been noticeably worse the past 2 days. Noticed a little bit of pee on Annicka's blue blanket, but nothing like previous indoor incidents. First poop of the day was relatively solid enough to scoop up, although Annicka said one on the am walk was very runny. Penny was also needed a little convincing to finish her breakfast but did fine with dinner. Left to get haircut later in the afternoon and Penny decided to shred a receipt of Annicka's.",
+      "pain":"1",
+      "stress":"1"
+   },
+   {
+      "_id":"5c172644d8d1d9a4f288177e",
+      "date":"2018-12-14",
+      "activity":"6",
+      "appetite":"9",
+      "mobility":"4",
+      "notes":"Did errands with Penny today â€“Â got her to the Family Pet for her blood work, refilled the gaba, Liz's, PetSmart, and took her back to the old neighborhood to walk in Smith Park and past the old house. She was happy for the smells and tolerated the walking and in-and-out of the car,  but wasn't moving around the best. Weighed in at 62lbs at Family Vet, so at least gained back and is holding weight.",
+      "pain":"2",
+      "stress":"2"
+   },
+   {
+      "_id":"5c1726b6d8d1d9a4f2881aa2",
+      "date":"2018-12-15",
+      "activity":"3",
+      "appetite":"9",
+      "mobility":"3",
+      "notes":"Penny wasn't doing to great moving around today, and took a spill coming up the outside steps in the evening. Annicka caught her, so wasn't as bad as it looked. Hopefully mobility issues will improve now that she's back to a full pred a day.",
+      "pain":"4",
+      "stress":"1"
+   },
+   {
+      "_id":"5c1858b1d8d1d9a4f292f6ea",
+      "date":"2018-12-16",
+      "activity":"3",
+      "appetite":"9",
+      "mobility":"3",
+      "notes":"Annicka figured out that the blood crusted on Penny's paws was probably a result of it being so dry in here and her paws cracking. She put on some ointment, as well as cleaned and neosporin'd her knicked-up legs from her spill on the steps the other night. Taking it easy today, a little shaken up from the fall and just keeping an eye on her. Starting to mix in wet food with the Primal â€“Â looks like she's back to before with being disinterested in the frozen. Didn't take her on a walk in the evening and she was up at 2am to go outside... meh",
+      "pain":"5",
+      "stress":"1"
+   },
+   {
+      "_id":"5c185ae0d8d1d9a4f29306b1",
+      "date":"2018-12-17",
+      "activity":"5",
+      "appetite":"8",
+      "mobility":"4",
+      "notes":"Got out for a couple good walks today. Mostly ok up the front steps, although Anni had to help her up in the evening, and she hesitated a bit after a longer evening walk. Still solid poops, and a new baseline for amount of food at breakfast and dinnertime. Dr. Goldrick called and bloodtest came back fine. Gave Anni a couple things to look out for â€“Â drooping head, wincing when touching her neck, which, she seems to be passing the bar for at the moment.",
+      "pain":"3",
+      "stress":"1"
+   },
+   {
+      "_id":"5c1c6ad1d8d1d9a4f2b7926d",
+      "date":"2018-12-19",
+      "activity":"4",
+      "appetite":"8",
+      "mobility":"3",
+      "notes":"Annicka is noticing that Penny is having a harder time getting around. She's needed help up the front steps more often in the evening. She did some running around in the yard in the evening, rearing for a poop. ",
+      "pain":"3",
+      "stress":"1"
+   },
+   {
+      "_id":"5c1c6a3fd8d1d9a4f2b78eb3",
+      "date":"2018-12-20",
+      "activity":"4",
+      "appetite":"7",
+      "mobility":"1",
+      "notes":"Really seeing a bottoming out today. Not much interest in eating in the am, some diarrhea earlier in the day, and a lot of instability and knuckling with the front paws. She had a bit of a tumble, slipping while coming off the couch earlier in the day. She had a good late-evening walk tho, a more solid poop and a healthy walk. Inconsistently, she did some solid scampering in the yard early this morning, again in prep for a poop.",
+      "pain":"5",
+      "stress":"1"
+   },
+   {
+      "_id":"5c1c6b53d8d1d9a4f2b796eb",
+      "date":"2018-12-18",
+      "activity":"4",
+      "appetite":"8",
+      "mobility":"4",
+      "notes":"Still needing some help up the front steps in the evening. Eating is a little better, although needs a lot of the canned food to make mealtime more interesting.",
+      "pain":"2",
+      "stress":"1"
+   },
+   {
+      "_id":"5c1dbbadd8d1d9a4f2c38338",
+      "date":"2018-12-21",
+      "activity":"4",
+      "appetite":"8",
+      "mobility":"3",
+      "notes":"Penny had a pretty good day till she didn't. Some good walking in the am, and good getting around during the day. After getting up on the couch and hanging out some, she took a little spill getting off. Also found that she had a bit of an accident on the couch, but not too bad and pee pad was underneath and caught it. Gave her her pain meds a little early tonight just in case she was feeling sore.",
+      "pain":"4",
+      "stress":"1"
+   },
+   {
+      "_id":"5c1f2388d8d1d9a4f2ceacad",
+      "date":"2018-12-22",
+      "activity":"3",
+      "appetite":"8",
+      "mobility":"3",
+      "notes":"Another mixed-bag of a day. Was pretty stable most of the day â€“Â decent walk in the am. But again, another rough night. She was very unstable walking, but no incidents like the previous couple. Made sure to lift her up all the stairs, although she insisted on going down front steps before bed, before I could get situated to help her. A couple weird yips from Penny today. Once while eating â€“Â I think a rough edge of a ducker caught the roof of her mouth. And another randomly in the middle of the evening while lying down. Didn't seem to be anything to it, but I think she also is missing Anni some, so I'll keep an eye out.",
+      "pain":"3",
+      "stress":"1"
+   },
+   {
+      "_id":"5c210fe3d8d1d9a4f2dedb0b",
+      "date":"2018-12-23",
+      "activity":"1",
+      "appetite":"7",
+      "mobility":"1",
+      "notes":"So, this is a hard one... but need to see this project through. Today is about as worse as could be, and so much to list here. Penny yelped early this am, right around the time we usually give her her Gabba. She took a tumble walking in the lawn early this am, but still seemed steady enough to walk, poop normal. So, unwisely decided to still try trip to Cleveland. She got in the car and settled down quickly, but as we were passing over the Skyway, she yelped, and I realized that wasn't a smart idea. Called Annicka and MedVet at next rest stop. She also yelped going back over Skyway. The rest of the day she just wasn't doing well, a lot of instability, issues walking, no more stairs. Annicka got back later in the evening and we realized it had gotten to a point.",
+      "pain":"8",
+      "stress":"2"
+   },
+   {
+      "_id":"5c2110f6d8d1d9a4f2dee4dc",
+      "date":"2018-12-24",
+      "activity":"1",
+      "appetite":"5",
+      "mobility":"1",
+      "notes":"This morning we made the insanely hard decision to call Lap of Love. After a really rough night, yelping, super instability even after increasing her Gabba dosage to 500mg, we know it's time. Going to make today as normal and as comfortable for her as possible. Which is doubly hard, because in these most \"normal\" moments, when she's chilling and resting, it's hard to see still how she's in so much pain. She's the best dog, and so incredibly tough and brave. I thought this was project would never take, and I'd lapse and forget to enter data, but... it helps me see how many GOOD DAYS we got to have with her this fall. And to know that there were GOOD DAYS and it was worth it... and that it is time, and that it's the right decision.",
+      "pain":"9",
+      "stress":"3"
+   },
+   {
+      "_id":"5c22b8bed8d1d9a4f2ed4770",
+      "date":"2018-12-25",
+      "activity":"0",
+      "appetite":"2",
+      "mobility":"0",
+      "notes":"Today Penny was finally able to find relief from all her suffering. She's been so brave through all of this, and if she was in pain, she never showed it till toward the end. Even then, last night she slept all the way through for the first time in weeks, and this morning, despite not hardly being able to move she peed and pooped when being let out just like he had for years. She was the best dog. I'm so glad she was able to have a such a calm, relaxing transition to a well-deserved peace.",
+      "pain":"0",
+      "stress":"0"
+   }
+]
