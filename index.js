@@ -1,73 +1,101 @@
-const express = require('express')
-const path = require('path')
-const bodyParser = require("body-parser")
-const PORT = process.env.PORT || 5000
+const bodyParser = require('body-parser');
+const co = require('co');
+const cors = require('cors');
+const env = require('dotenv');
+const express = require('express');
+const mongo = require('mongodb');
+const path = require('path');
 
-var MongoClient = require('mongodb').MongoClient,
-		co = require('co'),
-		assert = require('assert')
+env.config();
+
+const PORT = process.env.PORT || 5001;
+const uri = process.env.MONGODB_URI;
+const name = process.env.MONGODB_DB;
+const { MongoClient } = mongo;
   
-var url = process.env.MONGOLAB_URI
-
-var find = function (db, col) {
-  return co(function * () {
-    // Get the documents collection
-    const dbo = db.db('pennydata')
-    const collection = dbo.collection(col)
-    const docs = yield collection.find({}).toArray()
-    return docs
+const find = (client, collectionName) => (
+  co(function * () {
+    const db = client.db(name);
+    const collection = db.collection(collectionName);
+    const docs = yield collection.find({}).toArray();
+    return docs;
   })
-}
+);
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-	.use(bodyParser.urlencoded({ extended: false }))
-	.use(bodyParser.json())
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .get('/getRecords', function(req, res) {
-	  co(function * () {
-		  const db = yield MongoClient.connect(url)
-			// console.log('Connected successfully to server')
-			res.end(JSON.stringify(yield find(db, 'daily')))
-		  db.close()
-		}).catch(err => console.log(err))
-	})
-	.post('/addRecord', function(req, res) {		
-		co(function * () {
-		  const db = yield MongoClient.connect(url)
-		  var dbo = db.db('pennydata')
-			var doc = {
-				date: req.body.date,
-				mobility: req.body.mobility,
-				activity: req.body.activity,
-				appetite: req.body.appetite,
-				pain: req.body.pain,
-				stress: req.body.stress,
-				notes: req.body.notes
-			}
-			console.log(doc)
-			console.log(dbo.collection('daily').updateOne(
-				{ date: req.body.date },
-				{ $set: doc },
-				{ upsert: true }
-			))
-			res.end(JSON.stringify({success: "success"}))
-			db.close();
-		}).catch(err => console.log(err))
-	})
-	.post('/login', function(req, res) {
-		co(function * () {
-			const db = yield MongoClient.connect(url)
-			var arr = yield find(db, 'users');
-			for (var i = 0; i <arr.length; i++) {
-				if (arr[i].username === req.body.username && arr[i].password === req.body.password) {
-					res.end(JSON.stringify([{"success": "success"}]))
-					return
-				}
-			}
-			res.end(JSON.stringify([{"success": "error"}]))
-		}).catch(err => console.log(err))
-	})
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+let dbClient = null;
+const getDbClient = () => {
+  if (dbClient) {
+    return dbClient;
+  }
+  console.log('penny-tracker: -----> create new db connection.');
+  dbClient = MongoClient.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  return dbClient;
+};
+
+const server = express();
+
+server.use(express.static(path.join(__dirname, 'public')));
+server.use(bodyParser.urlencoded({ extended: false }));
+server.use(bodyParser.json());
+server.set('views', path.join(__dirname, 'views'));
+server.set('view engine', 'ejs');
+server.get('/', (req, res) => res.render('pages/index'));
+server.get('/getRecords', function(req, res) {
+  co(function * () {
+    const client = yield getDbClient();
+    const docs = yield find(client, 'daily');
+    res.end(JSON.stringify(docs));
+  }).catch(err => console.log(err))
+});
+server.post('/addRecord', function(req, res) {		
+  co(function * () {
+    const { body } = req;
+    const { data } = body;
+    const {
+      activity,
+      appetite,
+      date,
+      mobility,
+      notes,
+      pain,
+      stress,
+    } = data;
+    const doc = {
+      ...(activity && { activity }),
+      ...(appetite && { appetite }),
+      ...(date && { date }),
+      ...(mobility && { mobility }),
+      ...(notes && { notes }),
+      ...(pain && { pain }),
+      ...(stress && { stress }),
+    };
+    const client = yield getDbClient();
+    const db = client.db(name);
+    db.collection('daily').updateOne(
+      { date },
+      { $set: doc },
+      { upsert: true },
+      () => {
+        res.end(JSON.stringify({success: "success"}));
+      },
+    )
+  }).catch(err => console.log(err));
+});
+server.post('/login', function(req, res) {
+  co(function * () {
+    const { body } = req;
+    const { password, username } = body;
+    const client = yield getDbClient();
+    const docs = yield find(client, 'users');
+    const item = docs.find((doc) => doc.username === username && doc.password === password);
+    if (item) {
+      res.end(JSON.stringify([{"success": "success"}]));
+      return;
+    }
+    res.end(JSON.stringify([{"success": "error"}]));
+  }).catch(err => console.log(err));
+});
+server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
