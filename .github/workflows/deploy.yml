@@ -2,7 +2,7 @@ name: Build and Deploy Penny Daily Health Tracker
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build-and-push:
