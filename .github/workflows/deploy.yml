@@ -22,7 +22,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/brt-strava:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/penny-health:latest
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
