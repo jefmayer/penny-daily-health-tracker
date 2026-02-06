@@ -1,10 +1,7 @@
 {
-  "name": "penny-tracker",
-  "version": "1.0.0",
-  "description": "Penny Daily Health Tracker",
-  "engines": {
-    "node": "18.17.1"
-  },
+  "name": "penny-daily-health-trackerr",
+  "version": "1.1.0",
+  "author": "Jef Mayer",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -19,14 +16,12 @@
     "mongodb": "^3.7.4",
     "vue-carousel": "^0.18.0"
   },
+  "license": "MIT",
+  "engines": {
+    "node": "18.17.1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://git.heroku.com/penny-tracker.git"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+    "url": "https://github.com/jefmayer/penny-daily-health-tracker"
+  }
 }
