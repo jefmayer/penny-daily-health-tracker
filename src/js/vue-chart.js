@@ -7,7 +7,7 @@
 // - https://bl.ocks.org/mbostock/1071269
 // http://bl.ocks.org/eric-bunch/0bdef4942ac085a93fa6bd31452cd55c
 
-var Chart = Vue.component('chart', {
+export default Vue.component('chart', {
 	props: ['dataLoaded', 'slideCarouselToDate'],
 	data: function() {
 		return {

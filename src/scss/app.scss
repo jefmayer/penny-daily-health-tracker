@@ -18,7 +18,7 @@ Mixins
 
 */
 
-@import 'mixins/breakpoints.scss';
+@import 'mixins/breakpoints';
 
 /*
 
@@ -26,11 +26,11 @@ Base
 
 */
 
-@import 'base/variables.scss';
-@import 'base/reset.scss';
-@import 'base/spacing.scss';
-@import 'base/typography.scss';
-@import 'base/buttons.scss';
+@import 'base/variables';
+@import 'base/reset';
+@import 'base/spacing';
+@import 'base/typography';
+@import 'base/buttons';
 
 /*
 
@@ -38,12 +38,12 @@ Utility
 
 */
 
-@import 'utility/layout.scss';
-@import 'utility/text.scss';
+@import 'utility/layout';
+@import 'utility/text';
 
-@import 'layout/ui.scss';
-@import 'layout/calendar.scss';
-@import 'layout/animatein.scss';
-@import 'layout/carousel.scss';
-@import 'layout/chart.scss';
-@import 'layout/settingsmenu.scss';
+@import 'layout/ui';
+@import 'layout/calendar';
+@import 'layout/animatein';
+@import 'layout/carousel';
+@import 'layout/chart';
+@import 'layout/settingsmenu';

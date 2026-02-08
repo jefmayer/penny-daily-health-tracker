@@ -1,4 +1,4 @@
-var Record = Vue.component('record', {
+export default Vue.component('record', {
 	props: ['item', 'update', 'pause', 'restart', 'addNew', 'index', 'isLoggedIn'],
 	data: function() {
 		return {

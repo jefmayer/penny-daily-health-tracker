@@ -14,6 +14,10 @@
 // https://ssense.github.io/vue-carousel/guide/
 // https://github.com/SSENSE/vue-carousel
 
+import Chart from './vue-chart.js';
+import Record from './vue-record.js';
+import SettingsMenu from './vue-settingsmenu.js';
+
 var app = new Vue({
 	el: '#app',
 	components: {
@@ -90,7 +94,8 @@ var app = new Vue({
 			carousel.$refs["VueCarousel-inner"].classList.add('u-disableAllTransforms');
 			// Need to swap translateX to left
 			// Lazy regex, shouldn't eval to null
-			carousel.$refs["VueCarousel-inner"].style.left = /\((.*?)\,/.exec(this.carouselTransform)[1];
+			// eslint-disable-next-line no-useless-escape
+			carousel.$refs["VueCarousel-inner"].style.left = /\((.*?)\,/.exec(this.carouselTransform)[1]; 
 		},
 		restart: function() {
 			var carousel = app.$refs.carousel;

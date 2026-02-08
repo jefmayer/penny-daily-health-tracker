@@ -1,4 +1,4 @@
-var SettingsMenu = Vue.component('settingsmenu', {
+export default Vue.component('settingsmenu', {
 	props: ['setShowSettings', 'setLoggedInSettings', 'setMenuToggle', 'isLoggedIn'],
 	data: function() {
 		return {

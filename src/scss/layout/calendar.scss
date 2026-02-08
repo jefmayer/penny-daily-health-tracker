@@ -1,7 +1,6 @@
 .o-progressCalendar {
-	background: white;
-	position: relative;
 	background: $sand-35;
+	position: relative;
 }
 
 .o-progressCalendar__card {
@@ -64,7 +63,7 @@
 		padding-top: 30px;
 		position: relative;
 		
-		&:before {
+		&::before {
 			content: "";
 			position: absolute;
 			top: 0;
@@ -131,7 +130,7 @@
 				}
 			}
 			
-			&:before {
+			&::before {
 				content: "";
 				position: absolute;
 				left: 0;
@@ -143,23 +142,23 @@
 				transition: all 0.25s ease-in-out;
 			}
 			
-			&.mobility:before {
+			&.mobility::before {
 				background: $violet;
 			}
 			
-			&.activity:before {
+			&.activity::before {
 				background: $plum;
 			}
 			
-			&.appetite:before {
+			&.appetite::before {
 				background: $cyan;
 			}
 			
-			&.pain:before {
+			&.pain::before {
 				background: $fuscia;
 			}
 			
-			&.stress:before {
+			&.stress::before {
 				background: $orange;
 			}
 		}
@@ -193,7 +192,7 @@
 			}
 		}
 		
-		&:before {
+		&::before {
 			content: "";
 			position: absolute;
 			top: 17px;
@@ -205,7 +204,7 @@
 		&:hover {
 			.heading--xs {
 				
-				&:before {
+				&::before {
 					transform: scaleY(1);
 				}
 				
@@ -294,7 +293,7 @@
 	padding: 4px 8px;
 	position: relative;
 	
-	&:after {
+	&::after {
 		content: "";
 		position: absolute;
 		top: -10px;
@@ -308,7 +307,7 @@
 		transition: all 0.25s ease-in-out;
 	}
 	
-	&:hover:after {
+	&:hover::after {
 		top: 0;
 		transform: scale(1, 1);
 	}
@@ -317,23 +316,23 @@
 		background: $sand-35;
 	}
 	
-	&.o-field--mobility:after {
+	&.o-field--mobility::after {
 		border-left-color: $violet;
 	}
 	
-	&.o-field--activity:after {
+	&.o-field--activity::after {
 		border-left-color: $plum;
 	}
 	
-	&.o-field--appetite:after {
+	&.o-field--appetite::after {
 		border-left-color: $cyan;
 	}
 	
-	&.o-field--pain:after {
+	&.o-field--pain::after {
 		border-left-color: $fuscia;
 	}
 	
-	&.o-field--stress:after {
+	&.o-field--stress::after {
 		border-left-color: $orange;
 	}
 }
@@ -390,7 +389,7 @@ textarea {
 
 // Active state
 .o-progressCalendar__card.focus {
-	.o-date:before {
+	.o-date::before {
 		transform: scale(1,1);
 	}
 }

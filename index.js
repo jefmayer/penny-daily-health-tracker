@@ -1,6 +1,5 @@
 const bodyParser = require('body-parser');
 const co = require('co');
-const cors = require('cors');
 const env = require('dotenv');
 const express = require('express');
 const mongo = require('mongodb');
@@ -8,7 +7,8 @@ const path = require('path');
 
 env.config();
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
+const host = '0.0.0.0';
 const uri = process.env.MONGODB_URI;
 const name = process.env.MONGODB_DB;
 const { MongoClient } = mongo;
@@ -98,4 +98,7 @@ server.post('/login', function(req, res) {
     res.end(JSON.stringify([{"success": "error"}]));
   }).catch(err => console.log(err));
 });
-server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+server.listen(PORT, host, (err) => {
+  if (err) throw err;
+  console.log(`brt-points-app: -----> ready on http://${host}:${PORT}`);
+});

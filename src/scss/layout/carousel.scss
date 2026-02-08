@@ -21,10 +21,10 @@
 		top: -291px !important;
 		width: 50px;
 		height: 0;
-		padding: 100px 0 0 0 !important;
+		padding: 100px 0 0 !important;
 		overflow: hidden;
 		
-		&:before {
+		&::before {
 			content: "";
 			position: absolute;
 			top: 0;
@@ -38,7 +38,7 @@
 	}
 	
 	.VueCarousel-navigation-prev {
-		&:before {
+		&::before {
 			right: 5px;
 			left: auto;
 			background-image: url("../images/left-arrow.svg");
@@ -47,7 +47,7 @@
 	}
 	
 	.VueCarousel-navigation-next {
-		&:before {
+		&::before {
 			left: 5px;
 			background-image: url("../images/right-arrow.svg");
 			background-position: 17px center;

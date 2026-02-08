@@ -43,7 +43,7 @@ button.o-btn--primary {
 		z-index: 2;
 	}
 	
-	&:before {
+	&::before {
 		content: "";
 		position: absolute;
 		top: 50%;
@@ -69,7 +69,7 @@ button.o-btn--primary {
 		transform: scale(1,1);
 	}
 	
-	&:hover:before {
+	&:hover::before {
 		transform: scale(1,1);
 		background: $green;
 	}
