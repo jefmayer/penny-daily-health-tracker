@@ -27,7 +27,7 @@ COPY --from=builder /app/.eslintrc.js ./
 COPY --from=builder /app/.stylelintrc.json ./
 COPY --from=builder /app/index.js ./
 COPY --from=builder /app/package.json ./
-COPY --from=builder /app/project.config.js ./
+COPY --from=builder /app/project-config.js ./
 COPY --from=builder /app/webpack.config.js ./
 
 EXPOSE 5002
