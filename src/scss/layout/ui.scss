@@ -131,14 +131,21 @@ main {
 }
 
 .o-container {
+	display: flex;
+	flex-direction: column;
+	height: 100vH;
 	position: relative;
 }
 
 footer {
-	opacity: 0;
-	background: $sand-35;
-	width: 100%;
+	background-color: $sand-35;
+	flex: 1;
 	padding: 30px 15px;
+	width: 100%;
+
+	@include breakpoint(sm) {
+		opacity: 0;
+	}
 }
 
 .o-attributesKey {
