@@ -133,7 +133,7 @@ main {
 .o-container {
 	display: flex;
 	flex-direction: column;
-	height: 100vH;
+	min-height: 100vH;
 	position: relative;
 }
 
